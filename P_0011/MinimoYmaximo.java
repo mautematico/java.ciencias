@@ -16,10 +16,12 @@ public class MinimoYmaximo{
 	public static void main(String args[]){
 		Scanner entrada = new Scanner(System.in);
 		
+		System.out.print("Dame el primer entero... ");
 		int actual = entrada.nextInt();
 		int maximo = actual;
 		int minimo = actual;
 		
+		System.out.print("Dame el segundo entero... ");
 		//leemos el segundo entero
 		actual = entrada.nextInt();
 		//Si el entero que acabamos de leer es mayor que nuestro mayor almacenado, actualizamos mayor.
@@ -30,19 +32,21 @@ public class MinimoYmaximo{
 		    minimo = actual;
 		    
 		//Repetimos tres veces las lineas anteriores, para los otros tres enteros. Omitiré los comentarios a propósito.
-
+		System.out.print("Dame el tercer entero... ");
 		actual = entrada.nextInt();
 		if(actual > maximo)
 		    maximo = actual;
 		if(actual < minimo)
 		    minimo = actual;
 		 
+		System.out.print("Dame el cuarto entero... ");
 		actual = entrada.nextInt();
 		if(actual > maximo)
 		    maximo = actual;
 		if(actual < minimo)
 		    minimo = actual;
 		   
+		System.out.print("Dame el quinto entero... ");
 		actual = entrada.nextInt();
 		if(actual > maximo)
 		    maximo = actual;

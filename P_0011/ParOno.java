@@ -15,12 +15,14 @@ public class ParOno{
 	public static void main(String args[]){
 		Scanner entrada = new Scanner(System.in);
 		
+		//Pedimos al usuario que nos proporcione el entero que vamos a evaluar.
+		System.out.print("Dame un número entero... ");
 		int numero = entrada.nextInt();
 		
 		if(numero % 2 == 1)
-		    System.out.printf("%d es un número impar", numero);
+		    System.out.printf("%d es un número impar\n", numero);
 		if(numero % 2 == 0)
-		    System.out.printf("%d es un número par", numero);
+		    System.out.printf("%d es un número par\n", numero);
 
 	}
 }
