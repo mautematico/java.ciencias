@@ -1,0 +1,307 @@
+\documentclass[a4paper]{article}
+
+\usepackage{anysize}
+%márgenes de 1cm para la lectura.
+%Configurar a gusto para la impresión.
+\marginsize{1cm}{1cm}{0cm}{1cm} 
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{hyperref}
+
+\usepackage{color}
+
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+
+\usepackage{listings}
+\lstset{language=Java,
+frame=Ltb,
+framerule=0pt,
+aboveskip=0.5cm,
+framextopmargin=3pt,
+framexbottommargin=3pt,
+framexleftmargin=0.4cm,
+framesep=0pt,
+rulesep=.4pt,
+backgroundcolor=\color{gray97},
+rulesepcolor=\color{black},
+%
+showstringspaces = false,
+basicstyle=\small\ttfamily,
+commentstyle=\color{gray45},
+keywordstyle=\bfseries,
+%
+%
+numbers=left,
+numbersep=15pt,
+numberstyle=\tiny,
+numberfirstline = false,
+breaklines=true,
+%
+  showspaces=false,
+  showtabs=false,
+  breakatwhitespace=true,
+%  commentstyle=\color{pgreen},
+  keywordstyle=\color{pblue},
+  stringstyle=\color{pred},
+  moredelim=[il][\textcolor{pgrey}]{$$},
+  moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%},
+%
+    extendedchars=true,
+    literate={á}{{\'a}}1 {ã}{{\~a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1,
+}
+% minimizar fragmentado de listados
+\lstnewenvironment{listing}[1][]
+{\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+
+
+\title{Computación I - Práctica II}
+
+\author{
+  Navarro Miranda, Mauricio\\
+  \texttt{mauricio@navarromiranda.mx}
+  \and
+  Arévalo Loyola, Alma Rosario\\
+  \texttt{olaverax@gmail.com}
+}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Comprender el uso de variables y utilizarlas junto con instrucciones \textit{if} para tomar decisiones.
+\end{abstract}
+
+\section{Realiza las siguientes conversiones:}
+   
+\begin{description}
+  \item[a)] $1000_8$ a binario. \\
+  
+		En el sistema octal y en el binario, cada dígito indica el número de veces que se suma cada potencia de 8 o de 2, respectivamente, según el orden. 
+        $$1000_8 = 1(8^3) + 0(8^2) + 0(8^1) + 0(8^0)$$
+        $$= 1(2^9)+0(2^8) +0(2^7) +0(2^6)+ 0(2^5)+ 0(2^4)+0(2^3) + 0(2^2)+0(2^1) +0(2^0)$$
+        $$= 1000000000_2$$
+  \item[b)] $101110101_2$ a hexadecimal. \\
+  
+  Como $16=2^4$ podemos agrupar de 4 en 4 dígitos, y cada uno de estos grupos representa un número menor que 16, por lo tanto se puede escribir como un dígito en sistema hexadecimal.
+  $$1/0111/0101$$
+  $$1_2 =1, 0111_2=7, 0101_2=5$$
+  
+  De modo que $$101110101_2=175_{16}$$
+  
+  
+  
+  \item[c)] $100101100_2$ a decimal. \\
+   
+   Nuevamente, sumando las potencias de $2$, según el orden de los dígitos. $$100101100_2=1(2^8)+0(2^7)+0(2^6)+1(2^5)+0(2^4)+1(2^3)+1(2^2)+0(2^1)+0(2^0)$$    
+$$= 256+32+8+4=300_{10}$$
+
+
+\item[d)] $125_{10}$ a binario. \\
+$125$ expresado como suma de potencias de $2$ es: $$125=64+32+16+8+4+1$$
+$$=1(2^6)+1(2^5)+1(2^4)+1(2^3)+1(2^2)+0(2^1)+1(2^0)$$
+$$=1111101_2$$
+    
+    
+
+
+
+
+\end{description}
+
+
+\section{Indica qué número entero representan los siguientes números binarios, considerando a) entero no signado y b) entero signado:}
+
+Considerando como entero no signado es el mismo procedimiento que en el inciso c) del ejercicio anterior:
+
+\begin{description}
+  \item[a.a)] 
+  	$1100_2= 1(2^3)+1(2^2)+0(2^1)+0(2^0)= 8+4=12$
+  \item[a.b)] 
+  $1101_2= 1(2^3)+1(2^2)+0(2^1)+1(2^0)= 8+4+1=13$
+  \item[a.c)] 
+ $0011_2= 0(2^3)+0(2^2)+1(2^1)+1(2^0)= 2+1=3$
+
+\end{description}
+
+ Considerando como entero signado, el primer dígito representa el signo ('0' significa positivo y '1' negativo).
+
+\begin{description}
+\item[b.a)] $1100$
+ Quitamos el primer $1$, que significa que el número es negativo, y nos queda $100$, obtenemos su complemento a dos, que es $100$, y convertido a decimal es $$100_2=1(2^2)+0(2^1)+0(2^0) =4$$
+ Por lo tanto, éste número  representa al $-4$
+
+
+\item[b.b)] $1101$
+Quitamos el primer $1$, que significa que el número es negativo, y nos queda $101$, obtenemos su complemento a dos, que es $011$, y convertido a decimal es $$11_2= 1(2^1)+1(2^0) =2+1=3$$
+ Por lo tanto, éste número  representa al $-3$
+
+
+\item[b.c)] $0011$
+Como su primer dígito es $0$, este número es positivo y se convierte de la manera convencional.
+$$11_2= 1(2^1)+1(2^0) =2+1=3$$
+
+
+
+\end{description}
+
+\todo[inline, color=green!40]{Los códigos de las aplicaciones 3 a 5 están en las siguientes páginas (un código por página).\\
+También están incluidos en el directorio src\\
+Y pueden ser consultados en github:\\
+\url{https://github.com/mautematico/java.ciencias/tree/master/P_0011}}
+
+
+\newpage
+\section{Escribe una aplicación que lea cinco enteros y que determine e imprima los enteros mayor y menor en el grupo.}
+\todo[inline, color=green!40]{src/MinimoYmaximo.java}
+\begin{lstlisting}[language=JAVA]
+/*
+    v:0.1.1
+    Programa que lee cinco enteros,
+        determina el mínimo y el máximo e imprime a pantalla mínimo y máximo.
+    Mauricio Navarro Miranda,Alma Arévalo Loyola
+    Facultad de Ciencias
+*/
+//Importamos el paquete necesario para usar Scanner
+import java.util.Scanner;
+public class MinimoYmaximo{
+    public static void main(String args[]){
+        //Preparamos una instancia de Scanner para leer de la entrada estándar
+        Scanner entrada = new Scanner(System.in);
+
+        //Pedimos al usuario el primer entero; lo guardamos en actual. Notemos que éste es, hasta ahora, el máximo el mínimo.
+        System.out.print("Dame el primer entero... ");
+        int actual = entrada.nextInt();
+        int maximo = actual;
+        int minimo = actual;
+
+        System.out.print("Dame el segundo entero... ");
+        //leemos el segundo entero
+        actual = entrada.nextInt();
+        //Si el entero que acabamos de leer es mayor que nuestro mayor almacenado, actualizamos mayor.
+        if(actual > maximo)
+            maximo = actual;
+        //Análogamente para el menor.
+        if(actual < minimo)
+            minimo = actual;
+    
+        //Repetimos tres veces más. Omitiré los comentarios a propósito.
+        System.out.print("Dame el tercer entero... ");
+        actual = entrada.nextInt();
+        if(actual > maximo)
+            maximo = actual;
+        if(actual < minimo)
+            minimo = actual;
+ 
+        System.out.print("Dame el cuarto entero... ");
+        actual = entrada.nextInt();
+        if(actual > maximo)
+            maximo = actual;
+        if(actual < minimo)
+            minimo = actual;
+   
+        System.out.print("Dame el quinto entero... ");
+        actual = entrada.nextInt();
+        if(actual > maximo)
+            maximo = actual;
+        if(actual < minimo)
+            minimo = actual;
+    
+        //Ya hemos leído los cinco enteros. Ahora, int maximo tiene al máximo de ellos, mientras que el mínimo está en int minimo.
+        System.out.printf("El máximo de los enteros es %d, y el mínimo es %d\n", maximo, minimo);
+    }
+}
+\end{lstlisting}
+
+
+\newpage
+\section{Escribe una aplicación que lea un entero y que determine e imprima si es impar o par.}
+\todo[inline, color=green!40]{src/ParOno.java}
+\begin{lstlisting}[language=JAVA]
+/*
+    v:0.1
+    Programa que lee un entero,    determina e imprime si es par o impar.
+    Mauricio Navarro Miranda, Alma Arévalo Loyola
+    Facultad de Ciencias.
+*/
+//Importamos el paquete necesario para usar Scanner
+import java.util.Scanner;
+public class ParOno{
+    public static void main(String args[]){
+        //Preparamos una entrada de Scanner, para leer la entrada estándar.
+        Scanner entrada = new Scanner(System.in);
+
+        //Pedimos al usuario que nos proporcione el entero que vamos a evaluar.
+        System.out.print("Dame un número entero... ");
+        //Leemos el siguiente entero en la entrada
+        int numero = entrada.nextInt();
+
+        //Si el número es congruente a 1 (módulo 2), entonces es impar.
+        if(numero % 2 == 1)
+            System.out.printf("%d es un número impar\n", numero);
+        //Si el número es congruente a 0 (módulo 2), entonces es par.
+        if(numero % 2 == 0)
+            System.out.printf("%d es un número par\n", numero);
+
+    }
+}
+\end{lstlisting}
+
+\newpage
+\section{Escribe una aplicación que calcule los cuadrados y cubos de los números del 0 al 10, y que imprima los valores resultantes en formato de tabla.}
+\todo[inline, color=green!40]{src/Potencias.java}
+\begin{lstlisting}[language=JAVA]
+/*
+    v:0.1
+    Programa que calcula e imprime los cuadrados y los cubos de los primeros once naturales.
+    Mauricio Navarro Miranda, Alma Arévalo Loyola
+    Facultad de Ciencias.
+*/
+public class Potencias{
+    public static void main(String args[]){
+        int numero = 0;
+
+        System.out.println("Número\tCuadrado\tCubo");
+        //Iniciamos con numero = 0
+        System.out.printf("%d\t%d\t\t%d\n", numero, numero*numero, numero*numero*numero);
+        
+        /*
+            Ahora, haremos diez veces lo siguiente:
+                incrementaremos el número en 1.
+                imprimiremos la fila de la tabla con el nuevo número, su cuadrado y su cubo.
+        */
+        numero+=1;
+        System.out.printf("%d\t%d\t\t%d\n", numero, numero*numero, numero*numero*numero);
+        numero+=1;
+        System.out.printf("%d\t%d\t\t%d\n", numero, numero*numero, numero*numero*numero);
+        numero+=1;
+        System.out.printf("%d\t%d\t\t%d\n", numero, numero*numero, numero*numero*numero);
+        numero+=1;
+        System.out.printf("%d\t%d\t\t%d\n", numero, numero*numero, numero*numero*numero);
+        numero+=1;
+        System.out.printf("%d\t%d\t\t%d\n", numero, numero*numero, numero*numero*numero);
+        numero+=1;
+        System.out.printf("%d\t%d\t\t%d\n", numero, numero*numero, numero*numero*numero);
+        numero+=1;
+        System.out.printf("%d\t%d\t\t%d\n", numero, numero*numero, numero*numero*numero);
+        numero+=1;
+        System.out.printf("%d\t%d\t\t%d\n", numero, numero*numero, numero*numero*numero);
+        numero+=1;
+        System.out.printf("%d\t%d\t\t%d\n", numero, numero*numero, numero*numero*numero);
+        numero+=1;
+        System.out.printf("%d\t%d\t\t%d\n", numero, numero*numero, numero*numero*numero);
+    }
+}
+\end{lstlisting}
+\end{document}
