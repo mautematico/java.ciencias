@@ -1,7 +1,7 @@
 /*
 	v:0.1.1
 	Programa que lee cinco enteros
-		determina el mínimo y el máxio
+		determina el mínimo y el máximo
 		e imprime a pantalla mínimo y máximo.
 	Mauricio Navarro Miranda
 	mauricio@navarromiranda.mx
