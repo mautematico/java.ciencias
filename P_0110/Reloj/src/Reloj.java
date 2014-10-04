@@ -119,6 +119,6 @@ public class Reloj {
             + ((minutos >= 10 && minutos < 60) ? minutos: darFormatoNumeros(minutos%60))
             + caracter
             + ((segundos >= 10 && segundos < 60) ? segundos : darFormatoNumeros(segundos%60))
-            + (hora < 12 ? " AM" : " PM" );
+            + (hora < 12 ? " am" : " pm" );
     }
 }
