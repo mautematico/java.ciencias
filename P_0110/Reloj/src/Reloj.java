@@ -100,11 +100,11 @@ public class Reloj {
     }
     
     public void incrementarHora() {
-        hora++;
+        hora = (hora++) % 24;
     }
     
     public void incrementarHora(int horas) {
-        hora += horas;
+        this.hora = (this.hora + horas) % 24;
     }
     
     public String darFormatoNumeros(int numero) {
