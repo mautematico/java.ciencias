@@ -21,15 +21,11 @@ public class Reloj {
     }
     
     public Reloj(int hora) {
-        setHora(hora);
-        setMinutos(0);
-        setSegundos(0);
+        this(hora, 0, 0);
     }
     
     public Reloj(int hora, int minutos) {
-        setHora(hora);
-        setMinutos(minutos);
-        setSegundos(0);
+        this(hora, minutos, 0);
     }
     
     public Reloj(int hora, int minutos, int segundos) {
