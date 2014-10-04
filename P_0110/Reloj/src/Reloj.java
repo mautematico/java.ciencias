@@ -77,12 +77,11 @@ public class Reloj {
             this.segundos = (this.segundos + segundos)%60;
             minutos++;
             if (minutos >= 60) {
-                hora++;
+                minutos%=60;
+                this.hora++;
             }
         } else {
             this.segundos += segundos;
-            this.minutos = minutos;
-            this.hora = hora;
         }
     }
     
