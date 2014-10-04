@@ -69,15 +69,12 @@ public class Reloj {
     }
     
     public void incrementarSegundo(int segundos) {
-        if ((this.segundos + segundos) >= 60) {
-            this.segundos = (this.segundos + segundos)%60;
-            minutos++;
-            if (minutos >= 60) {
-                minutos%=60;
-                this.hora++;
-            }
-        } else {
-            this.segundos += segundos;
+        this.segundos += segundos;
+        int minutos = this.segundos/60;
+        
+        if(minutos>0){
+            incrementarMinuto(minutos);
+            this.segundos %= 60;
         }
     }
     
@@ -91,11 +88,12 @@ public class Reloj {
     }
     
     public void incrementarMinuto(int minutos) {
-        if ((this.minutos + minutos) >= 60) {
-            hora++;
-            this.minutos = (this.minutos + minutos)%60;
-        } else {
-            this.minutos += minutos;
+        this.minutos += minutos;
+        int horas = this.minutos/60;
+        
+        if(horas>0){
+            incrementarHora(horas);
+            this.minutos %= 60;
         }
     }
     
