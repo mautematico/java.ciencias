@@ -109,17 +109,16 @@ public class Reloj {
         String caracter;
         if (segundos%2 == 0) {
             caracter = ":";
-            
         } else {
             caracter = " ";
         }
         
-        return ((hora == 12 || hora == 0) ? 12: darFormatoNumeros(hora%12))
-                    + caracter + ((minutos >= 10 && minutos < 60) ? minutos: 
-                    darFormatoNumeros(minutos%60)) + caracter + 
-                    ((segundos >= 10 && segundos < 60) ? segundos :
-                    darFormatoNumeros(segundos%60)) +
-                    (hora < 12 ? " AM" : " PM" );
-        
+        return
+            ((hora == 12 || hora == 0) ? 12: darFormatoNumeros(hora%12))
+            + caracter
+            + ((minutos >= 10 && minutos < 60) ? minutos: darFormatoNumeros(minutos%60))
+            + caracter
+            + ((segundos >= 10 && segundos < 60) ? segundos : darFormatoNumeros(segundos%60))
+            + (hora < 12 ? " AM" : " PM" );
     }
 }
