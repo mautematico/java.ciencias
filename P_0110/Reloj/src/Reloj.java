@@ -59,13 +59,7 @@ public class Reloj {
     }
     
     public void incrementarSegundo() {
-        if ((segundos++) >= 60) {
-            segundos = (segundos++)%60;
-            incrementarMinuto();
-                  
-        } else {
-            segundos++;
-        }
+        incrementarSegundo(1);
     }
     
     public void incrementarSegundo(int segundos) {
@@ -79,12 +73,7 @@ public class Reloj {
     }
     
     public void incrementarMinuto() {
-        if ((minutos++) >= 60) {
-            incrementarHora();
-            minutos = (minutos++)%60;
-        } else {
-            minutos++;
-        }
+        incrementarMinuto(1);
     }
     
     public void incrementarMinuto(int minutos) {
@@ -98,7 +87,7 @@ public class Reloj {
     }
     
     public void incrementarHora() {
-        hora = (hora++) % 24;
+        incrementarHora(1);
     }
     
     public void incrementarHora(int horas) {
