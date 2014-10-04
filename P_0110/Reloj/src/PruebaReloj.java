@@ -16,19 +16,15 @@ public class PruebaReloj {
         Reloj reloj2 = new Reloj(11, 59, 56);
        
         for (int i=1; i>=1; i++) {
-            
             try {        
                 Thread.sleep(1000);
-                } catch (InterruptedException ex) 
-                
-                { System.err.print(ex); }
+            }
+            catch (InterruptedException ex){
+                System.err.print(ex);
+            }
 
-            
             reloj2.incrementarSegundo(1);
             System.out.println("\r" + reloj2);
-            
-            
         }
-        
     }
 }
