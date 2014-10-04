@@ -38,15 +38,15 @@ public class Reloj {
         setSegundos(segundos);
     }
     
-    public void setHora(int hora) {
+    public final void setHora(int hora) {
         this.hora = ((hora >= 0 && hora < 24) ? hora : 0);
     }
     
-    public void setMinutos(int minutos) {
+    public final void setMinutos(int minutos) {
         this.minutos = ((minutos >= 0 && minutos < 60) ? minutos : 0);
     }
     
-    public void setSegundos(int segundos) {
+    public final void setSegundos(int segundos) {
         this.segundos = ((segundos >= 0 && segundos < 60) ? segundos : 0);
     }
     
