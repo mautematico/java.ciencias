@@ -4,50 +4,65 @@
  * and open the template in the editor.
  */
 /**
- *
- * @author
+/**
+ * Prueba de la Clase Reloj.
  * Arteaga Gaona, Guillermo <guillermo_ag@ciencias.unam.mx>
  * Navarro Miranda, Mauricio <mauricio@navarromiranda.mx>
  * 
  */
+
 public class PruebaReloj {
+    
     public static void main (String [] args) {
         
-        System.out.println("Reloj con constructor sin parámetros:");
-        Reloj reloj = new Reloj();
-        System.out.println(reloj);
+        Reloj reloj1 = new Reloj();
+        Reloj reloj2 = new Reloj(21);
+        Reloj reloj3 = new Reloj(13,8);
+        Reloj reloj4 = new Reloj (7,23);
+        Reloj reloj5 = new Reloj(11, 59, 56);
         
-        System.out.println("Reloj con Reloj(23):");
-        reloj = new Reloj(23);
-        System.out.println(reloj);
-
-        System.out.println("Reloj con Reloj(2,17):");
-        reloj = new Reloj(2,17);
-        System.out.println(reloj);
-
-        System.out.println("Reloj con Reloj(2,17,13):");
-        reloj = new Reloj(2,17,13);
-        System.out.println(reloj);
+        System.out.println("ESTE RELOJ PRUEBA EL CONSTRUCTOR POR DEFECTO: ");
+        System.out.println("La hora es " + reloj1);
+        System.out.println("PROBANDO LOS MÉTODOS DE INCREMENTAR MINUTOS, "
+                + "SEGUNDOS Y HORAS.");
+        reloj1.incrementarSegundo();
+        System.out.println("Incrementando la hora en un segundo: ");
+        System.out.println("La nueva hora es: " + reloj1);
+        System.out.println("Incrementando la hora en 20 minutos: ");
+        reloj1.incrementarMinuto(20);
+        System.out.println("La nueva hora es: " + reloj1);
+        System.out.println("Incrementando la hora en 10 horas: ");
+        reloj1.incrementarHora(10);
+        System.out.println("La nueva hora es: " + reloj1 + "\n");
         
         
-        reloj.incrementarSegundo();
-        System.out.println(reloj);
-
-        reloj.incrementarSegundo(787219);
-        System.out.println(reloj);
-
-        reloj.incrementarMinuto();
-        System.out.println(reloj);
-        reloj.incrementarMinuto(5876);
-        System.out.println(reloj);
-
-        reloj.incrementarHora();
-        System.out.println(reloj);
-        reloj.incrementarHora(47857);
-        System.out.println(reloj);
-
-        Reloj reloj2 = new Reloj(11, 59, 56);
+        System.out.println("ESTE RELOJ PRUEBA EL CONSTRUCTOR QUE RECIBE LA HORA"
+                + " COMO PARÁMETRO: ");
+        System.out.println("La hora es " + reloj2);
+        System.out.println("PROBANDO LOS MÉTODOS DE INCREMENTAR MINUTOS, "
+                + "SEGUNDOS Y HORAS.");
+        reloj2.incrementarSegundo(50);
+        System.out.println("Incrementando la hora en 50 segundos: ");
+        System.out.println("La nueva hora es: " + reloj2);
+        System.out.println("Incrementando la hora en un minuto: ");
+        reloj2.incrementarMinuto();
+        System.out.println("La nueva hora es: " + reloj2);
+        System.out.println("Incrementando la hora en una hora: ");
+        reloj2.incrementarHora();
+        System.out.println("La nueva hora es: " + reloj2 + "\n");
+        
+        System.out.println("ESTE RELOJ PRUEBA EL CONSTRUCTOR QUE RECIBE LA HORA"
+                + " Y LOS MINUTOS COMO PARÁMETRO: ");
+        System.out.println("La hora es " + reloj3 + "\n");
+        
+        
+        System.out.println("ESTE RELOJ PRUEBA EL CONSTRUCTOR QUE RECIBE LA HORA"
+                + ", LOS MINUTOS y LOS SEGUNDOS COMO PARÁMETRO: ");
+        System.out.println("la hora es " + reloj4 + "\n");
        
+        
+        System.out.println("INCREMENTANDO LOS SEGUNDOS DE MANERA INDEFINIDA: ");
+        System.out.println(reloj5);
         for (int i=1; i>=1; i++) {
             try {        
                 Thread.sleep(1000);
@@ -56,8 +71,8 @@ public class PruebaReloj {
                 System.err.print(ex);
             }
 
-            reloj2.incrementarSegundo(1);
-            System.out.println("\r" + reloj2);
+            reloj5.incrementarSegundo(1);
+            System.out.println("\r" + reloj5);
         }
     }
 }
