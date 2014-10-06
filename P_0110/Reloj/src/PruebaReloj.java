@@ -60,8 +60,8 @@ public class PruebaReloj {
                 + ", LOS MINUTOS y LOS SEGUNDOS COMO PARÁMETRO: ");
         System.out.println("la hora es " + reloj4 + "\n");
        
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+//        System.out.print("\033[H\033[2J");
+//        System.out.flush();
                 
         System.out.println("INCREMENTANDO LOS SEGUNDOS DE MANERA INDEFINIDA: ");
         System.out.println(reloj5);
@@ -76,7 +76,7 @@ public class PruebaReloj {
     
             reloj5.incrementarSegundo(1);
             char escCode = 0x1B;
-            int row = 3; int column = 0;
+            int row = 29; int column = 0;
             System.out.print(String.format("%c[%d;%df",escCode,row,column));  
             System.out.println(reloj5);
         }
