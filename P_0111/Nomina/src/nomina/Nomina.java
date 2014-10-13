@@ -31,6 +31,10 @@ public class Nomina {
     }
     
     public void pagar(){
+        if(quincenaPagada){
+            return;
+        }
+        
         gerente.cobrar();
         intendente.cobrar();
         secretaria.cobrar();
@@ -70,16 +74,15 @@ public class Nomina {
         return numeroQuincena;
     }
     
-    public void setNumeroQuincena(){
-        numeroQuincena = getContadorQuincenas();
+    public void setNumeroQuincena(int numeroQuincena){
+        this.numeroQuincena = numeroQuincena;
     }
     
     public boolean getQuincenaPagada(){
         return quincenaPagada;
     }
-    
+       
     public int getContadorQuincenas(){
         return contadorQuincenas;
     }
-    
 }
