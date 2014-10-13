@@ -44,6 +44,7 @@ public class Empleado {
     
     public void setNombre(String nombre){
         this.nombre = nombre;
+        calcularRfc();
     }
     
     public String getApellidoPaterno(){
@@ -52,6 +53,7 @@ public class Empleado {
     
     public void setApellidoPaterno(String apellidoPaterno){
         this.apellidoPaterno = apellidoPaterno;
+        calcularRfc();
     }
     
     public String getApellidoMaterno(){
@@ -60,6 +62,7 @@ public class Empleado {
     
     public void setApellidoMaterno(String apellidoMaterno){
         this.apellidoMaterno = apellidoMaterno;
+        calcularRfc();
     }
     
     public boolean getEsHombre(){
@@ -68,6 +71,7 @@ public class Empleado {
     
     public void setEsHombre(boolean esHombre){
         this.esHombre = esHombre;
+        calcularRfc();
     }
     
     public String getFechaNacimiento(){
@@ -76,6 +80,7 @@ public class Empleado {
     
     public void setFechaNacimiento(Fecha fechaNacimiento){
         this.fechaNacimiento = fechaNacimiento;
+        calcularRfc();
     }
     
     public String getFechaIngreso(){
