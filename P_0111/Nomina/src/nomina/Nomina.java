@@ -43,7 +43,7 @@ public class Nomina {
     }
     
     public void mostrarNomina(){
-        System.out.println();
+        System.out.println(this);
     }
 
     public Empleado getGerente() {
@@ -84,5 +84,16 @@ public class Nomina {
        
     public int getContadorQuincenas(){
         return contadorQuincenas;
+    }
+    @Override
+    public String toString(){
+        return
+                "Gerente:" + gerente.getNombre() + gerente.getApellidoPaterno() + gerente.getApellidoMaterno()
+                +"\nIntendente: " + intendente.getNombre() + intendente.getApellidoPaterno() + intendente.getApellidoMaterno()
+                +"\nSecretaria: " + secretaria.getNombre() + secretaria.getApellidoPaterno() + secretaria.getApellidoMaterno()
+                +"\nNumeroQuincena: "+ numeroQuincena
+                +"\nQuincena pagada:"+ ((quincenaPagada)? "Sí" :"No");
+                
+                
     }
 }
