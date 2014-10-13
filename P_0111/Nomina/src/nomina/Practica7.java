@@ -28,6 +28,7 @@ public class Practica7 {
                 false, new Fecha((byte)1,(byte)2,(short)2014),
                 6800, new CuentaBancaria("JES003"));
                 
+       Nomina[] nominas = new Nomina[3];
        
     }
 }
