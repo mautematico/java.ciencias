@@ -117,15 +117,24 @@ public class Empleado {
         char inicialApellidoMaterno = apellidoMaterno.charAt(0);
         char inicialNombre = nombre.charAt(0);
         for(int i = 1; i<apellidoPaterno.length();i++){
-            primeraVocal = apellidoPaterno.charAt(i);
-            if(primeraVocal == 'a' || primeraVocal == 'e' || primeraVocal == 'i' || primeraVocal == 'o' || primeraVocal == 'u'){
-                break;
+            switch(apellidoPaterno.charAt(i)){
+                case 'a':
+                case 'e':
+                case 'i':
+                case 'o':
+                case 'u':
+                case 'A':
+                case 'E':
+                case 'I':
+                case 'O':
+                case 'U':
+                    primeraVocal = apellidoPaterno.charAt(i);
             }
+            if (primeraVocal != 'X') break;
         }
         String letras = ""+inicialApellidoPaterno + primeraVocal + inicialApellidoMaterno + inicialNombre;
         letras = letras.toUpperCase();
         
-        rfc = letras + fechaNacimiento.fechaFormatoRfc();
-    }
-    
+        this.rfc = letras + fechaNacimiento.fechaFormatoRfc();
+    }    
 }
