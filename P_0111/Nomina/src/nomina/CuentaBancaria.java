@@ -18,7 +18,7 @@ public class CuentaBancaria {
     
     public CuentaBancaria(String numero, double saldo){
         this.numero = numero;
-        this.saldo = saldo;
+        depositar(saldo);
     }
     public CuentaBancaria(String numero){
         this(numero,0);
