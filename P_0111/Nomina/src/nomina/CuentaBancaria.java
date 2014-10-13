@@ -35,19 +35,11 @@ public class CuentaBancaria {
     public String getNumero(){
         return numero;
     }
-    
-    public void setNumero(String numero){
-        this.numero = numero;
-    }
-    
+        
     public double getSaldo(){
         return saldo;
     }
-    
-    public void setSaldo(double saldo){
-        this.saldo = saldo;
-    }
-    
+        
     public String toString(){
         return "Numero de Cuenta: "+ numero + "\n"+ "Saldo: "+saldo;
     }
