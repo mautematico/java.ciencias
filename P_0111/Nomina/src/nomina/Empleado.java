@@ -136,5 +136,13 @@ public class Empleado {
         letras = letras.toUpperCase();
         
         this.rfc = letras + fechaNacimiento.fechaFormatoRfc();
-    }    
+    }
+    
+    @Override
+    public String toString(){
+        return "Nombre completo: " +nombre +" " +apellidoPaterno +" " +apellidoMaterno
+                +"\nRFC: " +rfc
+                +"\nDinero"
+                +"\n"+this.cuentaBancaria;
+    }
 }

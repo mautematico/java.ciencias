@@ -30,5 +30,38 @@ public class Practica7 {
                 
        Nomina[] nominas = new Nomina[3];
        
+       //Creamos la primera nómina:
+       nominas[0] = new Nomina(jessica, juan, andrea);
+       nominas[0].setNumeroQuincena(1);
+       nominas[0].mostrarNomina();
+       nominas[0].pagar();
+       
+        System.out.println(nominas[0].getGerente());
+        System.out.println(nominas[0].getIntendente());
+        System.out.println(nominas[0].getSecretaria());
+         
+       nominas[1] = new Nomina(nominas[0]);
+       nominas[1].setNumeroQuincena(nominas[0].getNumeroQuincena() + 1);
+       nominas[1].mostrarNomina();
+       nominas[1].pagar();
+       
+        System.out.println(nominas[1].getGerente());
+        System.out.println(nominas[1].getIntendente());
+        System.out.println(nominas[1].getSecretaria());
+       
+       /*
+        Para la nómina de la tercera semana, intercambio al Intendente con el Gerente:
+        */ 
+       nominas[2] = new Nomina(
+               nominas[1].getIntendente(),
+               nominas[1].getGerente(),
+               nominas[1].getSecretaria());
+       nominas[2].setNumeroQuincena(nominas[1].getNumeroQuincena() + 1);
+       nominas[2].mostrarNomina();
+       nominas[2].pagar();
+       
+        System.out.println(nominas[2].getGerente());
+        System.out.println(nominas[2].getIntendente());
+        System.out.println(nominas[2].getSecretaria());
     }
 }
