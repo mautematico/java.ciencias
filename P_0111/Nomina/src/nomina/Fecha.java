@@ -74,6 +74,7 @@ public class Fecha {
         return anioTerminacion + mesFormato + diaFormato;
     }
     
+    @Override
     public String toString(){
         return "Dia: "+dia+"\n"+"Mes: "+mes+"\n"+"Año: "+anio;
     }
