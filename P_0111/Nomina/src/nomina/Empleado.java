@@ -24,7 +24,9 @@ public class Empleado {
         
     }
     
-    public Empleado(String nombre, String apellidoPaterno, String apellidoMaterno, Fecha fechaNacimiento, boolean esHombre,Fecha fechaIngreso, double salarioBase, CuentaBancaria cuentaBancaria){
+    public Empleado(String nombre, String apellidoPaterno, String apellidoMaterno,
+            Fecha fechaNacimiento, boolean esHombre,Fecha fechaIngreso,
+            double salarioBase, CuentaBancaria cuentaBancaria){
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
