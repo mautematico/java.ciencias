@@ -11,11 +11,7 @@ package nomina;
 public class CuentaBancaria {
     private String numero;
     private double saldo;
-    
-    public CuentaBancaria(){
         
-    }
-    
     public CuentaBancaria(String numero, double saldo){
         this.numero = numero;
         depositar(saldo);
