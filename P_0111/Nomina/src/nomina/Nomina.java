@@ -78,10 +78,6 @@ public class Nomina {
         return quincenaPagada;
     }
     
-    public void setQuincenaPagada(boolean quincenaPagada){
-        this.quincenaPagada = quincenaPagada;
-    }
-    
     public int getContadorQuincenas(){
         return contadorQuincenas;
     }
