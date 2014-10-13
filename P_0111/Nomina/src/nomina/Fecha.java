@@ -5,30 +5,44 @@
 package nomina;
 
 /**
- * 
+ * Clase que crea fechas,
+ * permite acceder a sus campos
+ * y las ofrece en formato AAMMDD
  * @author
  * Navarro Miranda, Mauricio <mauricio@navarromiranda.mx>
  * González Mora, Erick Alan <erick_lann@hotmail.com>
  * Romero Garcia, Enrique Javier <enriquefi@yahoo.com.mx>
  */
 public class Fecha {
+    /**
+    Variables de instancia, todas privadas
+    */
     private byte dia;
     private byte mes;
     private short anio;
-    
+    /*
+    Constructor de una fecha "completa"
+    */
     public Fecha(byte dia , byte mes, short anio){
         this.dia = dia;
         this.mes = mes;
         this.anio = anio;
     }
+    /*
+    Constructor de una fecha "tipo cumpleaños"
+    */
     public Fecha(byte dia, byte mes){
         this(dia,mes,(short)0);
     }
-    
+    /*
+    Constructor de una fecha en blanco (00-00-00)
+    */
     public Fecha(){
         
     }
-    
+    /*
+    Métodos para acceder a los campos, y también para alterarlos
+    */
     public byte getDia(){
         return dia;
     }
@@ -56,7 +70,10 @@ public class Fecha {
     public String anioToString(){
         return ""+anio;
     }
-    
+    /**
+     * Método que construye un String en formato AAMMDD
+     * @return 
+     */
     public String fechaFormatoRfc(){
         String anioTerminacion = anioToString().substring(2,4);
         String mesFormato;
