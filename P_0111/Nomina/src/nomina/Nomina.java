@@ -88,9 +88,13 @@ public class Nomina {
     @Override
     public String toString(){
         return
-                "Gerente:" + gerente.getNombre() + gerente.getApellidoPaterno() + gerente.getApellidoMaterno()
+/*                "Gerente:" + gerente.getNombre() + gerente.getApellidoPaterno() + gerente.getApellidoMaterno()
                 +"\nIntendente: " + intendente.getNombre() + intendente.getApellidoPaterno() + intendente.getApellidoMaterno()
                 +"\nSecretaria: " + secretaria.getNombre() + secretaria.getApellidoPaterno() + secretaria.getApellidoMaterno()
+  */
+                "Gerente: "+ gerente
+                +"\nIntendente:" + intendente
+                +"\nSecretaria: "+ secretaria
                 +"\nNumeroQuincena: "+ numeroQuincena
                 +"\nQuincena pagada:"+ ((quincenaPagada)? "Sí" :"No");
                 
