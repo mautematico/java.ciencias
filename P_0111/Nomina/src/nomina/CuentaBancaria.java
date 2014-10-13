@@ -25,7 +25,7 @@ public class CuentaBancaria {
     }
     
     public void depositar(double monto){
-        saldo = saldo + monto;
+        saldo += monto;
     }
     
     public void retirar(double monto){
