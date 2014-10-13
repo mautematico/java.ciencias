@@ -5,7 +5,8 @@
 package nomina;
 
 /**
- *
+ * Clase que crea Empleados, los cuales tienen nombre, sexo, RFC, antiguedad
+ * y una CuentaBancaria en la cual se le paga la nómina
  * @author
  * Navarro Miranda, Mauricio <mauricio@navarromiranda.mx>
  * González Mora, Erick Alan <erick_lann@hotmail.com>
@@ -26,7 +27,17 @@ public class Empleado {
     public Empleado(){
         
     }
-    
+    /**
+     * Construimos un empleado con todos los parámetros no-calculables.
+     * @param nombre
+     * @param apellidoPaterno
+     * @param apellidoMaterno
+     * @param fechaNacimiento
+     * @param esHombre
+     * @param fechaIngreso
+     * @param salarioBase
+     * @param cuentaBancaria 
+     */
     public Empleado(String nombre, String apellidoPaterno, String apellidoMaterno,
             Fecha fechaNacimiento, boolean esHombre,Fecha fechaIngreso,
             double salarioBase, CuentaBancaria cuentaBancaria){
@@ -39,8 +50,11 @@ public class Empleado {
         this.salarioBase = salarioBase;
         this.cuentaBancaria = cuentaBancaria;
         calcularRfc();
+        calcularAntiguedad();
     }
-    
+    /*
+    Métodos de acceso y modificación de los campos
+    */
     public String getNombre(){
         return nombre;
     }
@@ -92,6 +106,7 @@ public class Empleado {
     
     public void setFechaIngreso(Fecha fechaIngreso){
         this.fechaIngreso = fechaIngreso;
+        calcularAntiguedad();
     }
     
     public double getSalarioBase(){
@@ -109,11 +124,16 @@ public class Empleado {
     public void setCuentaBancaria(CuentaBancaria cuentaBancaria){
         this.cuentaBancaria = cuentaBancaria;
     }
-    
+    /**
+     * El empleado cobra directamente en su cuentaBancaria asociada
+     */
     public void cobrar(){
         cuentaBancaria.depositar(salarioBase);    
     }
     
+    /**
+     * Método para calcular el RFC (sin homoclave) del empleado
+     */
     private void calcularRfc(){
         char inicialApellidoPaterno = (apellidoPaterno.charAt(0));
         char primeraVocal = 'X';
@@ -140,7 +160,13 @@ public class Empleado {
         
         this.rfc = letras + fechaNacimiento.fechaFormatoRfc();
     }
-    
+    /**
+     * a) no planteamos el escenario donde obtenemos la fecha actual, para calcular la antiguedad
+     * b) somos gandallas y no reconocemos la angtiguedad de nuestros empleados
+     */
+    private void calcularAntiguedad(){
+        this.antiguedad = 0;
+    }
     @Override
     public String toString(){
         return "Nombre completo: " +nombre +" " +apellidoPaterno +" " +apellidoMaterno

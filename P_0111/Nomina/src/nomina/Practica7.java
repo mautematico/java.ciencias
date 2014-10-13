@@ -5,7 +5,7 @@
 package nomina;
 
 /**
- *
+ * Clase de prueba para Nomina
  * @author
  * Navarro Miranda, Mauricio <mauricio@navarromiranda.mx>
  * González Mora, Erick Alan <erick_lann@hotmail.com>

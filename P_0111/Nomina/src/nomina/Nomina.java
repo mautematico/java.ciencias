@@ -7,7 +7,9 @@
 package nomina;
 
 /**
- *
+ * Clase que crea Nóminas. Cada Nómina tiene empleados con distintos cargos,
+ * y cada empleado tiene una CuentaBancaria asociada, que es donde recibe el pago de nómina.
+ * 
  * @author
  * Navarro Miranda, Mauricio <mauricio@navarromiranda.mx>
  * González Mora, Erick Alan <erick_lann@hotmail.com>
@@ -32,7 +34,9 @@ public class Nomina {
         this.intendente = intendente;
         this.secretaria = secretaria;
     }
-    
+    /**
+     * Método que paga la nómina _únicamente_ si no está marcada como pagada.
+     */
     public void pagar(){
         if(quincenaPagada){
             return;
