@@ -40,7 +40,8 @@ public class CuentaBancaria {
     public double getSaldo(){
         return saldo;
     }
-        
+    
+    @Override
     public String toString(){
         return "Numero de Cuenta: "+ numero + "\n"+ "Saldo: "+saldo;
     }
