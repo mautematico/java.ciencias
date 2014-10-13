@@ -20,11 +20,12 @@ public class CuentaBancaria {
         this.numero = numero;
         depositar(saldo);
     }
+    
     public CuentaBancaria(String numero){
         this(numero,0);
     }
     
-    public void depositar(double monto){
+    final public void depositar(double monto){
         saldo += monto;
     }
     
