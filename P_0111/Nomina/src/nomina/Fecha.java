@@ -5,8 +5,11 @@
 package nomina;
 
 /**
- *
- * @author actuaria
+ * 
+ * @author
+ * Navarro Miranda, Mauricio <mauricio@navarromiranda.mx>
+ * González Mora, Erick Alan <erick_lann@hotmail.com>
+ * Romero Garcia, Enrique Javier <enriquefi@yahoo.com.mx>
  */
 public class Fecha {
     private byte dia;

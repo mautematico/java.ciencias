@@ -8,7 +8,10 @@ package nomina;
 
 /**
  *
- * @author erick alan
+ * @author
+ * Navarro Miranda, Mauricio <mauricio@navarromiranda.mx>
+ * González Mora, Erick Alan <erick_lann@hotmail.com>
+ * Romero Garcia, Enrique Javier <enriquefi@yahoo.com.mx>
  */
 public class Nomina {
     private Empleado gerente;
