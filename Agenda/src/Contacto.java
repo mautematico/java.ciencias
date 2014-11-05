@@ -9,8 +9,25 @@ public class Contacto {
     /**
      * 
      */
-    public Contacto() {
+    public Contacto(String nombre, String apellido, Telefono telefono, Email email) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        
+        if( telefono != null ){
+            this.telefonos.add(telefono);
+        }
+        if( email != null ){
+            this.emails.add(email);
+        }
     }
+    public Contacto(String nombre, String apellido, Telefono telefono){
+        this(nombre, apellido, telefono, null);
+    }
+    
+    public Contacto(String nombre, String apellido, Email email){
+        this(nombre, apellido, null, email);
+    }
+
 
     /**
      * 
@@ -57,29 +74,13 @@ public class Contacto {
         return telefonos;
     }
 
-    public void setTelefonos(ArrayList<Telefono> telefonos) {
-        this.telefonos = telefonos;
-    }
-
     public ArrayList<Email> getEmails() {
         return emails;
-    }
-
-    public void setEmails(ArrayList<Email> emails) {
-        this.emails = emails;
     }
 
     public String getGrupos() {
         return grupos;
     }
-
-    public void setGrupos(String grupos) {
-        this.grupos = grupos;
-    }
-
-
-
-
 
     /**
      * 
