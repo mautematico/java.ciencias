@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 /**
@@ -78,13 +77,29 @@ public class Agenda {
             if(contactos.get(i).getNombre() == nombre)
                 contactosConEseNombre.add(contactos.get(i));
         }
-        return contactosConEseNombre;
-            
+        return contactosConEseNombre;     
     }
     
-    public void consultarContactoPorApellido(String apellido){
-        
+    public ArrayList<Contacto> consultarContactoPorApellido(String apellido){
+        ArrayList<Contacto> contactosConEseApellido = new ArrayList<Contacto> ();
+        for( int i = 0; i< contactos.size(); i++) {
+            if(contactos.get(i).getApellido() == apellido)
+                contactosConEseApellido.add(contactos.get(i));
+        }
+        return contactosConEseApellido;     
     }
+        
+    public ArrayList<Contacto> consultarContactoPorTelefono(String telefono){
+        ArrayList<Contacto> contactosConEseTelefono= new ArrayList<Contacto> ();
+        
+        for( int i = 0; i< contactos.size(); i++) {
+            for (int j =0; j< contactos.get(i).getTelefonos().size(); j++)
+                if(contactos.get(i).getTelefonos().get(j).getNumero()== telefono)
+                    contactosConEseTelefono.add(contactos.get(i));
+        }
+        return contactosConEseTelefono;     
+    }
+   
     
     public void crearGrupo(String nombre) {
         // TODO implement here
