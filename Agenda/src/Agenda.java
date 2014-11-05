@@ -95,7 +95,7 @@ public class Agenda {
         
         for( int i = 0; i< contactos.size(); i++) {
             for (int j =0; j< contactos.get(i).getTelefonos().size(); j++)
-                if(contactos.get(i).getTelefonos().get(j).getNumero()== telefono)
+                if(contactos.get(i).getTelefonos().get(j).getNumero() == telefono)
                     contactosConEseTelefono.add(contactos.get(i));
         }
         return contactosConEseTelefono;     
