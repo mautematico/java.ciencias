@@ -51,7 +51,7 @@ public class Grupo {
 
     @Override
     public String toString() {
-        return "Grupo{" + "Nombre=" + nombre + ", Contactos=" + contactos + '}';
+        return "Grupo:" + nombre + "\n" + "Contactos: " + "{" + contactos + "}";
     }
 
     
