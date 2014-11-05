@@ -31,6 +31,14 @@ public class Telefono {
         this(numero,0);
     }
 
+      public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+    
     public String toSring(){
         switch(tipo){
             case 1:
