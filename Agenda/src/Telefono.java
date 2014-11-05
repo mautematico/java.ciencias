@@ -22,14 +22,6 @@ public class Telefono {
     public Telefono(String numero){
         this(numero,0);
     }
-    
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
 
     public String toSring(){
         switch(tipo){
