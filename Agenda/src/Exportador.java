@@ -9,16 +9,15 @@
  */
 import java.io.*;
 public class Exportador {
-    public static void escribir ( String nombreDeArchivo){
+    public static void escribir ( String nombreDeArchivo, String cadena){
         FileWriter fichero = null;
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter("c:/prueba.txt");
+            fichero = new FileWriter(nombreDeArchivo);
             pw = new PrintWriter(fichero);
  
-            for (int i = 0; i < 10; i++)
-                pw.println("Linea " + i);
+            pw.print(cadena);
  
         } catch (Exception e) {
             e.printStackTrace();

@@ -19,13 +19,13 @@ public class Importador {
       try {
          // Apertura del fichero y creacion de BufferedReader para poder
          // hacer una lectura comoda (disponer del metodo readLine()).
-         archivo = new File ("C:\\archivo.txt");
+         archivo = new File (nombreDeArchivo);
          fr = new FileReader (archivo);
          br = new BufferedReader(fr);
  
          // Lectura del fichero
          String linea;
-         while((linea=br.readLine())!=null)
+         while((linea = br.readLine())!=null)
             cadena += linea;
       }
       catch(Exception e){
