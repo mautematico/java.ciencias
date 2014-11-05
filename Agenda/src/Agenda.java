@@ -73,7 +73,7 @@ public class Agenda {
     }
     
     public ArrayList<Contacto> consultarContactoPorNombre(String nombre){
-        ArrayList<Contacto> contactosConEseNombre = new ArrayList<Contacto> ();
+        ArrayList<Contacto> contactosConEseNombre = new ArrayList<> ();
         for( int i = 0; i< contactos.size(); i++) {
             if(contactos.get(i).getNombre() == nombre)
                 contactosConEseNombre.add(contactos.get(i));
