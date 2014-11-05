@@ -116,7 +116,12 @@ public class Agenda {
    
     
     public void crearGrupo(String nombre) {
-        // TODO implement here
+        Grupo grupoNuevo = new Grupo(nombre);
+        
+    }
+    
+    public void crearGrupo(String nombre, ArrayList<Contacto> contactos){
+        Grupo grupoNuevo = new Grupo(nombre, contactos);
     }
 
     public void asignarContactoAGrupo(Contacto contacto, Grupo grupo){
