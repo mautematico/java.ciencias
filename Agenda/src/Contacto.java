@@ -5,6 +5,23 @@ import java.util.*;
  * 
  */
 public class Contacto {
+    
+        private String nombre;
+
+    /**
+     * 
+     */
+    private String apellido;
+
+    /**
+     * 
+     */
+    private ArrayList<Telefono> telefonos;
+
+    /**
+     * 
+     */
+    private ArrayList<Email> emails;
 
     /**
      * 
@@ -32,27 +49,11 @@ public class Contacto {
     /**
      * 
      */
-    private String nombre;
+
 
     /**
      * 
      */
-    private String apellido;
-
-    /**
-     * 
-     */
-    private ArrayList<Telefono> telefonos;
-
-    /**
-     * 
-     */
-    private ArrayList<Email> emails;
-
-    /**
-     * 
-     */
-    public String grupos;
 
     public String getNombre() {
         return nombre;
@@ -79,7 +80,7 @@ public class Contacto {
     }
 
     public String getGrupos() {
-        return grupos;
+        return "Aquí los grupos";
     }
 
     /**
@@ -91,16 +92,17 @@ public class Contacto {
 
     /**
      * 
+     * @param email
      */
-    public void agregarEmail() {
-        // TODO implement here
+    public void agregarEmail(Email email) {
+            this.emails.add(email);
     }
 
     /**
      * @param telefono
      */
     public void agregarTelefono(Telefono telefono) {
-        // TODO implement here
+            this.telefonos.add(telefono);
     }
 
     /**
@@ -117,11 +119,6 @@ public class Contacto {
         // TODO implement here
     }
 
-    /**
-     * 
-     */
-    public void Operation1() {
-        // TODO implement here
-    }
+
 
 }
