@@ -73,7 +73,7 @@ public class Agenda {
     }
     
     public ArrayList<Contacto> consultarContactoPorNombre(String nombre){
-        ArrayList<Contacto> contactosConEseNombre = new ArrayList<Contacto> ();
+        ArrayList<Contacto> contactosConEseNombre = new ArrayList<> ();
         for( int i = 0; i< contactos.size(); i++) {
             if(contactos.get(i).getNombre() == nombre)
                 contactosConEseNombre.add(contactos.get(i));
@@ -116,7 +116,12 @@ public class Agenda {
    
     
     public void crearGrupo(String nombre) {
-        // TODO implement here
+        Grupo grupoNuevo = new Grupo(nombre);
+        
+    }
+    
+    public void crearGrupo(String nombre, ArrayList<Contacto> contactos){
+        Grupo grupoNuevo = new Grupo(nombre, contactos);
     }
 
     public void asignarContactoAGrupo(Contacto contacto, Grupo grupo){

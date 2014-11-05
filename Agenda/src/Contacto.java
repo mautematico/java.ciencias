@@ -79,15 +79,16 @@ public class Contacto {
         return emails;
     }
 
-    public String getGrupos() {
-        return "Aquí los grupos";
-    }
-
-    /**
-     * 
+  
+   /**
+     * @param telefono
      */
-    public void eliminarTelefono() {
-        // TODO implement here
+    public void agregarTelefono(Telefono telefono) {
+            telefonos.add(telefono);
+    }
+    
+    public void eliminarTelefono(Telefono telefono) {
+               telefonos.remove(telefono);
     }
 
     /**
@@ -95,16 +96,26 @@ public class Contacto {
      * @param email
      */
     public void agregarEmail(Email email) {
-            this.emails.add(email);
+            emails.add(email);
+    }
+
+   
+    public void eliminarEmail(Email email) {
+            emails.remove(email);
+    }
+    
+    
+    public void asignarContactoAGrupo(Grupo grupo) {
+        grupo.getContactos().add(this);
     }
 
     /**
-     * @param telefono
+     * 
      */
-    public void agregarTelefono(Telefono telefono) {
-            this.telefonos.add(telefono);
+    public void excluirContactoDeGrupo(Grupo grupo) {
+        grupo.getContactos().add(this);
+        
     }
-
     /**
      * 
      */
@@ -115,10 +126,7 @@ public class Contacto {
     /**
      * 
      */
-    public void agregarGrupo() {
-        // TODO implement here
-    }
-
+    
 
 
 }
