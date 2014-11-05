@@ -119,11 +119,6 @@ public class Contacto {
         // TODO implement here
     }
 
-    /**
-     * 
-     */
-    public void Operation1() {
-        // TODO implement here
-    }
+
 
 }
