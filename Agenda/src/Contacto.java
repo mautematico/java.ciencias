@@ -91,16 +91,17 @@ public class Contacto {
 
     /**
      * 
+     * @param email
      */
-    public void agregarEmail() {
-        // TODO implement here
+    public void agregarEmail(Email email) {
+            this.emails.add(email);
     }
 
     /**
      * @param telefono
      */
     public void agregarTelefono(Telefono telefono) {
-        // TODO implement here
+            this.telefonos.add(telefono);
     }
 
     /**
