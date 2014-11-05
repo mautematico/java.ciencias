@@ -57,29 +57,13 @@ public class Contacto {
         return telefonos;
     }
 
-    public void setTelefonos(ArrayList<Telefono> telefonos) {
-        this.telefonos = telefonos;
-    }
-
     public ArrayList<Email> getEmails() {
         return emails;
-    }
-
-    public void setEmails(ArrayList<Email> emails) {
-        this.emails = emails;
     }
 
     public String getGrupos() {
         return grupos;
     }
-
-    public void setGrupos(String grupos) {
-        this.grupos = grupos;
-    }
-
-
-
-
 
     /**
      * 
