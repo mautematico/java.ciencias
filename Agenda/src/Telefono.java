@@ -25,7 +25,6 @@ public class Telefono {
 
     public String toSring(){
         switch(tipo){
-
             case 1:
                 return "Telefono movil:" + numero;
             case 2:
@@ -38,6 +37,4 @@ public class Telefono {
         
     }
     
-
-
 }

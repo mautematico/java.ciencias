@@ -37,4 +37,19 @@ public class Email {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+    
+    @Override
+    public String toString(){
+        switch(tipo){
+            case 1:
+                return "Correo personal:" + correo;
+            case 2:
+                return "Correo de trabajo:" + correo;
+            case 3:
+                return "Correo de escuela:" + correo;
+            default:
+                return "Otro correo:" + correo;
+        }
+    }
+    
 }
