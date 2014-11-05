@@ -15,27 +15,27 @@ public class Contacto {
     /**
      * 
      */
-    private String Nombre;
+    private String nombre;
 
     /**
      * 
      */
-    private String Apellido;
+    private String apellida;
 
     /**
      * 
      */
-    private ArrayList<Telefono> Telefonos;
+    private ArrayList<Telefono> telefonos;
 
     /**
      * 
      */
-    private ArrayList<Email> Emails;
+    private ArrayList<Email> emails;
 
     /**
      * 
      */
-    public String Grupos;
+    public String grupos;
 
 
 
