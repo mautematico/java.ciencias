@@ -15,27 +15,67 @@ public class Contacto {
     /**
      * 
      */
-    private String Nombre;
+    private String nombre;
 
     /**
      * 
      */
-    private String Apellido;
+    private String apellido;
 
     /**
      * 
      */
-    private ArrayList<Telefono> Telefonos;
+    private ArrayList<Telefono> telefonos;
 
     /**
      * 
      */
-    private ArrayList<Email> Emails;
+    private ArrayList<Email> emails;
 
     /**
      * 
      */
-    public String Grupos;
+    public String grupos;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellida(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public ArrayList<Telefono> getTelefonos() {
+        return telefonos;
+    }
+
+    public void setTelefonos(ArrayList<Telefono> telefonos) {
+        this.telefonos = telefonos;
+    }
+
+    public ArrayList<Email> getEmails() {
+        return emails;
+    }
+
+    public void setEmails(ArrayList<Email> emails) {
+        this.emails = emails;
+    }
+
+    public String getGrupos() {
+        return grupos;
+    }
+
+    public void setGrupos(String grupos) {
+        this.grupos = grupos;
+    }
 
 
 
