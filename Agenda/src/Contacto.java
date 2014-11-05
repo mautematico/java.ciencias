@@ -49,7 +49,7 @@ public class Contacto {
         return apellido;
     }
 
-    public void setApellida(String apellido) {
+    public void setApellido(String apellido) {
         this.apellido = apellido;
     }
 
