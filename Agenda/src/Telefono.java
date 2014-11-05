@@ -9,6 +9,14 @@ public class Telefono {
     private String numero;
     private int tipo;
 
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
     public Telefono(String numero, int tipo) {
         if(0<=tipo && tipo<=3){
             this.tipo = tipo;
