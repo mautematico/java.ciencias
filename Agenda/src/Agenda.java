@@ -57,24 +57,41 @@ public class Agenda {
         // TODO implement here
     }
 
-    public void ingresarContacto(){
+    public void ingresarContacto(String nombre, String apellido, Telefono telefono){
+        Contacto contacto = new Contacto (nombre, apellido, telefono);
+        contactos.add (contacto);
+                
+    }
+    
+    public void ingresarContacto(String nombre, String apellido, Email email){
+        Contacto contacto = new Contacto (nombre, apellido, email);
+        contactos.add (contacto);
+    }
+    
+    public void eliminarContacto(Contacto contacto){
+        contactos.remove(contacto);
+    }
+    
+    public ArrayList<Contacto> consultarContactoPorNombre(String nombre){
+        ArrayList<Contacto> contactosConEseNombre = new ArrayList<Contacto> ();
+        for( int i = 0; i< contactos.size(); i++) {
+            if(contactos.get(i).getNombre() == nombre)
+                contactosConEseNombre.add(contactos.get(i));
+        }
+        return contactosConEseNombre;
+            
+    }
+    
+    public void consultarContactoPorApellido(String apellido){
         
     }
     
-    public void eliminarContacto(){
-        
-    }
-    
-    public void consultarContacto(){
-        
-    }
-    
-    
-    public void crearGrupo() {
+    public void crearGrupo(String nombre) {
         // TODO implement here
     }
 
-    public void asignarContactoAGrupo(){
+    public void asignarContactoAGrupo(Contacto contacto, Grupo grupo){
         
     }
+    
 }
