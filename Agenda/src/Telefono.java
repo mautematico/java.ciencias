@@ -5,17 +5,17 @@ import java.util.*;
  * 
  */
 public class Telefono {
+    
+    private String Numero;
 
-    /**
-     * 
-     */
-    public Telefono() {
+    public Telefono(String telefono) {
+        
     }
 
     /**
      * 
      */
-    private String Numero;
+
     
 
 
