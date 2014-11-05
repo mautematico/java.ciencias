@@ -8,6 +8,8 @@ public class Grupo {
 
   
     private String nombre;
+
+
     private ArrayList<Contacto> contactos;
     
 
@@ -51,7 +53,7 @@ public class Grupo {
 
     @Override
     public String toString() {
-        return "Grupo:" + nombre + "\n" + "Miembros del grupo: " + "{" + contactos + "}";
+        return "Grupo{" + "Nombre=" + nombre + ", Contactos=" + contactos + '}';
     }
 
     
