@@ -38,6 +38,14 @@ public class Email {
         this.correo = correo;
     }
     
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
     @Override
     public String toString(){
         switch(tipo){
