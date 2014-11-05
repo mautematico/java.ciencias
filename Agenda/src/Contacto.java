@@ -80,7 +80,7 @@ public class Contacto {
     }
 
     public String getGrupos() {
-        return grupos;
+        return "Aquí los grupos";
     }
 
     /**
