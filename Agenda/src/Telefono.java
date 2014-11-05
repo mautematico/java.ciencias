@@ -23,6 +23,20 @@ public class Telefono {
         this(numero,0);
     }
 
+    public String toSring(){
+        switch(tipo){
+
+            case 1:
+                return "Telefono movil:" + numero;
+            case 2:
+                return "Telefono de casa:" + numero;
+            case 3:
+                return "Telefono de oficina:" + numero;
+            default:
+                return "Otro telefono:" + numero;
+        }
+        
+    }
     
 
 
