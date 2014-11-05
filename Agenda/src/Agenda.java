@@ -15,48 +15,66 @@ public class Agenda {
     /**
      * 
      */
-    private ArrayList<Contacto> Contactos;
+    private ArrayList<Contacto> contactos;
 
     /**
      * 
      */
-    private ArrayList<Grupo> Grupos;
+    private ArrayList<Grupo> grupos;
 
 
 
     /**
      * 
      */
-    public void IniciarAgenda() {
+    public void iniciarAgenda() {
+        cargarContactos();
+    }
+    
+    
+    public void cargarContactos () {
+        importarContactosDeUnArchivo("archivoPorDefecto");
+    }
+
+    /**
+     * 
+     */
+    public void guardarCambios() {
+        exportarContactosAUnArchivo("archivoPorDefecto");
+    }
+
+    /**
+     * 
+     */
+    public void importarContactosDeUnArchivo(String nombreDelArchivo) {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void GuardarCambios() {
+    public void exportarContactosAUnArchivo(String nombreDelArchivo) {
         // TODO implement here
     }
 
-    /**
-     * 
-     */
-    public void ImportarContactos() {
-        // TODO implement here
+    public void ingresarContacto(){
+        
     }
-
-    /**
-     * 
-     */
-    public void ExportarContactos() {
-        // TODO implement here
+    
+    public void eliminarContacto(){
+        
     }
-
-    /**
-     * 
-     */
+    
+    public void consultarContacto(){
+        
+    }
+    
+    
     public void crearGrupo() {
         // TODO implement here
     }
 
+    public void asignarContactoAGrupo(){
+        
+    }
 }

@@ -6,22 +6,20 @@ import java.util.*;
  */
 public class Grupo {
 
+  
+    private String nombre;
+
     /**
      * 
      */
-    public Grupo() {
+    private ArrayList<Contacto> contactos;
+    
+
+    public Grupo(String nombre) {
     }
-
-    /**
-     * 
-     */
-    private String Nombre;
-
-    /**
-     * 
-     */
-    private ArrayList<Contacto> Contactos;
-
+    
+    public Grupo(String nombre, ArrayList<Contacto> contactos) {
+    }
 
 
     /**
