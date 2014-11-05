@@ -94,11 +94,24 @@ public class Agenda {
         ArrayList<Contacto> contactosConEseTelefono= new ArrayList<Contacto> ();
         
         for( int i = 0; i< contactos.size(); i++) {
-            for (int j =0; j< contactos.get(i).getTelefonos().size(); j++)
+            for (int j =0; j< contactos.get(i).getTelefonos().size(); j++){
                 if(contactos.get(i).getTelefonos().get(j).getNumero() == telefono)
                     contactosConEseTelefono.add(contactos.get(i));
+            }
         }
         return contactosConEseTelefono;     
+    }
+    
+    public ArrayList<Contacto> consultarContactoPorEmail(String correo){
+        ArrayList<Contacto> contactosConEseEmail= new ArrayList<Contacto> ();
+        
+        for( int i = 0; i< contactos.size(); i++) {
+            for (int j =0; j< contactos.get(i).getEmails().size(); j++){
+                if(contactos.get(i).getEmails().get(j).getCorreo() == correo)
+                    contactosConEseEmail.add(contactos.get(i));
+            }
+        }
+        return contactosConEseEmail;     
     }
    
     
