@@ -5,6 +5,12 @@ import java.util.*;
  */
 public class Agenda {
 
+    private ArrayList<Contacto> contactos;
+
+    /**
+     * 
+     */
+    private ArrayList<Grupo> grupos;
     /**
      * 
      */
@@ -14,12 +20,7 @@ public class Agenda {
     /**
      * 
      */
-    private ArrayList<Contacto> contactos;
 
-    /**
-     * 
-     */
-    private ArrayList<Grupo> grupos;
 
 
 

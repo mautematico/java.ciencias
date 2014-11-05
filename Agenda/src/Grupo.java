@@ -8,6 +8,8 @@ public class Grupo {
 
   
     private String nombre;
+
+
     private ArrayList<Contacto> contactos;
     
 
