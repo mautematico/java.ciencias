@@ -117,5 +117,21 @@ public class Agenda {
     public void asignarContactoAGrupo(Contacto contacto, Grupo grupo){
         
     }
+
+    public ArrayList<Contacto> getContactos() {
+        return contactos;
+    }
+
+    public void setContactos(ArrayList<Contacto> contactos) {
+        this.contactos = contactos;
+    }
+
+    public ArrayList<Grupo> getGrupos() {
+        return grupos;
+    }
+
+    public void setGrupos(ArrayList<Grupo> grupos) {
+        this.grupos = grupos;
+    }
     
 }
