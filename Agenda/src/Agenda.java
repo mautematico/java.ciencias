@@ -104,13 +104,14 @@ public class Agenda {
     }
    
     
-    public void crearGrupo(String nombre) {
-        Grupo grupoNuevo = new Grupo(nombre);
-        
+    public Grupo crearGrupo(String nombre) {
+        return crearGrupo(nombre,null);
     }
     
-    public void crearGrupo(String nombre, ArrayList<Contacto> contactos){
+    public Grupo crearGrupo(String nombre, ArrayList<Contacto> contactos){
         Grupo grupoNuevo = new Grupo(nombre, contactos);
+        grupos.add(grupoNuevo);
+        return grupoNuevo;       
     }
 
     public void asignarContactoAGrupo(Contacto contacto, Grupo grupo){
