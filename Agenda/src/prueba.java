@@ -14,12 +14,20 @@ public class prueba {
    
             miAgenda.ingresarContacto("juan","perez",miTelefono);
  
-            miAgenda.ingresarContacto("juan","perez",miTelefono);
-           miAgenda.ingresarContacto("juan","perez",miTelefono);
-            miAgenda.ingresarContacto("juan","perez",miTelefono);
-            miAgenda.ingresarContacto("juan","perez",miTelefono);
+            miAgenda.ingresarContacto("juan","sánchez",miTelefono);
+           miAgenda.ingresarContacto("juan","andrade",miTelefono);
+            miAgenda.ingresarContacto("juan","rival",miTelefono);
+            miAgenda.ingresarContacto("juan","real",miTelefono);
+            
+            Grupo juanes = miAgenda.crearGrupo("Juanes");
+            
+            juanes.asignarContactoAGrupo(miAgenda.getContactos().get(1));
+            juanes.asignarContactoAGrupo(miAgenda.getContactos().get(2));
+            juanes.asignarContactoAGrupo(miAgenda.getContactos().get(3));
+            juanes.asignarContactoAGrupo(miAgenda.getContactos().get(0));
+            
      
-            Exportador.escribir("/tmp/miagenda",miAgenda);
+            Exportador.escribir("miAgenda.txt",miAgenda);
 
     }
 }
