@@ -6,21 +6,9 @@ import java.util.*;
  */
 public class Contacto {
     
-        private String nombre;
-
-    /**
-     * 
-     */
+    private String nombre;
     private String apellido;
-
-    /**
-     * 
-     */
     private ArrayList<Telefono> telefonos;
-
-    /**
-     * 
-     */
     private ArrayList<Email> emails;
 
     /**
@@ -45,15 +33,6 @@ public class Contacto {
         this(nombre, apellido, null, email);
     }
 
-
-    /**
-     * 
-     */
-
-
-    /**
-     * 
-     */
 
     public String getNombre() {
         return nombre;
@@ -82,6 +61,9 @@ public class Contacto {
   
    /**
      * @param telefono
+     * TODO: Agregar el teléfono a la lista solamente si no está ya en ella
+     * Opcionalmente, podríamos también revisar si alguno de los telefonos(i).numero 
+     * coincide con el que queremos agregar
      */
     public void agregarTelefono(Telefono telefono) {
             telefonos.add(telefono);
@@ -94,6 +76,7 @@ public class Contacto {
     /**
      * 
      * @param email
+     * TODO: similar al caso de agregarTelefono
      */
     public void agregarEmail(Email email) {
             emails.add(email);
@@ -104,7 +87,11 @@ public class Contacto {
             emails.remove(email);
     }
     
-    
+    /**
+     * 
+     * @param grupo 
+     * TODO: simialr al caso de agregarTelefono
+     */
     public void asignarContactoAGrupo(Grupo grupo) {
         grupo.getContactos().add(this);
     }
@@ -122,11 +109,5 @@ public class Contacto {
     public void modificarContacto() {
         // TODO implement here
     }
-
-    /**
-     * 
-     */
-    
-
 
 }
