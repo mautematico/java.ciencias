@@ -32,10 +32,8 @@ public class Agenda {
     }
     
     
-    public void cargarContactos () {
-        cargarContactos(null);
-    }
-    public void cargarContactos(String archivo){
+    
+    public void cargarContactos(){
         if(archivo == null)
             archivo = "miAgenda.json";
         importarContactosDeUnArchivo(archivo);
@@ -108,10 +106,11 @@ public class Agenda {
     public ArrayList<Contacto> consultarContactoPorTelefono(String telefono){
         ArrayList<Contacto> contactosConEseTelefono= new ArrayList<> ();
         
-        for( int i = 0; i< contactos.size(); i++) {
-            for (int j =0; j< contactos.get(i).getTelefonos().size(); j++){
-                if(contactos.get(i).getTelefonos().get(j).getNumero() == telefono)
-                    contactosConEseTelefono.add(contactos.get(i));
+        for (Contacto contacto : contactos) {
+            for (Telefono telefono: contacto.getTelefonos() ) {
+                if (telefono == telefono) {
+                    contactosConEseTelefono.add(contacto);
+                }
             }
         }
         return contactosConEseTelefono;     
@@ -128,6 +127,12 @@ public class Agenda {
         }
         return contactosConEseEmail;     
     }
+    
+    public ArrayList<Contacto> consultarContactoPorGrupo(String grupo){
+        
+        
+        return 
+    }
    
     
     public Grupo crearGrupo(String nombre) {
@@ -140,9 +145,6 @@ public class Agenda {
         return grupoNuevo;       
     }
 
-    public void asignarContactoAGrupo(Contacto contacto, Grupo grupo){
-        
-    }
 
     public ArrayList<Contacto> getContactos() {
         return contactos;
