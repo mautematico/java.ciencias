@@ -18,6 +18,7 @@ public class Exportador {
                 .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();        
         
         String cadena = gson.toJson(agenda);
+        System.out.println(cadena);
         try
         {
             fichero = new FileWriter(nombreDeArchivo);
