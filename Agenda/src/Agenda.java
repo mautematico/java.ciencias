@@ -9,8 +9,19 @@ public class Agenda {
     private ArrayList<Grupo> grupos;
     
     public Agenda() {
-        this.contactos = new ArrayList<>();
-        this.grupos = new ArrayList<>();
+        this(null,null);
+    }
+    
+    public Agenda(ArrayList<Contacto> contactos, ArrayList<Grupo> grupos) {
+        if(contactos != null)        
+            this.contactos = contactos;
+        else
+            this.contactos = new ArrayList<>();
+    
+        if(grupos != null)
+            this.grupos = grupos;
+        else
+            this.grupos = new ArrayList<>();        
     }
     
     /**
