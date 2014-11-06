@@ -101,9 +101,9 @@ public class Agenda {
     public ArrayList<Contacto> consultarContactoPorApellido(String apellido){
         ArrayList<Contacto> contactosConEseApellido = new ArrayList<> ();
         for (Contacto contacto : contactos) {
-            if (contacto.getApellido() == apellido) {
+            if (contacto.getApellido().equals(apellido)) {
                 contactosConEseApellido.add(contacto);
-            }
+            } 
         }
         return contactosConEseApellido;     
     }
@@ -113,7 +113,7 @@ public class Agenda {
         
         for (Contacto contacto : contactos) {
             for (Telefono tel: contacto.getTelefonos() ) {
-                if (telefono == tel.getNumero()) {
+                if ( tel.getNumero().equals(telefono)) {
                     contactosConEseTelefono.add(contacto);
                 }
             }
@@ -122,21 +122,21 @@ public class Agenda {
     }
     
     public ArrayList<Contacto> consultarContactoPorEmail(String correo){
-        ArrayList<Contacto> contactosConEseEmail= new ArrayList<Contacto> ();
+        ArrayList<Contacto> contactosConEseEmail= new ArrayList<> ();
         
-        for( int i = 0; i< contactos.size(); i++) {
-            for (int j =0; j< contactos.get(i).getEmails().size(); j++){
-                if(contactos.get(i).getEmails().get(j).getCorreo() == correo)
-                    contactosConEseEmail.add(contactos.get(i));
+        for (Contacto contacto : contactos) {
+            for (Email email: contacto.getEmails() ) {
+                if ( email.getCorreo().equals(correo)) {
+                    contactosConEseEmail.add(contacto);
+                }
             }
         }
         return contactosConEseEmail;     
     }
     
-    public ArrayList<Contacto> consultarContactoPorGrupo(String grupo){
+    public ArrayList<Contacto> consultarContactoPorGrupo(Grupo grupo){
         
-        
-        return null;
+        return grupo.getContactos();
     }
    
     
