@@ -112,8 +112,8 @@ public class Agenda {
         ArrayList<Contacto> contactosConEseTelefono= new ArrayList<> ();
         
         for (Contacto contacto : contactos) {
-            for (Telefono telefono: contacto.getTelefonos() ) {
-                if (telefono == telefono) {
+            for (Telefono tel: contacto.getTelefonos() ) {
+                if (telefono == tel.getNumero()) {
                     contactosConEseTelefono.add(contacto);
                 }
             }
@@ -136,7 +136,7 @@ public class Agenda {
     public ArrayList<Contacto> consultarContactoPorGrupo(String grupo){
         
         
-        return 
+        return null;
     }
    
     
