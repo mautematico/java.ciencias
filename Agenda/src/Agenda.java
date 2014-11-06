@@ -33,28 +33,41 @@ public class Agenda {
     
     
     public void cargarContactos () {
-        importarContactosDeUnArchivo("archivoPorDefecto");
+        cargarContactos(null);
+    }
+    public void cargarContactos(String archivo){
+        if(archivo == null)
+            archivo = "miAgenda.json";
+        importarContactosDeUnArchivo(archivo);
     }
 
     /**
      * 
      */
     public void guardarCambios() {
-        exportarContactosAUnArchivo("archivoPorDefecto");
+        guardarCambios(null);
+    }
+    public void guardarCambios(String archivo){
+        if(archivo == null)
+            archivo = "miAgenda.json";
+        exportarContactosAUnArchivo(archivo);
     }
 
     /**
      * 
      */
-    public void importarContactosDeUnArchivo(String nombreDelArchivo) {
-        // TODO implement here
+    private void importarContactosDeUnArchivo(String nombreDelArchivo) {
+        Agenda importada = Importador.leer(nombreDelArchivo);
+        this.contactos = importada.getContactos();
+        this.grupos = importada.getGrupos();
     }
 
     /**
      * 
+     * @param nombreDelArchivo
      */
-    public void exportarContactosAUnArchivo(String nombreDelArchivo) {
-        // TODO implement here
+    private void exportarContactosAUnArchivo(String nombreDelArchivo) {
+        Exportador.escribir(nombreDelArchivo, this);
     }
 
     public void ingresarContacto(String nombre, String apellido, Telefono telefono){
