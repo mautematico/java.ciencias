@@ -98,9 +98,10 @@ public class Contacto {
 
     /**
      * 
+     * @param grupo 
      */
     public void excluirContactoDeGrupo(Grupo grupo) {
-        grupo.getContactos().add(this);
+        grupo.getContactos().remove(this);
         
     }
     /**
