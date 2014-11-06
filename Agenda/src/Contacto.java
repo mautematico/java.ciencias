@@ -63,6 +63,11 @@ public class Contacto {
         return emails;
     }
 
+    @Override
+    public String toString() {
+        return "Contacto{" + "nombre=" + nombre + ", apellido=" + apellido + ", telefonos=" + telefonos + ", emails=" + emails + '}';
+    }
+
   
    /**
      * @param telefono
@@ -95,7 +100,7 @@ public class Contacto {
     /**
      * 
      * @param grupo 
-     * TODO: simialr al caso de agregarTelefono
+     * TODO: similar al caso de agregarTelefono
      */
     public void asignarContactoAGrupo(Grupo grupo) {
         grupo.getContactos().add(this);
@@ -109,11 +114,6 @@ public class Contacto {
         grupo.getContactos().remove(this);
         
     }
-    /**
-     * 
-     */
-    public void modificarContacto() {
-        // TODO implement here
-    }
+   
 
 }
