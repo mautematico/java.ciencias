@@ -5,18 +5,21 @@ import java.util.*;
  * 
  */
 public class Grupo {
-
   
     private String nombre;
-
-
     private ArrayList<Contacto> contactos;
     
 
     public Grupo(String nombre) {
+        this(nombre,null);
     }
     
     public Grupo(String nombre, ArrayList<Contacto> contactos) {
+        
+        this.nombre = nombre;       
+        if(contactos == null)
+            this.contactos = new ArrayList<>(); 
+        else this.contactos = contactos;
     }
 
 
