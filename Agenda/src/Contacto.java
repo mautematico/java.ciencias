@@ -17,7 +17,12 @@ public class Contacto {
     public Contacto(String nombre, String apellido, Telefono telefono, Email email) {
         this.nombre = nombre;
         this.apellido = apellido;
-        
+
+        this.telefonos = new ArrayList<>();
+        this.emails = new ArrayList<>();
+                
+                
+                
         if( telefono != null ){
             this.telefonos.add(telefono);
         }

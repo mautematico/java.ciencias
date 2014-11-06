@@ -15,6 +15,7 @@ public class Agenda {
      * 
      */
     public Agenda() {
+        this.contactos = new ArrayList<>();
     }
 
     /**
