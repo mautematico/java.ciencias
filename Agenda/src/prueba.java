@@ -30,11 +30,11 @@ public class prueba {
             
 
             
-            Exportador.escribir("/tmp/miAgenda.txt",miAgenda);
+            Exportador.escribir("miAgenda.json",miAgenda);
             
             Agenda Otra = new Agenda();
             
-            Otra = Importador.leer("/tmp/miAgenda.txt");
+            Otra = Importador.leer("miAgenda.json");
             System.out.println(miAgenda);
             System.out.println(Otra);
 
