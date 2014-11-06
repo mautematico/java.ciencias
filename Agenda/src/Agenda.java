@@ -7,13 +7,14 @@ public class Agenda {
 
     private ArrayList<Contacto> contactos;
     private ArrayList<Grupo> grupos;
+    private String archivo;
     
     public Agenda() {
-        this(null,null);
+        this(null,null,"miAgenda.json");
     }
     
-    public Agenda(ArrayList<Contacto> contactos, ArrayList<Grupo> grupos) {
-        if(contactos != null)        
+    public Agenda(ArrayList<Contacto> contactos, ArrayList<Grupo> grupos, String archivo) {
+        if(contactos != null)
             this.contactos = contactos;
         else
             this.contactos = new ArrayList<>();
@@ -22,6 +23,10 @@ public class Agenda {
             this.grupos = grupos;
         else
             this.grupos = new ArrayList<>();        
+        if(archivo != null)
+            this.archivo = archivo;
+        else
+            archivo = "miAgenda.json";
     }
     
     /**
