@@ -13,18 +13,15 @@ public class Exportador {
     public static void escribir ( String nombreDeArchivo, Agenda agenda){
         FileWriter fichero = null;
         PrintWriter pw = null;
-        
-        Gson gson = new GsonBuilder().setPrettyPrinting()
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();        
-        
-        String cadena = gson.toJson(agenda);
-        System.out.println(cadena);
+
+        Gson gson = new Gson();         
+        String JSON = gson.toJson(agenda);
+  
         try
         {
             fichero = new FileWriter(nombreDeArchivo);
             pw = new PrintWriter(fichero);
- 
-            pw.print(cadena);
+            pw.print(JSON);
  
         } catch (Exception e) {
             e.printStackTrace();

@@ -7,6 +7,8 @@
  *
  * @author mautematico
  */
+import com.google.gson.*;
+
 public class prueba {
     public static void main(String[] args){
             Telefono miTelefono = new Telefono("07913128993120");
@@ -26,8 +28,15 @@ public class prueba {
             juanes.asignarContactoAGrupo(miAgenda.getContactos().get(3));
             juanes.asignarContactoAGrupo(miAgenda.getContactos().get(0));
             
-     
-            Exportador.escribir("miAgenda.txt",miAgenda);
+
+            
+            Exportador.escribir("/tmp/miAgenda.txt",miAgenda);
+            
+            Agenda Otra = new Agenda();
+            
+            Otra = Importador.leer("/tmp/miAgenda.txt");
+            System.out.println(miAgenda);
+            System.out.println(Otra);
 
     }
 }
