@@ -8,10 +8,16 @@
  * @author GABI
  */
 import java.io.*;
+import com.google.gson.*;
 public class Exportador {
-    public static void escribir ( String nombreDeArchivo, String cadena){
+    public static void escribir ( String nombreDeArchivo, Agenda agenda){
         FileWriter fichero = null;
         PrintWriter pw = null;
+        
+        Gson gson = new GsonBuilder().setPrettyPrinting()
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();        
+        
+        String cadena = gson.toJson(agenda);
         try
         {
             fichero = new FileWriter(nombreDeArchivo);
