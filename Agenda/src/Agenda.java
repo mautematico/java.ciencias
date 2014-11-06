@@ -87,24 +87,26 @@ public class Agenda {
     
     public ArrayList<Contacto> consultarContactoPorNombre(String nombre){
         ArrayList<Contacto> contactosConEseNombre = new ArrayList<> ();
-        for( int i = 0; i< contactos.size(); i++) {
-            if(contactos.get(i).getNombre() == nombre)
-                contactosConEseNombre.add(contactos.get(i));
+        for (Contacto contacto : contactos) {
+            if (contacto.getNombre() == nombre) {
+                contactosConEseNombre.add(contacto);
+            }
         }
         return contactosConEseNombre;     
     }
     
     public ArrayList<Contacto> consultarContactoPorApellido(String apellido){
-        ArrayList<Contacto> contactosConEseApellido = new ArrayList<Contacto> ();
-        for( int i = 0; i< contactos.size(); i++) {
-            if(contactos.get(i).getApellido() == apellido)
-                contactosConEseApellido.add(contactos.get(i));
+        ArrayList<Contacto> contactosConEseApellido = new ArrayList<> ();
+        for (Contacto contacto : contactos) {
+            if (contacto.getApellido() == apellido) {
+                contactosConEseApellido.add(contacto);
+            }
         }
         return contactosConEseApellido;     
     }
         
     public ArrayList<Contacto> consultarContactoPorTelefono(String telefono){
-        ArrayList<Contacto> contactosConEseTelefono= new ArrayList<Contacto> ();
+        ArrayList<Contacto> contactosConEseTelefono= new ArrayList<> ();
         
         for( int i = 0; i< contactos.size(); i++) {
             for (int j =0; j< contactos.get(i).getTelefonos().size(); j++){
