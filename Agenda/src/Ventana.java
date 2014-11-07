@@ -216,7 +216,7 @@ public class Ventana extends JFrame implements ActionListener{
             
         frame.add(panel);        
     }
-    public void modificarContacto(Contacto contacto){
+    public void modificarContacto(final Contacto contacto){
         frame.setTitle("Modificar: " + contacto.getNombre() + " " + contacto.getApellido());
 
         panel.removeAll();
@@ -249,10 +249,19 @@ public class Ventana extends JFrame implements ActionListener{
         }
         
         agregarBotonVolver();
-        frame.add(panel);
-                
         
-
+        JButton guardar = new JButton("Guardar");
+        guardar.setBounds(0, 400, 70, 20);
+        panel.add(guardar);
+                
+        guardar.addActionListener(new Vigilante(contacto) {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+               contacto.setNombre(camposDeEntrada.get(0).getText());
+               contacto.setApellido(camposDeEntrada.get(1).getText());
+            }
+        });
+            frame.add(panel);
     }
        
     public String convertirAMultilinea(JLabel orig){
