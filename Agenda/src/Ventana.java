@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 public class Ventana extends JFrame implements ActionListener{
     private JFrame frame = new JFrame("Inicio");
     private JPanel panel = new JPanel();
+    private JButton volver = new JButton("Volver");
     
     private static Agenda miAgenda;
     private static int vistaActual;
@@ -88,7 +89,6 @@ public class Ventana extends JFrame implements ActionListener{
             panel.add(boton);
             boton.addActionListener(this);
 
-            
             frame.add(panel);
             
         }        
@@ -104,8 +104,12 @@ public class Ventana extends JFrame implements ActionListener{
         infoDeContacto.setBounds(20,20,300,300);
         
         panel.add(infoDeContacto);
+        
+        volver.setBounds(300,0,100,30);
+        volver.addActionListener(this);
             
-            frame.add(panel);
+        panel.add(volver);
+        frame.add(panel);
             
     }        
         
@@ -153,6 +157,15 @@ public class Ventana extends JFrame implements ActionListener{
                     
             }
             return;
+        }
+        
+        if(e.getSource() == volver){
+            switch(vistaActual){
+                default:
+                    vistaInicial();
+                    break;
+                    
+            }
         }
         
     }
