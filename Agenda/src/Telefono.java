@@ -37,16 +37,17 @@ public class Telefono {
         this.tipo = tipo;
     }
 
-    public String toSring() {
+    @Override
+    public String toString() {
         switch (tipo) {
             case 1:
-                return "Telefono movil:" + numero;
+                return "Celular: " + numero + "\n";
             case 2:
-                return "Telefono de casa:" + numero;
+                return "Casa: " + numero+ "\n";
             case 3:
-                return "Telefono de oficina:" + numero;
+                return "Oficina: " + numero+ "\n";
             default:
-                return "Otro telefono:" + numero;
+                return "Otro: " + numero+ "\n";
         }
 
     }

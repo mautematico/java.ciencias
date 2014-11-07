@@ -50,13 +50,11 @@ public class Email {
     public String toString(){
         switch(tipo){
             case 1:
-                return "Correo personal:" + correo;
+                return "Personal:" + correo + "\n";
             case 2:
-                return "Correo de trabajo:" + correo;
-            case 3:
-                return "Correo de escuela:" + correo;
+                return "Trabajo:" + correo+ "\n";
             default:
-                return "Otro correo:" + correo;
+                return "Otro correo:" + correo+ "\n";
         }
     }
     
