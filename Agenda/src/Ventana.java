@@ -202,8 +202,9 @@ public class Ventana extends JFrame implements ActionListener{
         frame.setTitle("Ver: " + grupo.getNombre());
         panel.removeAll();
         panel.repaint();       
-        
+     
         JLabel infoDeGrupo = new JLabel(grupo.toString());
+                infoDeGrupo.setText(convertirAMultilinea(infoDeGrupo));
         infoDeGrupo.setBounds(20,20,400,400);
         
         panel.add(infoDeGrupo);
