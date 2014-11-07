@@ -93,6 +93,21 @@ public class Ventana extends JFrame implements ActionListener{
             
         }        
     }
+    
+    public void verContacto(Contacto contacto){
+        frame.setTitle("Ver:" + contacto.getNombre() + " " + contacto.getApellido() );
+
+        panel.removeAll();
+        panel.repaint();       
+        
+        JLabel infoDeContacto = new JLabel(contacto.toString());
+        infoDeContacto.setBounds(20,20,300,300);
+        
+        panel.add(infoDeContacto);
+            
+            frame.add(panel);
+            
+    }        
         
         
     
@@ -113,6 +128,14 @@ public class Ventana extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (botones1.contains(e.getSource())) {
             System.out.println("Un botón 'VER' fue presionado");
+            switch(vistaActual){
+                case 0:
+                    int i = botones1.indexOf(e.getSource());
+                    verContacto(miAgenda.getContactos().get(i));
+                    break;
+            }
+            
+            
             return;
         }
         if (botones2.contains(e.getSource())) {
