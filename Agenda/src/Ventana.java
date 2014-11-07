@@ -178,6 +178,11 @@ public class Ventana extends JFrame implements ActionListener{
         }        
         
     }
+    private void agregarBotonVolver(){
+        volver.setBounds(300,0,100,30);
+        volver.addActionListener(this);    
+        panel.add(volver);       
+    }
     
     public void verContacto(Contacto contacto){
         frame.setTitle("Ver:" + contacto.getNombre() + " " + contacto.getApellido() );
@@ -191,10 +196,7 @@ public class Ventana extends JFrame implements ActionListener{
         
         panel.add(infoDeContacto);
         
-        volver.setBounds(300,0,100,30);
-        volver.addActionListener(this);
-            
-        panel.add(volver);
+        agregarBotonVolver();
         frame.add(panel);
             
     }
@@ -212,8 +214,45 @@ public class Ventana extends JFrame implements ActionListener{
         volver.setBounds(300,0,100,30);
         volver.addActionListener(this);
             
-        panel.add(volver);
         frame.add(panel);        
+    }
+    public void modificarContacto(Contacto contacto){
+        frame.setTitle("Modificar: " + contacto.getNombre() + " " + contacto.getApellido());
+
+        panel.removeAll();
+        panel.repaint();       
+        
+        etiquetas = new ArrayList<>();
+        botones1 = new ArrayList<>();
+        botones2 = new ArrayList<>();
+        botones3 = new ArrayList<>();
+        camposDeEntrada = new ArrayList<>();
+        
+        etiquetas.add(new JLabel("Nombre"));
+        etiquetas.add(new JLabel("Apellido"));
+        
+        camposDeEntrada.add(new JTextField(contacto.getNombre()));
+        camposDeEntrada.add(new JTextField(contacto.getApellido()));
+        
+        int i = 0;
+        for (JTextField camposDeEntrada1 : camposDeEntrada) {
+            camposDeEntrada1.setBounds(20, 50 + 30*i, 100, 20);
+            panel.add(camposDeEntrada1);
+            i++;
+        }
+        i = 0;
+        for (JLabel etiqueta : etiquetas) {
+            etiqueta.setLabelFor(camposDeEntrada.get(i));
+            etiqueta.setBounds(10, 20 + 30*i, 100, 20);
+            panel.add(etiqueta);
+            i++;
+        }
+        
+        agregarBotonVolver();
+        frame.add(panel);
+                
+        
+
     }
        
     public String convertirAMultilinea(JLabel orig){
@@ -237,6 +276,7 @@ public class Ventana extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         int i;
+        
         if (botones1.contains(e.getSource())) {
             System.out.println("Un botón 'VER' fue presionado");
             switch(vistaActual){
@@ -256,6 +296,14 @@ public class Ventana extends JFrame implements ActionListener{
         }
         if (botones2.contains(e.getSource())) {
             System.out.println("Un botón 'EDITAR' fue presionado");
+            switch(vistaActual){
+                case 'g':
+                    break;
+                case 0:
+                    i = botones2.indexOf(e.getSource());
+                    modificarContacto(miAgenda.getContactos().get(i));
+       
+            }
             return;
         }
         if (botones3.contains(e.getSource())) {
