@@ -62,6 +62,22 @@ public class Ventana extends JFrame implements ActionListener{
         panel.add(goAjustes);
 
     }
+    private void mostrarBotonesContactosYGrupos(){
+        verContactos = new JButton("Contactos");
+        verContactos.setBounds(50,50,150,50);
+        verContactos.addActionListener(this);
+        panel.add(verContactos);
+
+        verGrupos = new JButton("Grupos");
+        verGrupos.setBounds(200,50,150,50);
+        verGrupos.addActionListener(this);
+        panel.add(verGrupos);
+        
+        agregar = new JButton("+");
+        agregar.setBounds(400,50,50,50);
+        agregar.addActionListener(this);
+        panel.add(agregar);
+    }
         
     public void vistaInicial(){
         frame.setTitle("Agenda");
@@ -76,32 +92,33 @@ public class Ventana extends JFrame implements ActionListener{
         botones3 = new ArrayList<>();
 
         
-        //Aquí van los botones Buscar y AJustes (parte superior)
+        //Aquí van los botones Buscar y AJustes (parte superior), 
+        //y los botones para cambiar entre contactos y grupos
         mostrarBotonesBuscarYAjustes();
-        
+        mostrarBotonesContactosYGrupos();
         
         int i = 0;
         for (Contacto contacto : contactos) {
             i++;
             JLabel fulano = new JLabel(contacto.getNombre() + " "+ contacto.getApellido());
-            fulano.setBounds(10,10 + 50*i,300,50);
+            fulano.setBounds(10,70 + 50*i,300,50);
             etiquetas.add(fulano);
             panel.add(fulano);
             
             JButton boton = new JButton("V");
-            boton.setBounds(320, 10 + 50*i, 50, 50);
+            boton.setBounds(320, 70 + 50*i, 50, 50);
             botones1.add(boton);
             panel.add(boton);
             boton.addActionListener(this);
             
             boton = new JButton("E");
-            boton.setBounds(370, 10 + 50*i, 50, 50);
+            boton.setBounds(370, 70 + 50*i, 50, 50);
             botones2.add(boton);
             panel.add(boton);
             boton.addActionListener(this);
 
             boton = new JButton("B");
-            boton.setBounds(410, 10 + 50*i, 50, 50);
+            boton.setBounds(410, 70 + 50*i, 50, 50);
             botones3.add(boton);
             panel.add(boton);
             boton.addActionListener(this);
@@ -109,6 +126,58 @@ public class Ventana extends JFrame implements ActionListener{
             frame.add(panel);
             
         }        
+    }
+    
+    public void vistaDeGrupos(){
+        vistaActual = 'g';
+        
+        frame.setTitle("Agenda");
+        ArrayList<Grupo> grupos = miAgenda.getGrupos();
+        
+        panel.removeAll();
+        panel.repaint();
+        
+        etiquetas = new ArrayList<>();
+        botones1 = new ArrayList<>();
+        botones2 = new ArrayList<>();
+        botones3 = new ArrayList<>();
+
+        
+        //Aquí van los botones Buscar y AJustes (parte superior), 
+        //y los botones para cambiar entre contactos y grupos
+        mostrarBotonesBuscarYAjustes();
+        mostrarBotonesContactosYGrupos();
+        
+        int i = 0;
+        for (Grupo grupo : grupos) {
+            i++;
+            JLabel circulo = new JLabel(grupo.getNombre());
+            circulo.setBounds(10,70 + 50*i,300,50);
+            etiquetas.add(circulo);
+            panel.add(circulo);
+            
+            JButton boton = new JButton("V");
+            boton.setBounds(320, 70 + 50*i, 50, 50);
+            botones1.add(boton);
+            panel.add(boton);
+            boton.addActionListener(this);
+            
+            boton = new JButton("E");
+            boton.setBounds(370, 70 + 50*i, 50, 50);
+            botones2.add(boton);
+            panel.add(boton);
+            boton.addActionListener(this);
+
+            boton = new JButton("B");
+            boton.setBounds(410, 70 + 50*i, 50, 50);
+            botones3.add(boton);
+            panel.add(boton);
+            boton.addActionListener(this);
+
+            frame.add(panel);
+            
+        }        
+        
     }
     
     public void verContacto(Contacto contacto){
@@ -171,6 +240,12 @@ public class Ventana extends JFrame implements ActionListener{
                     miAgenda.eliminarContacto(miAgenda.getContactos().get(i));
                     vistaInicial();
                     break;
+                case 'g':
+                    int j = botones3.indexOf(e.getSource());
+                    System.out.println("borrar al grupo" + j);
+                    miAgenda.eliminarGrupo(miAgenda.getGrupos().get(j));
+                    vistaDeGrupos();
+                    break;
                     
             }
             return;
@@ -184,6 +259,15 @@ public class Ventana extends JFrame implements ActionListener{
                     
             }
         }
+        if(e.getSource() == verGrupos){
+            vistaDeGrupos();
+            return;
+        }
+        if(e.getSource() == verContactos){
+            vistaInicial();
+            return;
+        }
+            
         
     }
 }

@@ -143,6 +143,9 @@ public class Agenda {
     public Grupo crearGrupo(String nombre) {
         return crearGrupo(nombre,null);
     }
+    public void eliminarGrupo(Grupo grupo){
+        grupos.remove(grupo);
+    }
     
     public Grupo crearGrupo(String nombre, ArrayList<Contacto> contactos){
         Grupo grupoNuevo = new Grupo(nombre, contactos);
