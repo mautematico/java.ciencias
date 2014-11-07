@@ -10,6 +10,9 @@ import javax.swing.JTextField;
 public class Ventana extends JFrame implements ActionListener{
     private JFrame frame = new JFrame("Inicio");
     private JPanel panel = new JPanel();
+    private JButton volver = new JButton("Volver");
+    
+    private JButton verContactos, verGrupos, goBuscar, goAjustes, agregar;
     
     private static Agenda miAgenda;
     private static int vistaActual;
@@ -47,7 +50,18 @@ public class Ventana extends JFrame implements ActionListener{
         vistaInicial();
     }
  
-        
+    private void mostrarBotonesBuscarYAjustes(){
+        goBuscar = new JButton("Q");
+        goBuscar.setBounds(350,0,50,50);
+        goBuscar.addActionListener(this);
+        panel.add(goBuscar);
+
+        goAjustes = new JButton("Aj");
+        goAjustes.setBounds(410,0,50,50);
+        goAjustes.addActionListener(this);
+        panel.add(goAjustes);
+
+    }
         
     public void vistaInicial(){
         frame.setTitle("Agenda");
@@ -61,6 +75,10 @@ public class Ventana extends JFrame implements ActionListener{
         botones2 = new ArrayList<>();
         botones3 = new ArrayList<>();
 
+        
+        //Aquí van los botones Buscar y AJustes (parte superior)
+        mostrarBotonesBuscarYAjustes();
+        
         
         int i = 0;
         for (Contacto contacto : contactos) {
@@ -88,7 +106,6 @@ public class Ventana extends JFrame implements ActionListener{
             panel.add(boton);
             boton.addActionListener(this);
 
-            
             frame.add(panel);
             
         }        
@@ -104,8 +121,12 @@ public class Ventana extends JFrame implements ActionListener{
         infoDeContacto.setBounds(20,20,300,300);
         
         panel.add(infoDeContacto);
+        
+        volver.setBounds(300,0,100,30);
+        volver.addActionListener(this);
             
-            frame.add(panel);
+        panel.add(volver);
+        frame.add(panel);
             
     }        
         
@@ -153,6 +174,15 @@ public class Ventana extends JFrame implements ActionListener{
                     
             }
             return;
+        }
+        
+        if(e.getSource() == volver){
+            switch(vistaActual){
+                default:
+                    vistaInicial();
+                    break;
+                    
+            }
         }
         
     }
