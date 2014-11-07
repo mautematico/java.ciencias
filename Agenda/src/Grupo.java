@@ -26,8 +26,15 @@ public class Grupo {
     /**
      * @param contacto
      */
-    public void asignarContactoAGrupo(Contacto contacto) {
-        contactos.add(contacto);
+    
+    public boolean asignarContactoAGrupo(Contacto contacto) {
+        
+            if (contactos.contains(contacto))
+                return false;
+            else {
+                contactos.add(contacto);
+                return true;
+                    }
     }
 
     public void excluirContactoDeGrupo(Contacto contacto) {
@@ -53,7 +60,12 @@ public class Grupo {
 
     @Override
     public String toString() {
-        return "Grupo{" + "Nombre=" + nombre + ", Contactos=" + contactos + '}';
+        String contactosString = "\nContactos:\n";
+        for (Contacto contacto : contactos)
+            contactosString += contacto.getNombre()+" " + contacto.getApellido() + "\n";
+        if(contactos.isEmpty())
+            contactosString="";
+        return nombre  + contactosString;
     }
 
     

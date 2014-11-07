@@ -65,15 +65,20 @@ public class Contacto {
 
     @Override
     public String toString() {
-        String telefonosString = "";
+        
+        String telefonosString = "\nTeléfonos:\n";
         for (Telefono tel : telefonos)
             telefonosString += tel;
+        if (telefonos.isEmpty())
+            telefonosString = "";
         
-        String emailsString = "";
+        String emailsString = "\nEmails:\n";
         for (Email email : emails)
             emailsString += email;
+        if (emails.isEmpty())
+            emailsString = "";
         
-        return  nombre + " " + apellido + "\n\nTeléfonos:\n" + telefonosString + "\nEmails:\n" + emailsString + "\n\n";
+        return  nombre + " " + apellido + telefonosString + emailsString + "\n\n";
     }
 
   
@@ -83,8 +88,13 @@ public class Contacto {
      * Opcionalmente, podríamos también revisar si alguno de los telefonos(i).numero 
      * coincide con el que queremos agregar
      */
-    public void agregarTelefono(Telefono telefono) {
-            telefonos.add(telefono);
+    public boolean agregarTelefono(Telefono telefono) {
+        for ( Telefono tel: telefonos){
+            if (tel.getNumero().equals(telefono.getNumero()))
+                return false;
+        }
+        telefonos.add(telefono);
+        return true;
     }
     
     public void eliminarTelefono(Telefono telefono) {
@@ -96,8 +106,14 @@ public class Contacto {
      * @param email
      * TODO: similar al caso de agregarTelefono
      */
-    public void agregarEmail(Email email) {
-            emails.add(email);
+    
+    public boolean agregarEmail(Email email) {
+        for (Email correo : emails){
+            if (email.getCorreo().equals(correo.getCorreo()))
+                return false;
+        }
+        emails.add(email);
+        return true;
     }
 
    
