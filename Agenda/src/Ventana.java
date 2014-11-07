@@ -80,6 +80,7 @@ public class Ventana extends JFrame implements ActionListener{
     }
         
     public void vistaInicial(){
+        vistaActual = 0;
         frame.setTitle("Agenda");
         ArrayList<Contacto> contactos = miAgenda.getContactos();
         
@@ -121,11 +122,9 @@ public class Ventana extends JFrame implements ActionListener{
             boton.setBounds(410, 70 + 50*i, 50, 50);
             botones3.add(boton);
             panel.add(boton);
-            boton.addActionListener(this);
-
-            frame.add(panel);
-            
-        }        
+            boton.addActionListener(this);            
+        }
+        frame.add(panel);
     }
     
     public void vistaDeGrupos(){
@@ -197,7 +196,23 @@ public class Ventana extends JFrame implements ActionListener{
         panel.add(volver);
         frame.add(panel);
             
-    }        
+    }
+    public void verGrupo(Grupo grupo){
+        frame.setTitle("Ver: " + grupo.getNombre());
+        panel.removeAll();
+        panel.repaint();       
+        
+        JLabel infoDeGrupo = new JLabel(grupo.toString());
+        infoDeGrupo.setBounds(20,20,400,400);
+        
+        panel.add(infoDeGrupo);
+        
+        volver.setBounds(300,0,100,30);
+        volver.addActionListener(this);
+            
+        panel.add(volver);
+        frame.add(panel);        
+    }
         
         
     
@@ -216,13 +231,19 @@ public class Ventana extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        int i;
         if (botones1.contains(e.getSource())) {
             System.out.println("Un botón 'VER' fue presionado");
             switch(vistaActual){
                 case 0:
-                    int i = botones1.indexOf(e.getSource());
+                    i = botones1.indexOf(e.getSource());
                     verContacto(miAgenda.getContactos().get(i));
                     break;
+                case 'g':
+                    i = botones1.indexOf(e.getSource());
+                    verGrupo(miAgenda.getGrupos().get(i));
+                    break;
+                    
             }
             
             
@@ -235,7 +256,7 @@ public class Ventana extends JFrame implements ActionListener{
         if (botones3.contains(e.getSource())) {
             switch(vistaActual){
                 case 0:
-                    int i = botones3.indexOf(e.getSource());
+                    i = botones3.indexOf(e.getSource());
                     System.out.println("borrar al contacto" + i);
                     miAgenda.eliminarContacto(miAgenda.getContactos().get(i));
                     vistaInicial();
@@ -253,10 +274,13 @@ public class Ventana extends JFrame implements ActionListener{
         
         if(e.getSource() == volver){
             switch(vistaActual){
+                case 'g':
+                    vistaDeGrupos();
+                    break;
                 default:
                     vistaInicial();
                     break;
-                    
+                
             }
         }
         if(e.getSource() == verGrupos){
