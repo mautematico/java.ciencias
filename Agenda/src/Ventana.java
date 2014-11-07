@@ -186,6 +186,7 @@ public class Ventana extends JFrame implements ActionListener{
         panel.repaint();       
         
         JLabel infoDeContacto = new JLabel(contacto.toString());
+                infoDeContacto.setText(convertirAMultilinea(infoDeContacto));
         infoDeContacto.setBounds(20,20,300,300);
         
         panel.add(infoDeContacto);
@@ -213,7 +214,10 @@ public class Ventana extends JFrame implements ActionListener{
         panel.add(volver);
         frame.add(panel);        
     }
-        
+       
+    public String convertirAMultilinea(JLabel orig){
+        return "<html>" + orig.getText().replaceAll("\n", "<br>");
+    }
         
     
   public static void main(String[] a) {
