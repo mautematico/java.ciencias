@@ -30,9 +30,6 @@ public class Grupo {
         contactos.add(contacto);
     }
 
-    /**
-     * 
-     */
     public void excluirContactoDeGrupo(Contacto contacto) {
         contactos.remove(contacto);
         
