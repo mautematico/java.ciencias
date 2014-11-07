@@ -85,6 +85,11 @@ public class Agenda {
     }
     
     public void eliminarContacto(Contacto contacto){
+        for (Grupo grupo : grupos) {
+            if(grupo.getContactos().contains(contacto)){
+                grupo.excluirContactoDeGrupo(contacto);
+            }
+        }
         contactos.remove(contacto);
     }
     
