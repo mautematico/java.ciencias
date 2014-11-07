@@ -233,6 +233,26 @@ public class Ventana extends JFrame implements ActionListener{
         
         camposDeEntrada.add(new JTextField(contacto.getNombre()));
         camposDeEntrada.add(new JTextField(contacto.getApellido()));
+
+        for (Telefono telefono : contacto.getTelefonos()) {
+            String tipo;
+            switch(telefono.getTipo()){
+                case 1:
+                    tipo = "Celular";
+                    break;
+                case 2:
+                    tipo = "Casa";
+                    break;
+                case 3:
+                    tipo = "Oficina";
+                    break;
+                default:
+                    tipo = "Otro";
+            }
+            
+            etiquetas.add(new JLabel(tipo));
+            camposDeEntrada.add(new JTextField(telefono.getNumero()));
+        }
         
         int i = 0;
         for (JTextField camposDeEntrada1 : camposDeEntrada) {
@@ -243,7 +263,7 @@ public class Ventana extends JFrame implements ActionListener{
         i = 0;
         for (JLabel etiqueta : etiquetas) {
             etiqueta.setLabelFor(camposDeEntrada.get(i));
-            etiqueta.setBounds(10, 20 + 30*i, 100, 20);
+            etiqueta.setBounds(10, 40 + 30*i, 100, 20);
             panel.add(etiqueta);
             i++;
         }
