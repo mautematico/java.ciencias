@@ -1,80 +1,136 @@
-import javax.swing.*;
-import java.awt.event.*;
-import com.google.gson.*;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 public class Ventana extends JFrame implements ActionListener{
-    private JTextField textfield1,textfield2;
-    private JButton boton1;
-    public Ventana() {
-        setLayout(null);
-        textfield1=new JTextField();
-        textfield1.setBounds(10,10,100,30);
-        add(textfield1);
-        textfield2=new JTextField();
-        textfield2.setBounds(10,50,100,30);
-        add(textfield2);
-        boton1=new JButton("Sumar");
-        boton1.setBounds(10,90,100,30);
-        add(boton1);
-        boton1.addActionListener(this);
+    private JFrame frame = new JFrame("Inicio");
+    private JPanel panel = new JPanel();
+    
+    private static Agenda miAgenda;
+    private static int vistaActual;
+    private ArrayList<JTextField> camposDeEntrada;
+    private ArrayList<JLabel> etiquetas;
+    private ArrayList<JButton> botones1;
+    private ArrayList<JButton> botones2;
+    private ArrayList<JButton> botones3;
+
+    
+        public Ventana() {
+        camposDeEntrada = new  ArrayList<>();
+        etiquetas = new ArrayList<>();
+        botones1 = new ArrayList<>();
+        botones2 = new ArrayList<>();
+        botones3 = new ArrayList<>(); 
+        vistaActual = 0;
+        panel = new JPanel();
+        frame = new JFrame();
+        
+        
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JScrollPane pane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+        setContentPane(pane);
+        
     }
-    
-    public void iniciar(){
-        Agenda miAgenda = new Agenda();
-        miAgenda.cargarContactos();
-    }
-    
-    
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==boton1) {
-            String cad1=textfield1.getText();
-            String cad2=textfield2.getText();
-            int x1=Integer.parseInt(cad1);
-            int x2=Integer.parseInt(cad2);
-            int suma=x1+x2;
-            String total=String.valueOf(suma);
-            setTitle(total);
-        }
-    }
-    
-    public static void main(String[] ar) {
-        Ventana formulario1=new Ventana();
-        formulario1.setBounds(0,0,140,150);
-        formulario1.setVisible(true);
-        
-        formulario1.iniciar();
-        
-        
-        /*
-        
-                    Telefono miTelefono = new Telefono("07913128993120");
-            Agenda miAgenda = new Agenda();
+
    
-            miAgenda.ingresarContacto("juan","perez",miTelefono);
+       
+    public void iniciar(){
+//        miAgenda.cargarContactos();
+        miAgenda.importarContactosDeUnArchivo("/tmp/miAgenda.json");
+        System.out.println(miAgenda);
+        vistaInicial();
+    }
  
-            miAgenda.ingresarContacto("juan","sánchez",miTelefono);
-           miAgenda.ingresarContacto("juan","andrade",miTelefono);
-            miAgenda.ingresarContacto("juan","rival",miTelefono);
-            miAgenda.ingresarContacto("juan","real",miTelefono);
+        
+        
+    public void vistaInicial(){
+        frame.setTitle("Agenda");
+        ArrayList<Contacto> contactos = miAgenda.getContactos();
+        
+        panel.removeAll();
+        panel.repaint();
+        
+        etiquetas = new ArrayList<>();
+        botones1 = new ArrayList<>();
+        botones2 = new ArrayList<>();
+        botones3 = new ArrayList<>();
+
+        
+        int i = 0;
+        for (Contacto contacto : contactos) {
+            i++;
+            JLabel fulano = new JLabel(contacto.getNombre() + " "+ contacto.getApellido());
+            fulano.setBounds(10,10 + 50*i,300,50);
+            etiquetas.add(fulano);
+            panel.add(fulano);
             
-            Grupo juanes = miAgenda.crearGrupo("Juanes");
+            JButton boton = new JButton("V");
+            boton.setBounds(320, 10 + 50*i, 50, 50);
+            botones1.add(boton);
+            panel.add(boton);
+            boton.addActionListener(this);
             
-            juanes.asignarContactoAGrupo(miAgenda.getContactos().get(1));
-            juanes.asignarContactoAGrupo(miAgenda.getContactos().get(2));
-            juanes.asignarContactoAGrupo(miAgenda.getContactos().get(3));
-            juanes.asignarContactoAGrupo(miAgenda.getContactos().get(0));
-            
+            boton = new JButton("E");
+            boton.setBounds(370, 10 + 50*i, 50, 50);
+            botones2.add(boton);
+            panel.add(boton);
+            boton.addActionListener(this);
+
+            boton = new JButton("B");
+            boton.setBounds(410, 10 + 50*i, 50, 50);
+            botones3.add(boton);
+            panel.add(boton);
+            boton.addActionListener(this);
 
             
-            Exportador.escribir("miAgenda.json",miAgenda);
+            frame.add(panel);
             
-            Agenda Otra = new Agenda();
-            
-            Otra = Importador.leer("miAgenda.json");
-            System.out.println(miAgenda);
-            System.out.println(Otra);
+        }        
+    }
+        
+        
+    
+  public static void main(String[] a) {
+      
+    miAgenda = new Agenda();
+  
+    Ventana ventana = new Ventana();
+    
+    ventana.iniciar();
+    ventana.frame.setSize(480, 640);
+    ventana.setBounds(0,0,480,640);
 
-*/
+    ventana.frame.setVisible(true);
+  }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (botones1.contains(e.getSource())) {
+            System.out.println("Un botón 'VER' fue presionado");
+            return;
+        }
+        if (botones2.contains(e.getSource())) {
+            System.out.println("Un botón 'EDITAR' fue presionado");
+            return;
+        }
+        if (botones3.contains(e.getSource())) {
+            switch(vistaActual){
+                case 0:
+                    int i = botones3.indexOf(e.getSource());
+                    System.out.println("borrar al contacto" + i);
+                    miAgenda.eliminarContacto(miAgenda.getContactos().get(i));
+                    vistaInicial();
+                    break;
+                    
+            }
+            return;
+        }
         
     }
 }
