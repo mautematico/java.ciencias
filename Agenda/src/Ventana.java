@@ -290,12 +290,12 @@ public class Ventana extends JFrame implements ActionListener{
     }
     public void agregarContacto(){
         Contacto contacto = new Contacto("","", new Telefono("",1));
-        modificarContacto(contacto);
+        modificarContacto(contacto,true);
     }
     
-    public void modificarContacto(final Contacto contacto){
+    public void modificarContacto(final Contacto contacto, boolean esNuevo){
         
-        if(contacto.getNombre().equals(""))
+        if(esNuevo)
             frame.setTitle("Agregar nuevo contacto");
         else
             frame.setTitle("Modificar: " + contacto.getNombre() + " " + contacto.getApellido());
@@ -413,7 +413,7 @@ public class Ventana extends JFrame implements ActionListener{
                     break;
                 case 0:
                     i = botones2.indexOf(e.getSource());
-                    modificarContacto(miAgenda.getContactos().get(i));
+                    modificarContacto(miAgenda.getContactos().get(i),false);
        
             }
             return;
