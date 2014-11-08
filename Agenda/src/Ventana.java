@@ -156,9 +156,9 @@ public class Ventana extends JFrame implements ActionListener{
         };
 
         // Create a new listbox control
-        JList listaBuscar = new JList( listData );
-        listaBuscar.setBounds(50,50,300,100);
-        panel.add( listaBuscar);
+        JComboBox criterioDeBusqueda = new JComboBox(listData);
+        criterioDeBusqueda.setBounds(200,200,300,50);
+        panel.add( criterioDeBusqueda);
         
         JButton buscar = new JButton("Buscar");
         buscar.setBounds(360,180,100,30);
@@ -169,14 +169,14 @@ public class Ventana extends JFrame implements ActionListener{
         panel.add(query);
 
         final ArrayList<Object> objetoBusqueda = new ArrayList<>();
-        objetoBusqueda.add(listaBuscar);
+        objetoBusqueda.add(criterioDeBusqueda);
         objetoBusqueda.add(query);
         
         
         buscar.addActionListener(new Vigilante(objetoBusqueda) {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                JList lista = (JList)objetoBusqueda.get(0);
+                JComboBox lista = (JComboBox)objetoBusqueda.get(0);
                 JTextField query = (JTextField)objetoBusqueda.get(1);
                 String busqueda = query.getText();
                 
