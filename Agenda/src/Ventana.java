@@ -1,9 +1,11 @@
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -78,11 +80,16 @@ public class Ventana extends JFrame implements ActionListener{
         agregar.addActionListener(this);
         panel.add(agregar);
     }
-        
+    
     public void vistaInicial(){
+        vistaDeContactos(null);
+    }
+    public void vistaDeContactos(ArrayList<Contacto> contactos){
         vistaActual = 0;
         frame.setTitle("Agenda");
-        ArrayList<Contacto> contactos = miAgenda.getContactos();
+        
+        if(contactos == null)
+            contactos = miAgenda.getContactos();
         
         panel.removeAll();
         panel.repaint();
@@ -127,6 +134,71 @@ public class Ventana extends JFrame implements ActionListener{
         frame.add(panel);
     }
     
+    public void vistaDeBusqueda(){
+        vistaActual = 'b';
+        
+        frame.setTitle("Buscar contactos");
+        panel.removeAll();
+        panel.repaint();
+        agregarBotonVolver();
+        
+        String	listData[] = {
+                "Por nombre",
+                "Por apellido",
+                "Por teléfono",
+                "Por email"
+//                ,                "Por grupo"
+        };
+
+        // Create a new listbox control
+        JList listaBuscar = new JList( listData );
+        listaBuscar.setBounds(50,50,300,100);
+        panel.add( listaBuscar);
+        
+        JButton buscar = new JButton("Buscar");
+        buscar.setBounds(360,180,100,30);
+        panel.add(buscar);
+        
+        JTextField query = new JTextField("ingresa el término a buscar");
+        query.setBounds(50,180,300,30);
+        panel.add(query);
+
+        final ArrayList<Object> objetoBusqueda = new ArrayList<>();
+        objetoBusqueda.add(listaBuscar);
+        objetoBusqueda.add(query);
+        
+        
+        buscar.addActionListener(new Vigilante(objetoBusqueda) {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                JList lista = (JList)objetoBusqueda.get(0);
+                JTextField query = (JTextField)objetoBusqueda.get(1);
+                String busqueda = query.getText();
+                
+                switch(lista.getSelectedIndex()){
+                    case 0:
+                        vistaDeContactos(miAgenda.consultarContactoPorNombre(busqueda));
+                        break;
+                    case 1:
+                        vistaDeContactos(miAgenda.consultarContactoPorApellido(busqueda));
+                        break;
+                    case 2:
+                        vistaDeContactos(miAgenda.consultarContactoPorTelefono(busqueda));
+                        break;
+                    case 3:
+                        vistaDeContactos(miAgenda.consultarContactoPorEmail(busqueda));
+                        break;
+                    default:
+                        System.out.println("Ninguna opción seleccionada");
+                        break;
+                }
+            }
+        });
+        
+        frame.add(panel);
+        
+    }
+        
     public void vistaDeGrupos(){
         vistaActual = 'g';
         
@@ -371,6 +443,10 @@ public class Ventana extends JFrame implements ActionListener{
         }
         if(e.getSource() == verContactos){
             vistaInicial();
+            return;
+        }
+        if(e.getSource() == goBuscar){
+            vistaDeBusqueda();
             return;
         }
             
