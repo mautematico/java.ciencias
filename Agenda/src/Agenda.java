@@ -72,10 +72,14 @@ public class Agenda {
     private void exportarContactosAUnArchivo(String nombreDelArchivo) {
         Exportador.escribir(nombreDelArchivo, this);
     }
+    
+    public void ingresarContacto(Contacto contacto){
+        contactos.add(contacto);
+    }
 
     public void ingresarContacto(String nombre, String apellido, Telefono telefono){
         Contacto contacto = new Contacto (nombre, apellido, telefono);
-        contactos.add (contacto);
+        contactos.add(contacto);
                 
     }
     
