@@ -212,9 +212,8 @@ public class Ventana extends JFrame implements ActionListener{
         
         panel.add(infoDeGrupo);
         
-        volver.setBounds(300,0,100,30);
-        volver.addActionListener(this);
-            
+        agregarBotonVolver();
+        
         frame.add(panel);        
     }
     public void modificarContacto(final Contacto contacto){
