@@ -18,7 +18,7 @@ public class Email implements Serializable {
     public Email(String correo, int tipo) {
         this.correo = correo;
         
-        if(0 <= tipo && tipo <= 3){
+        if(0 <= tipo && tipo < 3){
             this.tipo = tipo;
         }
         else{

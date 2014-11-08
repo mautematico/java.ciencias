@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -25,6 +26,7 @@ public class Ventana extends JFrame implements ActionListener{
     private ArrayList<JButton> botones1;
     private ArrayList<JButton> botones2;
     private ArrayList<JButton> botones3;
+    private ArrayList<JComboBox> tipos;
 
     
         public Ventana() {
@@ -310,31 +312,36 @@ public class Ventana extends JFrame implements ActionListener{
         botones2 = new ArrayList<>();
         botones3 = new ArrayList<>();
         camposDeEntrada = new ArrayList<>();
+        tipos = new ArrayList<>();
         
         etiquetas.add(new JLabel("Nombre"));
         etiquetas.add(new JLabel("Apellido"));
         
         camposDeEntrada.add(new JTextField(contacto.getNombre()));
         camposDeEntrada.add(new JTextField(contacto.getApellido()));
+        
+        JButton agregarTelefono = new JButton("+Teléfono");
+        agregarTelefono.setBounds(300,40,100,20);
+        panel.add(agregarTelefono);
+
+        JButton agregarEmail = new JButton("+Email");
+        agregarEmail.setBounds(300,60,100,20);
+        panel.add(agregarEmail);
 
         for (Telefono telefono : contacto.getTelefonos()) {
-            String tipo;
-            switch(telefono.getTipo()){
-                case 1:
-                    tipo = "Celular";
-                    break;
-                case 2:
-                    tipo = "Casa";
-                    break;
-                case 3:
-                    tipo = "Oficina";
-                    break;
-                default:
-                    tipo = "Otro";
-            }
-            
-            etiquetas.add(new JLabel(tipo));
+            String[] listaTipos = {"T Otro","T Casa", "T Oficina", "T Celular"};
+            JComboBox combo = new JComboBox(listaTipos);
+            combo.setSelectedIndex(telefono.getTipo());
+            tipos.add(combo);
             camposDeEntrada.add(new JTextField(telefono.getNumero()));
+        }
+
+        for (Email email : contacto.getEmails()) {
+            String[] listaTipos = {"E Otro","E Personal", "E Trabajo", "E Escuela"};
+            JComboBox combo = new JComboBox(listaTipos);
+            combo.setSelectedIndex(email.getTipo());
+            tipos.add(combo);
+            camposDeEntrada.add(new JTextField(email.getCorreo()));
         }
         
         int i = 0;
@@ -350,23 +357,98 @@ public class Ventana extends JFrame implements ActionListener{
             panel.add(etiqueta);
             i++;
         }
+        i = 0;
+        for (JComboBox combo : tipos) {
+            combo.setBounds(10, 40 + 30*(i+2), 100, 20);
+            panel.add(combo);
+            i++;
+        }
         
         agregarBotonVolver();
         
         JButton guardar = new JButton("Guardar");
         guardar.setBounds(0, 400, 70, 20);
         panel.add(guardar);
+
+        agregarTelefono.addActionListener(new Vigilante(null) {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                camposDeEntrada.add(new JTextField("5555555555"));
+                camposDeEntrada.get(camposDeEntrada.size()-1).setBounds(300,100+camposDeEntrada.size()*20,100,40);
+                panel.add(camposDeEntrada.get(camposDeEntrada.size()-1));
                 
+                String[] listaTipos = {"T Otro","T Casa", "T Oficina", "T Celular"};
+
+                JComboBox combo = new JComboBox(listaTipos);
+                combo.setSelectedIndex(0);
+                tipos.add(combo);
+                combo.setBounds(260,80+camposDeEntrada.size()*20,100,40);
+                panel.add(combo);
+
+                
+                panel.repaint();
+            }
+        });
+        
+        agregarEmail.addActionListener(new Vigilante(null) {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                camposDeEntrada.add(new JTextField("aaaa@bbbbb"));
+                camposDeEntrada.get(camposDeEntrada.size()-1).setBounds(200,100+camposDeEntrada.size()*20,100,40);
+                panel.add(camposDeEntrada.get(camposDeEntrada.size()-1));
+                
+                String[] listaTipos = {"E Otro","E Personal", "E Correo", "E Escuela"};
+
+                JComboBox combo = new JComboBox(listaTipos);
+                combo.setSelectedIndex(0);
+                tipos.add(combo);
+                combo.setBounds(220,80+camposDeEntrada.size()*20,100,40);
+                panel.add(combo);
+
+                
+                panel.repaint();
+            }
+        });
+
         guardar.addActionListener(new Vigilante(contacto) {
             @Override
             public void actionPerformed(ActionEvent evt) {
                contacto.setNombre(camposDeEntrada.get(0).getText());
                contacto.setApellido(camposDeEntrada.get(1).getText());
                
+               ArrayList<Telefono> telefonos = new ArrayList<>();
+               ArrayList<Email> emails = new ArrayList<>();
+               
+                int i = 0;
+                for (JTextField campo : camposDeEntrada) {
+                    if(i<=1){
+                     i++;
+                     continue;
+                    }
+                    
+                    String tipo = (String) tipos.get(i-2).getSelectedItem();
+                    if(tipo.contains("T ")){
+                        Telefono telefono = new Telefono(campo.getText(),tipos.get(i-2).getSelectedIndex());
+                        telefonos.add(telefono);
+                    }
+                    if(tipo.contains("E ")){
+                        Email email = new Email(campo.getText(),tipos.get(i-2).getSelectedIndex());
+                        emails.add(email);
+                    }
+                    
+                    
+                    i++;
+                }
+                
+                contacto.setTelefonos(telefonos);
+                contacto.setEmails(emails);
+               
                miAgenda.ingresarContacto(contacto);               
             }
         });
-            frame.add(panel);
+        
+        
+       frame.add(panel);
     }
        
     public String convertirAMultilinea(JLabel orig){

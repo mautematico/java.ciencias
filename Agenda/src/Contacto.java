@@ -125,6 +125,14 @@ public class Contacto implements Serializable{//Inicia la clase contacto
         grupo.getContactos().remove(this);//obtenemos la lista de contactos del grupo dado y eliminamos este contacto de ella
         
     }
+
+    public void setTelefonos(ArrayList<Telefono> telefonos) {
+        this.telefonos = telefonos;
+    }
+
+    public void setEmails(ArrayList<Email> emails) {
+        this.emails = emails;
+    }
    
 
 }
