@@ -36,4 +36,16 @@ public class Exportador {
            }
         }
     }
+    
+    public static void escribirAgenda(String fichero, Agenda agenda) {
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(
+                    new FileOutputStream(fichero));
+                oos.writeObject(agenda);
+            oos.close();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

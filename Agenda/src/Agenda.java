@@ -60,7 +60,7 @@ public class Agenda {
      * 
      */
     public void importarContactosDeUnArchivo(String nombreDelArchivo) {
-        Agenda importada = Importador.leer(nombreDelArchivo);
+        Agenda importada = Importador.leerAgenda(nombreDelArchivo);
         this.contactos = importada.getContactos();
         this.grupos = importada.getGrupos();
     }
@@ -70,7 +70,7 @@ public class Agenda {
      * @param nombreDelArchivo
      */
     private void exportarContactosAUnArchivo(String nombreDelArchivo) {
-        Exportador.escribir(nombreDelArchivo, this);
+        Exportador.escribirAgenda(nombreDelArchivo, this);
     }
 
     public void ingresarContacto(String nombre, String apellido, Telefono telefono){
