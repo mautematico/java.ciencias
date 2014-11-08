@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -375,7 +376,7 @@ public class Ventana extends JFrame implements ActionListener{
         agregarTelefono.addActionListener(new Vigilante(null) {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                camposDeEntrada.add(new JTextField("5555555555"));
+                camposDeEntrada.add(new JTextField("Ingresar Teléfono"));
                 camposDeEntrada.get(camposDeEntrada.size()-1).setBounds(300,100+camposDeEntrada.size()*20,80,20);
                 panel.add(camposDeEntrada.get(camposDeEntrada.size()-1));
                 
@@ -429,12 +430,20 @@ public class Ventana extends JFrame implements ActionListener{
                     }
                     
                     String tipo = (String) tipos.get(i-2).getSelectedItem();
-                    if(tipo.contains("T ")){
+                    if(tipo.contains("T ")){                     
                         Telefono telefono = new Telefono(campo.getText(),tipos.get(i-2).getSelectedIndex());
+                        if(telefono.getNumero().equals("") || telefono.getNumero().equals("Ingresar Teléfono")){
+                            i++;
+                            continue;
+                        }
                         telefonos.add(telefono);
                     }
                     if(tipo.contains("E ")){
                         Email email = new Email(campo.getText(),tipos.get(i-2).getSelectedIndex());
+                        if(email.getCorreo().equals("") || email.getCorreo().equals("correo@example.com")){
+                            i++;
+                            continue;
+                        }
                         emails.add(email);
                     }
                     
@@ -444,8 +453,36 @@ public class Ventana extends JFrame implements ActionListener{
                 
                 contacto.setTelefonos(telefonos);
                 contacto.setEmails(emails);
+                JLabel mensaje = new JLabel();
+                if(contacto.getEmails().size() + contacto.getTelefonos().size() == 0){
+                     mensaje.setText("Ingresa al menos un teléfono o un email.");
+                    mensaje.setBounds(20,20,250,30);
+                    
+                    mensaje.setOpaque(true);
+                    mensaje.setBackground(Color.red);
+                    panel.add(mensaje);
+                    panel.repaint();
+                    return;
+                }
+                if(contacto.getApellido().equals("") || contacto.getNombre().equals("")){
+                    mensaje.setText("El nombre y el apellido son obligatorios");
+                    mensaje.setBounds(20,0,250,30);
+                    
+                    mensaje.setOpaque(true);
+                    mensaje.setBackground(Color.red);
+                    panel.add(mensaje);
+                    panel.repaint();
+                    return;
+                    
+                }
                
                miAgenda.ingresarContacto(contacto);               
+                    mensaje.setText("Contacto guardado con éxito.");
+                    mensaje.setBounds(20,50,250,30);
+                    mensaje.setOpaque(true);
+                    mensaje.setBackground(Color.green);
+                    panel.add(mensaje);
+                    panel.repaint();
             }
         });
         
