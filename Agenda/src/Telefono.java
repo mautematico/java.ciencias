@@ -1,9 +1,10 @@
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  */
-public class Telefono {
+public class Telefono implements Serializable {
 
     private String numero;
     private int tipo;

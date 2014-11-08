@@ -1,6 +1,7 @@
 //Hecho por: Arévalo Loyola Alma Rosario, Gutiérrez Guillén Gabriela Jocelyn, Navarro Miranda Mauricio
+import java.io.Serializable;
 import java.util.*;//Importamos el paquete java.util
-public class Contacto {//Inicia la clase contacto
+public class Contacto implements Serializable{//Inicia la clase contacto
     //Declaramos las variables de instancia
     private String nombre;
     private String apellido;

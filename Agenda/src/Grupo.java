@@ -1,10 +1,11 @@
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class Grupo {
+public class Grupo implements Serializable {
   
     private String nombre;
     private ArrayList<Contacto> contactos;

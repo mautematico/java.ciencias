@@ -1,10 +1,11 @@
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class Email {
+public class Email implements Serializable {
     /**
      * 
      */

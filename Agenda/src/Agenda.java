@@ -1,9 +1,10 @@
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class Agenda {
+public class Agenda implements Serializable{
 
     private ArrayList<Contacto> contactos;
     private ArrayList<Grupo> grupos;
@@ -23,7 +24,7 @@ public class Agenda {
             this.grupos = grupos;
         else
             this.grupos = new ArrayList<>();        
-        if(archivo != null)
+        if(archivo != null && archivo.equals(""))
             this.archivo = archivo;
         else
             archivo = "miAgenda.json";
@@ -39,7 +40,7 @@ public class Agenda {
     
     
     public void cargarContactos(){
-        if(archivo == null)
+        if(archivo == null | archivo.equals(""))
             archivo = "miAgenda.json";
         importarContactosDeUnArchivo(archivo);
     }
@@ -47,11 +48,9 @@ public class Agenda {
     /**
      * 
      */
-    public void guardarCambios() {
-        guardarCambios(null);
-    }
-    public void guardarCambios(String archivo){
-        if(archivo == null)
+
+    public void guardarCambios(){
+        if(archivo == null | archivo.equals(""))
             archivo = "miAgenda.json";
         exportarContactosAUnArchivo(archivo);
     }
@@ -182,6 +181,14 @@ public class Agenda {
 
     public void setGrupos(ArrayList<Grupo> grupos) {
         this.grupos = grupos;
+    }
+
+    public String getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(String archivo) {
+        this.archivo = archivo;
     }
     
 }

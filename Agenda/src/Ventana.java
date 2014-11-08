@@ -14,7 +14,9 @@ public class Ventana extends JFrame implements ActionListener{
     private JPanel panel = new JPanel();
     private JButton volver = new JButton("Volver");
     private JScrollPane scrollPanel;
-    private JButton verContactos, verGrupos, goBuscar, goAjustes, botonAgregar;
+    private JButton verContactos, verGrupos, goBuscar, goAjustes, botonAgregar, exportar, importar;
+    private JTextField archivo;
+    
     
     private static Agenda miAgenda;
     private static int vistaActual;
@@ -371,7 +373,31 @@ public class Ventana extends JFrame implements ActionListener{
     public String convertirAMultilinea(JLabel orig){
         return "<html>" + orig.getText().replaceAll("\n", "<br>");
     }
+    
+    public void vistaAjustes(){
+        panel.removeAll();
+        panel.repaint();
+        agregarBotonVolver();
         
+        archivo = new JTextField(miAgenda.getArchivo());
+        archivo.setBounds(50, 50, 200, 20);
+        
+        exportar = new JButton ("Exportar");
+        importar = new JButton ("Importar");
+        importar.setBounds(250,50,100,20);
+        exportar.setBounds(350,50,100,20);
+        
+        exportar.addActionListener(this);
+        importar.addActionListener(this);
+        
+        panel.add(archivo);
+        panel.add(exportar);
+        panel.add(importar);
+        
+        
+        frame.add(panel);
+    }
+    
     
   public static void main(String[] a) {
       
@@ -465,7 +491,20 @@ public class Ventana extends JFrame implements ActionListener{
             agregarContacto();
             return;
         }
+        if(e.getSource() == goAjustes){
+            vistaAjustes();
+            return;
+        }
             
+        if(e.getSource() == importar){
+            miAgenda.importarContactosDeUnArchivo(archivo.getText());
+            return;
+        }
+        if(e.getSource() == exportar){
+            miAgenda.setArchivo(archivo.getText());
+            miAgenda.guardarCambios();
+            return;
+        }
         
     }
 }
