@@ -173,6 +173,7 @@ public class Ventana extends JFrame implements ActionListener{
             panel.add(boton);
             boton.addActionListener(this);
 
+            agregarBotonVolver();
             frame.add(panel);
             
         }        
