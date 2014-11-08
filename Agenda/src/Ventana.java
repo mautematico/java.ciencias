@@ -54,7 +54,7 @@ public class Ventana extends JFrame implements ActionListener{
        
     public void iniciar(){
         miAgenda.cargarContactos();
-        System.out.println(miAgenda);
+//        System.out.println(miAgenda);
         vistaInicial();
     }
  
@@ -295,7 +295,8 @@ public class Ventana extends JFrame implements ActionListener{
         frame.add(panel);        
     }
     public void agregarContacto(){
-        Contacto contacto = new Contacto("","", new Telefono("",1));
+        Contacto contacto = new Contacto("","", new Telefono("Ingresar Teléfono",0));
+        contacto.agregarEmail(new Email("correo@example.com"));
         modificarContacto(contacto,true);
     }
     
@@ -537,7 +538,7 @@ public class Ventana extends JFrame implements ActionListener{
         int i;
         
         if (botones1.contains(e.getSource())) {
-            System.out.println("Un botón 'VER' fue presionado");
+//            System.out.println("Un botón 'VER' fue presionado");
             switch(vistaActual){
                 case 0:
                     i = botones1.indexOf(e.getSource());
@@ -554,7 +555,7 @@ public class Ventana extends JFrame implements ActionListener{
             return;
         }
         if (botones2.contains(e.getSource())) {
-            System.out.println("Un botón 'EDITAR' fue presionado");
+//            System.out.println("Un botón 'EDITAR' fue presionado");
             switch(vistaActual){
                 case 'g':
                     break;
@@ -569,13 +570,13 @@ public class Ventana extends JFrame implements ActionListener{
             switch(vistaActual){
                 case 0:
                     i = botones3.indexOf(e.getSource());
-                    System.out.println("borrar al contacto" + i);
+//                    System.out.println("borrar al contacto" + i);
                     miAgenda.eliminarContacto(miAgenda.getContactos().get(i));
                     vistaInicial();
                     break;
                 case 'g':
                     int j = botones3.indexOf(e.getSource());
-                    System.out.println("borrar al grupo" + j);
+//                    System.out.println("borrar al grupo" + j);
                     miAgenda.eliminarGrupo(miAgenda.getGrupos().get(j));
                     vistaDeGrupos();
                     break;
