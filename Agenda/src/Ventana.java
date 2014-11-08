@@ -155,18 +155,19 @@ public class Ventana extends JFrame implements ActionListener{
 //                ,                "Por grupo"
         };
 
+        JTextField query = new JTextField("ingresa el término a buscar");
+        query.setBounds(50,100,200,30);
+        panel.add(query);
+
         // Create a new listbox control
         JComboBox criterioDeBusqueda = new JComboBox(listData);
-        criterioDeBusqueda.setBounds(200,200,300,50);
+        criterioDeBusqueda.setBounds(250,100,100,30);
         panel.add( criterioDeBusqueda);
         
         JButton buscar = new JButton("Buscar");
-        buscar.setBounds(360,180,100,30);
+        buscar.setBounds(380,100,80,30);
         panel.add(buscar);
         
-        JTextField query = new JTextField("ingresa el término a buscar");
-        query.setBounds(50,180,300,30);
-        panel.add(query);
 
         final ArrayList<Object> objetoBusqueda = new ArrayList<>();
         objetoBusqueda.add(criterioDeBusqueda);
