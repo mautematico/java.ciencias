@@ -1,19 +1,13 @@
-
-import java.util.*;
-
-/**
- * 
- */
-public class Contacto {
-    
+//Hecho por: Arévalo Loyola Alma Rosario, Gutiérrez Guillén Gabriela Jocelyn, Navarro Miranda Mauricio
+import java.util.*;//Importamos el paquete java.util
+public class Contacto {//Inicia la clase contacto
+    //Declaramos las variables de instancia
     private String nombre;
     private String apellido;
     private ArrayList<Telefono> telefonos;
     private ArrayList<Email> emails;
 
-    /**
-     * 
-     */
+  //Creamos constructores
     public Contacto(String nombre, String apellido, Telefono telefono, Email email) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -38,7 +32,7 @@ public class Contacto {
         this(nombre, apellido, null, email);
     }
 
-
+//Creamos metodos accesores para esta clase y sobreescribimos el metodo toString
     public String getNombre() {
         return nombre;
     }
@@ -83,7 +77,6 @@ public class Contacto {
 
   
    /**
-     * @param telefono
      * TODO: Agregar el teléfono a la lista solamente si no está ya en ella
      * Opcionalmente, podríamos también revisar si alguno de los telefonos(i).numero 
      * coincide con el que queremos agregar
@@ -102,8 +95,6 @@ public class Contacto {
     }
 
     /**
-     * 
-     * @param email
      * TODO: similar al caso de agregarTelefono
      */
     
@@ -118,24 +109,19 @@ public class Contacto {
 
    
     public void eliminarEmail(Email email) {
-            emails.remove(email);
+            emails.remove(email);//eliminamos el email dado de la lista de eails
     }
     
     /**
-     * 
-     * @param grupo 
      * TODO: similar al caso de agregarTelefono
      */
     public void asignarContactoAGrupo(Grupo grupo) {
         grupo.getContactos().add(this);
     }
 
-    /**
-     * 
-     * @param grupo 
-     */
+
     public void excluirContactoDeGrupo(Grupo grupo) {
-        grupo.getContactos().remove(this);
+        grupo.getContactos().remove(this);//obtenemos la lista de contactos del grupo dado y eliminamos este contacto de ella
         
     }
    
