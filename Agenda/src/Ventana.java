@@ -59,29 +59,29 @@ public class Ventana extends JFrame implements ActionListener{
  
     private void mostrarBotonesBuscarYAjustes(){
         goBuscar = new JButton("Q");
-        goBuscar.setBounds(350,0,50,50);
+        goBuscar.setBounds(430-50,0,50,50);
         goBuscar.addActionListener(this);
         panel.add(goBuscar);
 
         goAjustes = new JButton("Aj");
-        goAjustes.setBounds(410,0,50,50);
+        goAjustes.setBounds(430,0,50,50);
         goAjustes.addActionListener(this);
         panel.add(goAjustes);
 
     }
     private void mostrarBotonesContactosYGrupos(){
         verContactos = new JButton("Contactos");
-        verContactos.setBounds(50,50,150,50);
+        verContactos.setBounds(130,50,150,50);
         verContactos.addActionListener(this);
         panel.add(verContactos);
 
         verGrupos = new JButton("Grupos");
-        verGrupos.setBounds(200,50,150,50);
+        verGrupos.setBounds(280,50,150,50);
         verGrupos.addActionListener(this);
         panel.add(verGrupos);
         
         botonAgregar = new JButton("+");
-        botonAgregar.setBounds(400,50,50,50);
+        botonAgregar.setBounds(430,50,50,50);
         botonAgregar.addActionListener(this);
         panel.add(botonAgregar);
     }
@@ -119,13 +119,13 @@ public class Ventana extends JFrame implements ActionListener{
             panel.add(fulano);
             
             JButton boton = new JButton("V");
-            boton.setBounds(320, 70 + 50*i, 50, 50);
+            boton.setBounds(310, 70 + 50*i, 50, 50);
             botones1.add(boton);
             panel.add(boton);
             boton.addActionListener(this);
             
             boton = new JButton("E");
-            boton.setBounds(370, 70 + 50*i, 50, 50);
+            boton.setBounds(410-50, 70 + 50*i, 50, 50);
             botones2.add(boton);
             panel.add(boton);
             boton.addActionListener(this);
@@ -256,7 +256,7 @@ public class Ventana extends JFrame implements ActionListener{
         
     }
     private void agregarBotonVolver(){
-        volver.setBounds(300,0,100,30);
+        volver.setBounds(400,0,80,30);
         volver.addActionListener(this);    
         panel.add(volver);       
     }
@@ -346,20 +346,20 @@ public class Ventana extends JFrame implements ActionListener{
         
         int i = 0;
         for (JTextField camposDeEntrada1 : camposDeEntrada) {
-            camposDeEntrada1.setBounds(20, 50 + 30*i, 100, 20);
+            camposDeEntrada1.setBounds(50, 100 + 40*i, 100, 20);
             panel.add(camposDeEntrada1);
             i++;
         }
         i = 0;
         for (JLabel etiqueta : etiquetas) {
             etiqueta.setLabelFor(camposDeEntrada.get(i));
-            etiqueta.setBounds(10, 40 + 30*i, 100, 20);
+            etiqueta.setBounds(30, 80 + 40*i, 100, 20);
             panel.add(etiqueta);
             i++;
         }
         i = 0;
         for (JComboBox combo : tipos) {
-            combo.setBounds(10, 40 + 30*(i+2), 100, 20);
+            combo.setBounds(150, 100 + 40*(i+2), 80, 20);
             panel.add(combo);
             i++;
         }
@@ -367,14 +367,15 @@ public class Ventana extends JFrame implements ActionListener{
         agregarBotonVolver();
         
         JButton guardar = new JButton("Guardar");
-        guardar.setBounds(0, 400, 70, 20);
+        guardar.setBounds(320,0,80,30);
+
         panel.add(guardar);
 
         agregarTelefono.addActionListener(new Vigilante(null) {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 camposDeEntrada.add(new JTextField("5555555555"));
-                camposDeEntrada.get(camposDeEntrada.size()-1).setBounds(300,100+camposDeEntrada.size()*20,100,40);
+                camposDeEntrada.get(camposDeEntrada.size()-1).setBounds(300,100+camposDeEntrada.size()*20,80,20);
                 panel.add(camposDeEntrada.get(camposDeEntrada.size()-1));
                 
                 String[] listaTipos = {"T Otro","T Casa", "T Oficina", "T Celular"};
@@ -382,7 +383,7 @@ public class Ventana extends JFrame implements ActionListener{
                 JComboBox combo = new JComboBox(listaTipos);
                 combo.setSelectedIndex(0);
                 tipos.add(combo);
-                combo.setBounds(260,80+camposDeEntrada.size()*20,100,40);
+                combo.setBounds(380,100+camposDeEntrada.size()*20,60,20);
                 panel.add(combo);
 
                 
@@ -393,8 +394,8 @@ public class Ventana extends JFrame implements ActionListener{
         agregarEmail.addActionListener(new Vigilante(null) {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                camposDeEntrada.add(new JTextField("aaaa@bbbbb"));
-                camposDeEntrada.get(camposDeEntrada.size()-1).setBounds(200,100+camposDeEntrada.size()*20,100,40);
+                camposDeEntrada.add(new JTextField("correo@example.com"));
+                camposDeEntrada.get(camposDeEntrada.size()-1).setBounds(300,100+camposDeEntrada.size()*20,80,20);
                 panel.add(camposDeEntrada.get(camposDeEntrada.size()-1));
                 
                 String[] listaTipos = {"E Otro","E Personal", "E Correo", "E Escuela"};
@@ -402,7 +403,7 @@ public class Ventana extends JFrame implements ActionListener{
                 JComboBox combo = new JComboBox(listaTipos);
                 combo.setSelectedIndex(0);
                 tipos.add(combo);
-                combo.setBounds(220,80+camposDeEntrada.size()*20,100,40);
+                combo.setBounds(380,100+camposDeEntrada.size()*20,60,20);
                 panel.add(combo);
 
                 
