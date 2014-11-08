@@ -50,8 +50,7 @@ public class Ventana extends JFrame implements ActionListener{
    
        
     public void iniciar(){
-//        miAgenda.cargarContactos();
-        miAgenda.importarContactosDeUnArchivo("/tmp/miAgenda.json");
+        miAgenda.cargarContactos();
         System.out.println(miAgenda);
         vistaInicial();
     }
@@ -497,7 +496,8 @@ public class Ventana extends JFrame implements ActionListener{
         }
             
         if(e.getSource() == importar){
-            miAgenda.importarContactosDeUnArchivo(archivo.getText());
+            miAgenda.setArchivo(archivo.getText());
+            miAgenda.cargarContactos();
             return;
         }
         if(e.getSource() == exportar){

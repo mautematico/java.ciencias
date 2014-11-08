@@ -24,7 +24,7 @@ public class Agenda implements Serializable{
             this.grupos = grupos;
         else
             this.grupos = new ArrayList<>();        
-        if(archivo != null && archivo.equals(""))
+        if(archivo != null || archivo.equals(""))
             this.archivo = archivo;
         else
             archivo = "miAgenda.json";
@@ -40,7 +40,7 @@ public class Agenda implements Serializable{
     
     
     public void cargarContactos(){
-        if(archivo == null | archivo.equals(""))
+        if(archivo == null || archivo.equals(""))
             archivo = "miAgenda.json";
         importarContactosDeUnArchivo(archivo);
     }
@@ -50,7 +50,7 @@ public class Agenda implements Serializable{
      */
 
     public void guardarCambios(){
-        if(archivo == null | archivo.equals(""))
+        if(archivo == null || archivo.equals(""))
             archivo = "miAgenda.json";
         exportarContactosAUnArchivo(archivo);
     }
