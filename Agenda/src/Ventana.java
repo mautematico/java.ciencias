@@ -13,7 +13,7 @@ public class Ventana extends JFrame implements ActionListener{
     private JFrame frame = new JFrame("Inicio");
     private JPanel panel = new JPanel();
     private JButton volver = new JButton("Volver");
-    
+    private JScrollPane scrollPanel;
     private JButton verContactos, verGrupos, goBuscar, goAjustes, botonAgregar;
     
     private static Agenda miAgenda;
@@ -37,9 +37,11 @@ public class Ventana extends JFrame implements ActionListener{
         
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JScrollPane pane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPanel = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPanel.setBounds(0,0,400,400);
 
-        setContentPane(pane);
+//        frame.setContentPane(pane);
+//        frame.add(scrollPanel);
         
     }
 
@@ -245,7 +247,6 @@ public class Ventana extends JFrame implements ActionListener{
             panel.add(boton);
             boton.addActionListener(this);
 
-            agregarBotonVolver();
             frame.add(panel);
             
         }        
