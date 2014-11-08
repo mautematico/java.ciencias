@@ -234,13 +234,13 @@ public class Ventana extends JFrame implements ActionListener{
             panel.add(circulo);
             
             JButton boton = new JButton("V");
-            boton.setBounds(320, 70 + 50*i, 50, 50);
+            boton.setBounds(310, 70 + 50*i, 50, 50);
             botones1.add(boton);
             panel.add(boton);
             boton.addActionListener(this);
             
             boton = new JButton("E");
-            boton.setBounds(370, 70 + 50*i, 50, 50);
+            boton.setBounds(410-50, 70 + 50*i, 50, 50);
             botones2.add(boton);
             panel.add(boton);
             boton.addActionListener(this);
