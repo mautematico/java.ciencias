@@ -73,8 +73,13 @@ public class Agenda {
         Exportador.escribirAgenda(nombreDelArchivo, this);
     }
     
-    public void ingresarContacto(Contacto contacto){
-        contactos.add(contacto);
+    public boolean ingresarContacto(Contacto contacto){
+        if (contactos.contains(contacto))
+            return false;
+        else{
+            contactos.add(contacto);
+            return true;
+        }
     }
 
     public void ingresarContacto(String nombre, String apellido, Telefono telefono){
