@@ -14,7 +14,7 @@ public class Ventana extends JFrame implements ActionListener{
     private JPanel panel = new JPanel();
     private JButton volver = new JButton("Volver");
     
-    private JButton verContactos, verGrupos, goBuscar, goAjustes, agregar;
+    private JButton verContactos, verGrupos, goBuscar, goAjustes, botonAgregar;
     
     private static Agenda miAgenda;
     private static int vistaActual;
@@ -75,10 +75,10 @@ public class Ventana extends JFrame implements ActionListener{
         verGrupos.addActionListener(this);
         panel.add(verGrupos);
         
-        agregar = new JButton("+");
-        agregar.setBounds(400,50,50,50);
-        agregar.addActionListener(this);
-        panel.add(agregar);
+        botonAgregar = new JButton("+");
+        botonAgregar.setBounds(400,50,50,50);
+        botonAgregar.addActionListener(this);
+        panel.add(botonAgregar);
     }
     
     public void vistaInicial(){
@@ -288,8 +288,17 @@ public class Ventana extends JFrame implements ActionListener{
         
         frame.add(panel);        
     }
+    public void agregarContacto(){
+        Contacto contacto = new Contacto("","", new Telefono("",1));
+        modificarContacto(contacto);
+    }
+    
     public void modificarContacto(final Contacto contacto){
-        frame.setTitle("Modificar: " + contacto.getNombre() + " " + contacto.getApellido());
+        
+        if(contacto.getNombre().equals(""))
+            frame.setTitle("Agregar nuevo contacto");
+        else
+            frame.setTitle("Modificar: " + contacto.getNombre() + " " + contacto.getApellido());
 
         panel.removeAll();
         panel.repaint();       
@@ -351,6 +360,8 @@ public class Ventana extends JFrame implements ActionListener{
             public void actionPerformed(ActionEvent evt) {
                contacto.setNombre(camposDeEntrada.get(0).getText());
                contacto.setApellido(camposDeEntrada.get(1).getText());
+               
+               miAgenda.ingresarContacto(contacto);               
             }
         });
             frame.add(panel);
@@ -447,6 +458,10 @@ public class Ventana extends JFrame implements ActionListener{
         }
         if(e.getSource() == goBuscar){
             vistaDeBusqueda();
+            return;
+        }
+        if(e.getSource() == botonAgregar){
+            agregarContacto();
             return;
         }
             
