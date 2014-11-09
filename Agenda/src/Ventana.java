@@ -93,8 +93,14 @@ public class Ventana extends JFrame implements ActionListener{
         vistaDeContactos(null);
     }
     public void vistaDeContactos(ArrayList<Contacto> contactos){
+        vistaDeContactos(contactos,null);
+    }
+    public void vistaDeContactos(ArrayList<Contacto> contactos, Grupo grupo){
         vistaActual = 0;
-        frame.setTitle("Agenda");
+        if(grupo != null)
+            frame.setTitle("Contactos del grupo " + grupo.getNombre());
+        else
+            frame.setTitle("Agenda");
         
         if(contactos == null)
             contactos = miAgenda.getContactos();
@@ -282,6 +288,8 @@ public class Ventana extends JFrame implements ActionListener{
             
     }
     public void verGrupo(Grupo grupo){
+        vistaDeContactos(grupo.getContactos(),grupo);
+/*
         frame.setTitle("Ver: " + grupo.getNombre());
         panel.removeAll();
         panel.repaint();       
@@ -295,7 +303,7 @@ public class Ventana extends JFrame implements ActionListener{
         agregarBotonVolver();
         
         frame.add(panel);        
-    }
+ */   }
 
     public void agregarContactosAGrupo(final Grupo grupo){
         vistaActual = 'g';
@@ -681,13 +689,15 @@ public class Ventana extends JFrame implements ActionListener{
         int i;
         
         if (botones1.contains(e.getSource())) {
-//            System.out.println("Un botón 'VER' fue presionado");
+            System.out.println("Un botón 'VER' fue presionado");
             switch(vistaActual){
                 case 0:
+                    System.out.println("case 0");
                     i = botones1.indexOf(e.getSource());
                     verContacto(miAgenda.getContactos().get(i));
                     break;
                 case 'g':
+                    System.out.println("case g");
                     i = botones1.indexOf(e.getSource());
                     verGrupo(miAgenda.getGrupos().get(i));
                     break;
