@@ -194,5 +194,9 @@ public class Agenda implements Serializable{
     public void setArchivo(String archivo) {
         this.archivo = archivo;
     }
+    public void insertarGrupo(Grupo grupo){
+        if(! grupos.contains(grupo))
+            grupos.add(grupo);
+    }
     
 }
