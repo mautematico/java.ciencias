@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,6 +29,7 @@ public class Ventana extends JFrame implements ActionListener{
     private ArrayList<JButton> botones2;
     private ArrayList<JButton> botones3;
     private ArrayList<JComboBox> tipos;
+    private ArrayList<JCheckBox> checkboxes;
 
     
         public Ventana() {
@@ -294,6 +296,55 @@ public class Ventana extends JFrame implements ActionListener{
         
         frame.add(panel);        
     }
+
+    public void agregarContactosAGrupo(final Grupo grupo){
+        vistaActual = 'g';
+        frame.setTitle("Contactos en el grupo " + grupo.getNombre() );
+        
+        ArrayList<Contacto> contactos = miAgenda.getContactos();
+        
+        panel.removeAll();
+        panel.repaint();
+                
+        checkboxes = new ArrayList<>();
+        
+
+        
+        //Aquí van los botones Buscar y AJustes (parte superior), 
+        //y los botones para cambiar entre contactos y grupos
+        mostrarBotonesBuscarYAjustes();
+        mostrarBotonesContactosYGrupos();
+        
+        int i = 0;
+        for (Contacto contacto : contactos) {
+            i++;
+            
+            JCheckBox fulano =new JCheckBox(contacto.getNombre() + " "+ contacto.getApellido());
+                   
+           
+            fulano.setBounds(50,70 + 50*i,300,20);
+            checkboxes.add(fulano);
+            panel.add(fulano);
+  //          fulano.addActionListener(this);
+
+            fulano.addActionListener(new Vigilante(grupo) {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    int i = checkboxes.indexOf(e.getSource());
+                    grupo.asignarContactoAGrupo(miAgenda.getContactos().get(i));
+                    panel.repaint();
+                }
+            });
+
+            
+            
+
+
+            
+        }
+        frame.add(panel);
+    }
+
     public void agregarContacto(){
         Contacto contacto = new Contacto("","", new Telefono("Ingresar Teléfono",0));
         contacto.agregarEmail(new Email("correo@example.com"));
@@ -542,11 +593,11 @@ public class Ventana extends JFrame implements ActionListener{
 
         panel.add(guardar);
 
-        agregarContacto.addActionListener(new Vigilante(null) {
+        agregarContacto.addActionListener(new Vigilante(grupo) {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 guardar.doClick();
-                
+                agregarContactosAGrupo(grupo);                
           }
         });
         
@@ -570,7 +621,7 @@ public class Ventana extends JFrame implements ActionListener{
                     
                 }
                
-               miAgenda.crearGrupo(grupo.getNombre());
+               miAgenda.insertarGrupo(grupo);
                     mensaje.setText("Grupo guardado con éxito.");
                     mensaje.setBounds(20,50,250,30);
                     mensaje.setOpaque(true);
@@ -727,6 +778,7 @@ public class Ventana extends JFrame implements ActionListener{
             miAgenda.guardarCambios();
             return;
         }
-        
-    }
+            
+            return;
+        }            
 }
