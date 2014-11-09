@@ -299,6 +299,10 @@ public class Ventana extends JFrame implements ActionListener{
         contacto.agregarEmail(new Email("correo@example.com"));
         modificarContacto(contacto,true);
     }
+    public void agregarGrupo(){
+        Grupo grupo = new Grupo("Inserta nomrbe del grupo");
+        modificarGrupo(grupo,true);
+    }
     
     public void modificarContacto(final Contacto contacto, boolean esNuevo){
         
@@ -491,6 +495,106 @@ public class Ventana extends JFrame implements ActionListener{
        frame.add(panel);
     }
        
+    public void modificarGrupo(final Grupo grupo, boolean esNuevo){
+        
+        if(esNuevo)
+            frame.setTitle("Agregar nuevo grupo");
+        else
+            frame.setTitle("Modificar: " + grupo.getNombre() );
+
+        panel.removeAll();
+        panel.repaint();       
+        
+        etiquetas = new ArrayList<>();
+        botones1 = new ArrayList<>();
+        botones2 = new ArrayList<>();
+        botones3 = new ArrayList<>();
+        camposDeEntrada = new ArrayList<>();
+        tipos = new ArrayList<>();
+        
+        etiquetas.add(new JLabel("Nombre de grupo:"));
+        
+        camposDeEntrada.add(new JTextField(grupo.getNombre()));
+        
+        JButton agregarContacto = new JButton("+Contacto");
+        agregarContacto.setBounds(300,40,100,40);
+        panel.add(agregarContacto);
+
+
+        int i = 0;
+        for (JTextField camposDeEntrada1 : camposDeEntrada) {
+            camposDeEntrada1.setBounds(50, 100 + 40*i, 100, 20);
+            panel.add(camposDeEntrada1);
+            i++;
+        }
+        i = 0;
+        for (JLabel etiqueta : etiquetas) {
+            etiqueta.setLabelFor(camposDeEntrada.get(i));
+            etiqueta.setBounds(30, 80 + 40*i, 100, 20);
+            panel.add(etiqueta);
+            i++;
+        }
+        
+        agregarBotonVolver();
+        
+        JButton guardar = new JButton("Guardar");
+        guardar.setBounds(320,0,80,30);
+
+        panel.add(guardar);
+
+        agregarContacto.addActionListener(new Vigilante(null) {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+/*                camposDeEntrada.add(new JTextField("Ingresar Teléfono"));
+                camposDeEntrada.get(camposDeEntrada.size()-1).setBounds(300,100+camposDeEntrada.size()*20,80,20);
+                panel.add(camposDeEntrada.get(camposDeEntrada.size()-1));
+                
+                String[] listaTipos = {"T Otro","T Casa", "T Oficina", "T Celular"};
+
+                JComboBox combo = new JComboBox(listaTipos);
+                combo.setSelectedIndex(0);
+                tipos.add(combo);
+                combo.setBounds(380,100+camposDeEntrada.size()*20,60,20);
+                panel.add(combo);
+
+                
+                panel.repaint();
+  */          }
+        });
+        
+    
+        guardar.addActionListener(new Vigilante(grupo) {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+               grupo.setNombre(camposDeEntrada.get(0).getText());
+               
+               JLabel mensaje = new JLabel();
+               
+                if(grupo.getNombre().equals("") || grupo.getNombre().equals("Inserta nomrbe del grupo")){
+                    mensaje.setText("El nombre del grupo es obligatorio");
+                    mensaje.setBounds(20,0,250,30);
+                    
+                    mensaje.setOpaque(true);
+                    mensaje.setBackground(Color.red);
+                    panel.add(mensaje);
+                    panel.repaint();
+                    return;
+                    
+                }
+               
+               miAgenda.crearGrupo(grupo.getNombre());
+                    mensaje.setText("Grupo guardado con éxito.");
+                    mensaje.setBounds(20,50,250,30);
+                    mensaje.setOpaque(true);
+                    mensaje.setBackground(Color.green);
+                    panel.add(mensaje);
+                    panel.repaint();
+            }
+        });
+        
+        
+       frame.add(panel);
+    }
     public String convertirAMultilinea(JLabel orig){
         return "<html>" + orig.getText().replaceAll("\n", "<br>");
     }
@@ -558,6 +662,8 @@ public class Ventana extends JFrame implements ActionListener{
 //            System.out.println("Un botón 'EDITAR' fue presionado");
             switch(vistaActual){
                 case 'g':
+                    i = botones2.indexOf(e.getSource());
+                    modificarGrupo(miAgenda.getGrupos().get(i),false);
                     break;
                 case 0:
                     i = botones2.indexOf(e.getSource());
@@ -609,7 +715,13 @@ public class Ventana extends JFrame implements ActionListener{
             return;
         }
         if(e.getSource() == botonAgregar){
-            agregarContacto();
+            switch(vistaActual){
+                case 'g':
+                    agregarGrupo();
+                    break;
+                default:
+                    agregarContacto();
+            }
             return;
         }
         if(e.getSource() == goAjustes){
