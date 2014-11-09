@@ -2,20 +2,13 @@
 import java.io.Serializable;
 import java.util.*;
 
-/**
- * 
- */
+
 public class Email implements Serializable {
-    /**
-     * 
-     */
+    
 //creamos variables de instacia para la clase email
     private String correo;
     private int tipo;
 
-    /**
-     * @param correo: correo
-     */
 //creamos constructores verificando que el tipo este en los rangos 
     public Email(String correo, int tipo) {
         this.correo = correo;
