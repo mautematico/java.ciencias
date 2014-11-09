@@ -1,4 +1,4 @@
-
+//Hecho por: Arévalo Loyola Alma Rosario, Gutiérrez Guillén Gabriela Jocelyn, Navarro Miranda Mauricio
 import java.io.Serializable;
 import java.util.*;
 
@@ -9,12 +9,14 @@ public class Email implements Serializable {
     /**
      * 
      */
+//creamos variables de instacia para la clase email
     private String correo;
     private int tipo;
 
     /**
      * @param correo: correo
      */
+//creamos constructores verificando que el tipo este en los rangos 
     public Email(String correo, int tipo) {
         this.correo = correo;
         
@@ -30,7 +32,7 @@ public class Email implements Serializable {
         this(correo,0);
     }
     
-    
+//creamos metodos accesores para esta clase     
     public String getCorreo() {
         return correo;
     }
@@ -46,7 +48,7 @@ public class Email implements Serializable {
     public void setTipo(int tipo) {
         this.tipo = tipo;
     }
-
+//sobreescribimos el metodo toString
     @Override
     public String toString(){
         switch(tipo){
