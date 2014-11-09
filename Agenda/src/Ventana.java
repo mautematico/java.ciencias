@@ -537,7 +537,7 @@ public class Ventana extends JFrame implements ActionListener{
         
         agregarBotonVolver();
         
-        JButton guardar = new JButton("Guardar");
+        final JButton guardar = new JButton("Guardar");
         guardar.setBounds(320,0,80,30);
 
         panel.add(guardar);
@@ -545,21 +545,9 @@ public class Ventana extends JFrame implements ActionListener{
         agregarContacto.addActionListener(new Vigilante(null) {
             @Override
             public void actionPerformed(ActionEvent evt) {
-/*                camposDeEntrada.add(new JTextField("Ingresar Teléfono"));
-                camposDeEntrada.get(camposDeEntrada.size()-1).setBounds(300,100+camposDeEntrada.size()*20,80,20);
-                panel.add(camposDeEntrada.get(camposDeEntrada.size()-1));
+                guardar.doClick();
                 
-                String[] listaTipos = {"T Otro","T Casa", "T Oficina", "T Celular"};
-
-                JComboBox combo = new JComboBox(listaTipos);
-                combo.setSelectedIndex(0);
-                tipos.add(combo);
-                combo.setBounds(380,100+camposDeEntrada.size()*20,60,20);
-                panel.add(combo);
-
-                
-                panel.repaint();
-  */          }
+          }
         });
         
     
