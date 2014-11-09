@@ -1,3 +1,4 @@
+//Hecho por: Arévalo Loyola Alma Rosario, Gutiérrez Guillén Gabriela Jocelyn, Navarro Miranda Mauricio
 import java.io.Serializable;
 import java.util.*;
 
@@ -5,15 +6,15 @@ import java.util.*;
  * 
  */
 public class Agenda implements Serializable{
-
+//Creamos atributos para esta clase 
     private ArrayList<Contacto> contactos;
     private ArrayList<Grupo> grupos;
     private String archivo;
-    
+//Creamos un contructor que no recibe parametros y manda a llamar al constructor siguiente    
     public Agenda() {
         this(null,null,"miAgenda.json");
     }
-    
+//Creamos un contructor que recibe todos los parametros y verificamos el contenido de los parametros que recibimos
     public Agenda(ArrayList<Contacto> contactos, ArrayList<Grupo> grupos, String archivo) {
         if(contactos != null)
             this.contactos = contactos;
@@ -33,33 +34,35 @@ public class Agenda implements Serializable{
     /**
      * 
      */
+//Creamos el metodo iniciar agenda que carga todos los contactos mandando a llamar a tal metodo
     public void iniciarAgenda() {
         cargarContactos();
     }
     
     
-    
+//Creamos el metodo cargar contactos, que importara contactos de un archivo  
     public void cargarContactos(){
         if(archivo == null || archivo.equals(""))
-            archivo = "miAgenda.json";
-        importarContactosDeUnArchivo(archivo);
+            archivo = "miAgenda.json"; //Revisamos si el atributo archivo esta inicializado por defecto y en tal caso le damos un nombre de archivo
+        importarContactosDeUnArchivo(archivo);//mandamos a llamar al metodo importar contactos con el nombre de archivo que le acabamos de poner
     }
 
     /**
      * 
      */
-
+//Creamos el metodo guardaar cambios sin parametros 
     public void guardarCambios(){
         if(archivo == null || archivo.equals(""))
-            archivo = "miAgenda.json";
-        exportarContactosAUnArchivo(archivo);
+            archivo = "miAgenda.json";//verificamos si el nombre del arcivo es null o vacio y en tal caso le asignamos un nmbre predeterminado
+        exportarContactosAUnArchivo(archivo);//llamamos al matodo esportar contactos a un archivo y la damos como parametro el atributo archivo de este objeto
     }
 
     /**
      * 
      */
+//Creamos el metodo importar contactos de un archivo que recibe un string que sera el nombre del archio   
     public void importarContactosDeUnArchivo(String nombreDelArchivo) {
-        Agenda importada = Importador.leerAgenda(nombreDelArchivo);
+        Agenda importada = Importador.leerAgenda(nombreDelArchivo);//leer es un metodo static de la clase importador que nos regresa una agenda, dandole un nombre de archivo
         this.contactos = importada.getContactos();
         this.grupos = importada.getGrupos();
     }
@@ -68,10 +71,11 @@ public class Agenda implements Serializable{
      * 
      * @param nombreDelArchivo
      */
+//Creamos el metodo exportar contactos de un archivo que recibe un String con el nombre del archivo
     private void exportarContactosAUnArchivo(String nombreDelArchivo) {
-        Exportador.escribirAgenda(nombreDelArchivo, this);
+        Exportador.escribirAgenda(nombreDelArchivo, this);//mandamos a llamar al metodo escribir (que es estatico) de la clase importados y le damos como parametros esta agenda y el String que recibe este metodo
     }
-    
+
     public boolean ingresarContacto(Contacto contacto){
         if (contactos.contains(contacto))
             return false;
