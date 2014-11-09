@@ -1,3 +1,4 @@
+//Hecho por: Arévalo Loyola Alma Rosario, Gutiérrez Guillén Gabriela Jocelyn, Navarro Miranda Mauricio
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
