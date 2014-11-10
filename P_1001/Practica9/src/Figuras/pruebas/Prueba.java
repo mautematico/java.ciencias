@@ -6,14 +6,16 @@ import Figuras.Figura;
 import Figuras.excepciones.ExcepcionCero;
 import Figuras.excepciones.ExcepcionNumeroNegativo;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
- * @author GABI
+ * @author 
+ * Arévalo Loyola,  Alma Rosario    <alma.arevalo@ciencias.unam.mx>
+ * Gutiérrez Guillén,   Gabriela Jocelyn    <gabriiela_guthiierrez@hotmail.com>
+ * Navarro Miranda, Mauricio    <mauricio@navarromiranda.mx>
+ * 
+ * Licenciatura en Matemáticas,
+ * Facultad de Ciencias
+ * 
  */
 public class Prueba {
 
