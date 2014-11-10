@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ajedrez.figuras;
+package ajedrez.piezas;
 
 /**
  *
  * @author mautematico
  */
-public abstract class Figura {
+public class Reina extends Pieza {
     
 }
