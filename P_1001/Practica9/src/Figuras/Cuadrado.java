@@ -16,14 +16,10 @@ public class Cuadrado extends Figura {
     private double lado;
 
     public Cuadrado(double lado){
-        if(lado < 0)
-            throw new ExcepcionNumeroNegativo();
-        if(lado == 0)
-            throw new ExcepcionCero();
-        this.lado = lado;
+        setLado(lado);
     }
     
-    public void setLado(double lado){
+    public final void setLado(double lado){
         if(lado < 0)
             throw new ExcepcionNumeroNegativo();
         if(lado == 0)
