@@ -1,7 +1,7 @@
 package Figuras;
 
-import Figuras.excepciones.ExcepcionCero;
-import Figuras.excepciones.ExcepcionNumeroNegativo;
+import figuras.excepciones.ExcepcionCero;
+import figuras.excepciones.ExcepcionNumeroNegativo;
 
 /**
  *
@@ -17,12 +17,12 @@ import Figuras.excepciones.ExcepcionNumeroNegativo;
 public class Circulo extends Figura {
     private double radio;
 
-    public Circulo(double radio){
+    public Circulo(double radio) throws ExcepcionCero{
         setRadio(radio);
     }
 
     
-    public final void setRadio(double radio){
+    public final void setRadio(double radio) throws ExcepcionCero{
         if(radio < 0)
             throw new ExcepcionNumeroNegativo();
         if(radio == 0)

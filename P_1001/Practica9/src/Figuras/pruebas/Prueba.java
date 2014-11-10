@@ -3,8 +3,8 @@ package Figuras.pruebas;
 import Figuras.Circulo;
 import Figuras.Cuadrado;
 import Figuras.Figura;
-import Figuras.excepciones.ExcepcionCero;
-import Figuras.excepciones.ExcepcionNumeroNegativo;
+import figuras.excepciones.ExcepcionCero;
+import figuras.excepciones.ExcepcionNumeroNegativo;
 
 /**
  *
@@ -75,10 +75,8 @@ public class Prueba {
 
         for (Figura figura : figuras) {
             try {
-                System.out.println(figura);
+                System.out.println(figura);                                
             } catch (ExcepcionNumeroNegativo ex) {
-                System.err.println("Bloque número no válido\n" + ex);
-            } catch (ExcepcionCero ex) {
                 System.err.println("Bloque número no válido\n" + ex);
             } catch (Exception ex) {
                 System.err.println("Ocurrió otro tipo de excepción\n" + ex);

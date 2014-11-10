@@ -1,7 +1,7 @@
 package Figuras;
 
-import Figuras.excepciones.ExcepcionCero;
-import Figuras.excepciones.ExcepcionNumeroNegativo;
+import figuras.excepciones.ExcepcionCero;
+import figuras.excepciones.ExcepcionNumeroNegativo;
 
 /**
  *
@@ -17,11 +17,11 @@ import Figuras.excepciones.ExcepcionNumeroNegativo;
 public class Cuadrado extends Figura {
     private double lado;
 
-    public Cuadrado(double lado){
+    public Cuadrado(double lado) throws ExcepcionCero{
         setLado(lado);
     }
     
-    public final void setLado(double lado){
+    public final void setLado(double lado) throws ExcepcionCero{
         if(lado < 0)
             throw new ExcepcionNumeroNegativo();
         if(lado == 0)
