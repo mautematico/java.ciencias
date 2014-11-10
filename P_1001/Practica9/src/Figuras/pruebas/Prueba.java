@@ -31,7 +31,7 @@ public class Prueba {
             }
 
         try {
-                figuras[2] = new Circulo(0);
+                figuras[1] = new Circulo(0);
             } catch (ExcepcionNumeroNegativo ex) {
                 System.err.println("Bloque número no válido\n" + ex);
             } catch (ExcepcionCero ex) {
@@ -71,9 +71,9 @@ public class Prueba {
             }
         
 
-        for (int i = 0; i < figuras.length; i++) {
+        for (Figura figura : figuras) {
             try {
-                System.out.println(figuras[i]);
+                System.out.println(figura);
             } catch (ExcepcionNumeroNegativo ex) {
                 System.err.println("Bloque número no válido\n" + ex);
             } catch (ExcepcionCero ex) {
@@ -81,7 +81,6 @@ public class Prueba {
             } catch (Exception ex) {
                 System.err.println("Ocurrió otro tipo de excepción\n" + ex);
             }
-
         }
     }
 }
