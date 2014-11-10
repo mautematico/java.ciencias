@@ -1,8 +1,8 @@
-package Figuras.pruebas;
+package figuras.pruebas;
 
-import Figuras.Circulo;
-import Figuras.Cuadrado;
-import Figuras.Figura;
+import figuras.Circulo;
+import figuras.Cuadrado;
+import figuras.Figura;
 import figuras.excepciones.ExcepcionCero;
 import figuras.excepciones.ExcepcionNumeroNegativo;
 

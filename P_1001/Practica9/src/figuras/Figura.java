@@ -1,4 +1,4 @@
-package Figuras;
+package figuras;
 
 /**
  *

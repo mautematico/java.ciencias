@@ -1,4 +1,4 @@
-package Figuras;
+package figuras;
 
 import figuras.excepciones.ExcepcionCero;
 import figuras.excepciones.ExcepcionNumeroNegativo;
