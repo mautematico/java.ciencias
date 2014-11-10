@@ -17,6 +17,8 @@ public class Cuadrado extends Figura {
 
     public Cuadrado(double lado){
         setLado(lado);
+        calcularPerimetro();
+        calcularArea();
     }
     
     public final void setLado(double lado){
