@@ -16,15 +16,11 @@ public class Circulo extends Figura {
     private double radio;
 
     public Circulo(double radio){
-        if(radio < 0)
-            throw new ExcepcionNumeroNegativo();
-        if(radio == 0)
-            throw new ExcepcionCero();
-        this.radio = radio;
+        setRadio(radio);
     }
 
     
-    public void setRadio(double radio){
+    public final void setRadio(double radio){
         if(radio < 0)
             throw new ExcepcionNumeroNegativo();
         if(radio == 0)
@@ -49,6 +45,9 @@ public class Circulo extends Figura {
     public String toString(){
         double perimetro = this.getPerimetro();
         double area = this.getArea();
-       return "Tipo de figura: Circulo\nRadio = " + radio +"\nPerimetro = " + perimetro +"\nArea = " + area;
+       return "Tipo de figura: Circulo"
+               + "\nRadio = " + radio
+               +"\nPerimetro = " + perimetro
+               +"\nArea = " + area;
     }
 }
