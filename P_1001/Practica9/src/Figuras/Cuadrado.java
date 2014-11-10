@@ -38,13 +38,16 @@ public class Cuadrado extends Figura {
 
     @Override
     public void calcularArea() {
-        setArea(2*lado);
+        setArea(lado*lado);
     }
     
     @Override
     public String toString(){
         double perimetro = this.getPerimetro();
         double area = this.getArea();
-       return "Tipo de figura: Cuadrado\nLado = " + lado +"\nPerimetro = " + perimetro +"\nArea = " + area;
+       return "Tipo de figura: Cuadrado\n"
+               + "Lado = "+ lado
+               +"\nPerimetro = " + perimetro
+               +"\nArea = " + area;
     }
 }
