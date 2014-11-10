@@ -17,8 +17,6 @@ public class Circulo extends Figura {
 
     public Circulo(double radio){
         setRadio(radio);
-        calcularPerimetro();
-        calcularArea();
     }
 
     
@@ -28,6 +26,8 @@ public class Circulo extends Figura {
         if(radio == 0)
             throw new ExcepcionCero();
         this.radio = radio;
+        calcularPerimetro();
+        calcularArea();
     }
     
     public double getRadio(){

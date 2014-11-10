@@ -17,8 +17,6 @@ public class Cuadrado extends Figura {
 
     public Cuadrado(double lado){
         setLado(lado);
-        calcularPerimetro();
-        calcularArea();
     }
     
     public final void setLado(double lado){
@@ -27,6 +25,8 @@ public class Cuadrado extends Figura {
         if(lado == 0)
             throw new ExcepcionCero();
         this.lado = lado;
+        calcularPerimetro();
+        calcularArea();
     }
     
     public double getLado (){
