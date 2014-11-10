@@ -74,13 +74,13 @@ public class Prueba {
                 System.err.println("Ocurrió otro tipo de excepción\n" + ex);
             }
         
-
+        //Imprimimos cada una de las figuras
         for (Figura figura : figuras) {
             try {
                 System.out.println(figura);                                
             } catch (ExcepcionNumeroNegativo ex) {
                 System.err.println("Valor ingresado no válido\n" + ex);
-            }catch (Exception ex) {
+            } catch (Exception ex) {
                 System.err.println("Ocurrió otro tipo de excepción\n" + ex);
             }
         }
