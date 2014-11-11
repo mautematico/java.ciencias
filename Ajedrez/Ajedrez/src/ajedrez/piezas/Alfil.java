@@ -10,5 +10,6 @@ package ajedrez.piezas;
  * @author mautematico
  */
 public class Alfil extends Pieza {
-    
+
+   
 }

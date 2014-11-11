@@ -10,5 +10,7 @@ package ajedrez.piezas;
  * @author mautematico
  */
 public abstract class Pieza {
+    private Posicion posicionActual;
     
+   abstract boolean[][] posicionesPosibles();
 }
