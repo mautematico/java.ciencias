@@ -10,5 +10,10 @@ package ajedrez.piezas;
  * @author mautematico
  */
 public class Reina extends Pieza {
+
+    @Override
+    boolean[][] posicionesPosibles() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

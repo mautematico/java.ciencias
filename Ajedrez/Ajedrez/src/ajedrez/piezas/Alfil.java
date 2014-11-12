@@ -11,6 +11,11 @@ package ajedrez.piezas;
  */
 public class Alfil extends Pieza {
 
+    @Override
+    boolean[][] posicionesPosibles() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
    
     
 }
