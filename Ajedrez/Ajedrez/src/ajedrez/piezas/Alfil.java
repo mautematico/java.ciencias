@@ -12,4 +12,5 @@ package ajedrez.piezas;
 public class Alfil extends Pieza {
 
    
+    
 }
