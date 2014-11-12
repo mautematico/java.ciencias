@@ -13,4 +13,14 @@ public abstract class Pieza {
     private Posicion posicionActual;
     
    abstract boolean[][] posicionesPosibles();
+   
+   private boolean mover(Posicion posicionNueva){
+       if(posicionesPosibles()[posicionActual.getX()][posicionActual.getY()]){
+           posicionActual.setX(posicionNueva.getX());
+           posicionActual.setY(posicionNueva.getY());
+           return true;
+       }
+       //Lanzar una excepcion de tipo "MovimientoInvalido"
+       return false;
+   }
 }
