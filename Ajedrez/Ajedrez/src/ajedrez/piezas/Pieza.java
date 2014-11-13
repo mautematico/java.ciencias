@@ -11,6 +11,7 @@ package ajedrez.piezas;
  */
 public abstract class Pieza {
     private Posicion posicionActual;
+    private boolean equipo;
     
    abstract boolean[][] posicionesPosibles();
    
