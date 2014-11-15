@@ -7,8 +7,8 @@ package ajedrez.juego;
 
 /**
  *
- * @author mautematico
- */
+ * @author mautematico 
+*/
 public class Ajedrez {
     
 }
