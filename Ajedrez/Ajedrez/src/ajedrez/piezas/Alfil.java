@@ -13,7 +13,15 @@ public class Alfil extends Pieza {
 
     @Override
     boolean[][] posicionesPosibles() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean [][] posicionesPosibles = new boolean [8][8];
+        for(int i = 0; i <= 8; i++){
+            for(int j= 0; j<= 8; j++){
+                if (i-this.getPosicionActual().getX() == j-this.getPosicionActual().getY()|| i-this.getPosicionActual().getX() == this.getPosicionActual().getY()-j )
+                    posicionesPosibles[i][j] = true;
+                                
+            }
+        }
+        return posicionesPosibles;
     }
 
    
