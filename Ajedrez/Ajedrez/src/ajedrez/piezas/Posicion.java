@@ -11,6 +11,11 @@ package ajedrez.piezas;
 public class Posicion {
     private int x;
     private int y;
+    
+    public void setPosicion(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     public int getX() {
         return x;

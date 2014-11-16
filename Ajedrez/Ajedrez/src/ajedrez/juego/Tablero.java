@@ -9,7 +9,7 @@ import  ajedrez.piezas.*;
  * @author actuaria
  */
 public class Tablero {
-    Escaque [][] casillas;
+    private Escaque [][] casillas;
     
     public Tablero(){
         casillas = new Escaque[8][8];
@@ -17,7 +17,16 @@ public class Tablero {
             for (Escaque escaque : escaques) {
                 escaque.setPieza( new NoPieza());
             }
-            
         }
     }
+
+    public Escaque[][] getCasillas() {
+        return casillas;
+    }
+
+    public void setCasillas(Escaque[][] casillas) {
+        this.casillas = casillas;
+    }
+    
+    
 }

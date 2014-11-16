@@ -12,6 +12,27 @@ package ajedrez.piezas;
 public abstract class Pieza {
     private Posicion posicionActual;
     private boolean equipo;
+
+    public Pieza(boolean equipo) {
+        this.equipo = equipo;
+    }
+
+    public Posicion getPosicionActual() {
+        return posicionActual;
+    }
+
+    public void setPosicionActual(Posicion posicionActual) {
+        this.posicionActual = posicionActual;
+    }
+
+    public boolean isEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(boolean equipo) {
+        this.equipo = equipo;
+    }
+    
     
    abstract boolean[][] posicionesPosibles();
    

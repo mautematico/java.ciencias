@@ -4,6 +4,7 @@
  */
 package ajedrez.juego;
 
+import ajedrez.piezas.NoPieza;
 import ajedrez.piezas.Pieza;
 
 /**
@@ -13,7 +14,10 @@ import ajedrez.piezas.Pieza;
 public class Escaque {
     private boolean color;
     private Pieza pieza;
-
+    
+    public Escaque(){
+        pieza = new NoPieza();
+    }
     public boolean isColor() {
         return color;
     }
