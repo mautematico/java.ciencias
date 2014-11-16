@@ -16,6 +16,10 @@ public abstract class Pieza {
     public Pieza(boolean equipo) {
         this.equipo = equipo;
     }
+    public Pieza(){
+        
+    }
+            
 
     public Posicion getPosicionActual() {
         return posicionActual;
