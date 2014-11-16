@@ -14,9 +14,11 @@ public class Torre extends Pieza {
     @Override
     boolean[][] posicionesPosibles() {
         boolean [][] posicionesPosibles = new boolean [8][8];
+        int x = this.getPosicionActual().getX();
+        int y = this.getPosicionActual().getY();
         for(int i = 0; i <= 8; i++){
             for(int j= 0; j<= 8; j++){
-                if (i == this.getPosicionActual().getX() || j == this.getPosicionActual().getY() )
+                if (i == x || j == y )
                     posicionesPosibles[i][j] = true;
                                 
             }
