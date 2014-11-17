@@ -13,7 +13,14 @@ public class Peon extends Pieza {
 
     @Override
     boolean[][] posicionesPosibles() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean [][] posicionesPosibles = new boolean [8][8];
+        int x = this.getPosicionActual().getX();
+        int y = this.getPosicionActual().getY();
+        posicionesPosibles[x][y] = true;
+        if(0<=y+1 && y+1<=7)
+            posicionesPosibles[x][y+1]= true;
+        
+        return posicionesPosibles;
     }
 
     
