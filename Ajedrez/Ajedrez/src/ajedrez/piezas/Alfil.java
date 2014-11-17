@@ -18,7 +18,7 @@ public class Alfil extends Pieza {
         int y = this.getPosicionActual().getY();
         posicionesPosibles[x][y] = true;
         for(int i = 0; i <= 8; i++){
-            for(int j= 0; j<= 8; j++){
+            for(int j = 0; j <= 8; j++){
                 if (i-x == j-y|| i-x == y-j )
                     posicionesPosibles[i][j] = true;
                                 
