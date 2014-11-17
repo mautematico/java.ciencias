@@ -13,7 +13,21 @@ public class Rey extends Pieza {
 
     @Override
     boolean[][] posicionesPosibles() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean [][] posicionesPosibles = new boolean [8][8];
+        int x = this.getPosicionActual().getX();
+        int y = this.getPosicionActual().getY();
+        posicionesPosibles[x][y] = true;
+        for(int i = 0; i <= 8; i++){
+            for(int j= 0; j<= 8; j++){
+                if (i==x || i==x+1 || i==x-1){
+                    if(j==y || j==y+1 || j==y-1)
+                        posicionesPosibles[i][j] = true;
+                }
+                    
+                                
+            }
+        }
+        return posicionesPosibles;
     }
     
 }
