@@ -13,7 +13,30 @@ public class Caballo extends Pieza {
 
     @Override
     boolean[][] posicionesPosibles() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean [][] posicionesPosibles = new boolean [8][8];
+        int x = this.getPosicionActual().getX();
+        int y = this.getPosicionActual().getY();
+        for(int i = 0; i <= 8; i++){
+            for(int j= 0; j<= 8; j++){
+                if (i==x+2){
+                    if(j==y+1 || j==y-1)
+                        posicionesPosibles[i][j] = true;
+                }   
+                if (i==x+1){
+                    if(j==y+2 || j==y-2)
+                        posicionesPosibles[i][j] = true;
+                }
+                if (i==x-1){
+                    if(j==y+2 || j==y-2)
+                        posicionesPosibles[i][j] = true;
+                }
+                if (i==x-2){
+                    if(j==y+1 || j==y-1)
+                        posicionesPosibles[i][j] = true;
+                }
+            }
+        }
+        return posicionesPosibles;
     }
 
     
