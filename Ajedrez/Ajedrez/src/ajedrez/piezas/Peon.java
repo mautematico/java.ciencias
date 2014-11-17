@@ -16,11 +16,24 @@ public class Peon extends Pieza {
         boolean [][] posicionesPosibles = new boolean [8][8];
         int x = this.getPosicionActual().getX();
         int y = this.getPosicionActual().getY();
-        posicionesPosibles[x][y] = true;
         if(0<=y+1 && y+1<=7)
             posicionesPosibles[x][y+1]= true;
         
+        posicionesPosibles[x][y] = false;
         return posicionesPosibles;
+    }
+    
+    boolean [][] posicionesParaComer(){
+        boolean [][] posicionesParaComer = new boolean [8][8];
+        int x = this.getPosicionActual().getX();
+        int y = this.getPosicionActual().getY();
+        if(0<=y+1 && y+1<=7){
+            if(0<=x+1 && x+1<=7)
+                posicionesParaComer[x+1][y+1] = true;
+            if(0<=x-1 && x-1<=7)
+                posicionesParaComer[x-1][y+1] = true;
+        }
+        return posicionesParaComer;
     }
 
     

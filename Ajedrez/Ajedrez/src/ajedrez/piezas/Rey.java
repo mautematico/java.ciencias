@@ -16,7 +16,6 @@ public class Rey extends Pieza {
         boolean [][] posicionesPosibles = new boolean [8][8];
         int x = this.getPosicionActual().getX();
         int y = this.getPosicionActual().getY();
-        posicionesPosibles[x][y] = true;
         for(int i = 0; i <= 8; i++){
             for(int j = 0; j <= 8; j++){
                 if (i == x || i == x+1 || i == x-1){
@@ -27,6 +26,7 @@ public class Rey extends Pieza {
                                 
             }
         }
+        posicionesPosibles[x][y] = false;
         return posicionesPosibles;
     }
     
