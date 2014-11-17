@@ -13,7 +13,19 @@ public class Reina extends Pieza {
 
     @Override
     boolean[][] posicionesPosibles() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean [][] posicionesPosibles = new boolean [8][8];
+        int x = this.getPosicionActual().getX();
+        int y = this.getPosicionActual().getY();
+        posicionesPosibles[x][y] = true;
+        for(int i = 0; i <= 8; i++){
+            for(int j= 0; j<= 8; j++){
+                if (i == x || j == y )
+                    posicionesPosibles[i][j] = true;
+                if (i-x == j-y|| i-x == y-j )
+                    posicionesPosibles[i][j] = true;                
+            }
+        }
+        return posicionesPosibles;
     }
     
 }
