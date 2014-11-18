@@ -10,7 +10,7 @@ package ajedrez.piezas;
  * @author mautematico
  */
 public class Reina extends Pieza {
-
+   
     @Override
     boolean[][] posicionesPosibles() {
         boolean [][] posicionesPosibles = new boolean [8][8];
