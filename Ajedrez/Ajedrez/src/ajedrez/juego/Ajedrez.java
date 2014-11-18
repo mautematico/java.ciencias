@@ -74,7 +74,19 @@ public class Ajedrez {
             tablero.getCasillas()[x][y].getPieza().getPosicionActual().setPosicion(x, y);
         }
         private boolean juegoEnJaque(){
+            Pieza[] reyes = new Pieza[2];
             
+            for (int i=0; i<8; i++) {
+                for(int j = 0; j<8; j++){
+                    Pieza rey = tablero.getCasillas()[i][j].getPieza();
+                    if( rey instanceof Rey){
+                        if (rey.isEquipo() )
+                            int equipo = 0;
+                        
+                    }
+                }
+                
+            }
             return false;
         }
 }
