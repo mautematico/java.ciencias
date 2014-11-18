@@ -5,6 +5,8 @@
  */
 package ajedrez.piezas;
 
+import ajedrez.juego.Tablero;
+
 /**
  *
  * @author mautematico
@@ -14,6 +16,10 @@ public class NoPieza extends Pieza {
     @Override
     boolean[][] posicionesPosibles() {
         return new boolean[8][8]; 
+    }
+    @Override
+    boolean movimientoPosible( Posicion posicionNueva, Tablero tablero){
+        return false;
     }
 
     
