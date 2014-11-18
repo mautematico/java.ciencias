@@ -49,8 +49,15 @@ public class Ajedrez {
                tablero.getCasillas() [i][j].getPieza().getPosicionActual().setPosicion(i, j);
     }
     
-        private void moverPieza(int x1, int y1, int x2, int x2){
+        }
+    }
+        private void moverPieza(int x1, int y1, int x2, int y2){
+         
             
+            Pieza presuntoPeon = tablero.getCasillas()[x2][y2].getPieza();
+            if(presuntoPeon instanceof Peon){
+                coronacion((Peon) presuntoPeon);
+            }
         }
         
         private void coronacion(Peon peon){
@@ -64,6 +71,6 @@ public class Ajedrez {
                 tablero.getCasillas()[x][y].setPieza(new Reina());
                 tablero.getCasillas() [x][y].getPieza().setEquipo(true);
             }
-                
+            tablero.getCasillas()[x][y].getPieza().getPosicionActual().setPosicion(x, y);
         }
 }
