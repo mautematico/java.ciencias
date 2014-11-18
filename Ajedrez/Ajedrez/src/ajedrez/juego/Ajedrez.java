@@ -52,4 +52,17 @@ public class Ajedrez {
         private void moverPieza(int x1, int y1, int x2, int x2){
             
         }
+        
+        private void coronacion(Peon peon){
+            boolean equipo = peon.isEquipo();
+            int x = peon.getPosicionActual().getX();
+            int y = peon.getPosicionActual().getY();
+            if(equipo==false && y==0){
+                tablero.getCasillas()[x][y].setPieza(new Reina(equipo));
+            }
+            if(equipo==true && y==7){
+                tablero.getCasillas()[x][y].setPieza(new Reina(equipo));
+            }
+                
+        }
 }
