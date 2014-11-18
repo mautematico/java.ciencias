@@ -29,17 +29,66 @@ public class Alfil extends Pieza {
         return posicionesPosibles;
     }
     
-       private boolean mover(Posicion posicionNueva, Tablero tableroActual){
+       private boolean casillasIntermediasVacias(Posicion posicionNueva, Tablero tablero) {
            int x1 = getPosicionActual().getX();
            int y1 = getPosicionActual().getY();
            int x2 = posicionNueva.getX();
            int y2 = posicionNueva.getY();
-       if(posicionesPosibles()[x2][y2]== false){
+           int minX = Math.min(x1, x2);
+           int maxX = Math.max(x1, x2);
+           int minY = Math.min(y1,y2);
+           int maxY = Math.max(y1,y2);
+           
+           if(x1 - x2 == y1-y2)
+               for(int i = minX + 1; i< maxX; i++)
+                   if(tablero.getCasillas()[i][minY-minX + i].getPieza() instanceof NoPieza == false)
+                       return false;
+                  
+           if(x1 - x2 == y2 - y1)
+               for(int i = minX + 1; i< maxX; i++)
+                   if(tablero.getCasillas()[i][maxX + minY -i].getPieza() instanceof NoPieza == false)
+                       return false;
+                   
+           return true;
+                   
+    }
+    
+    
+    
+    public boolean movimientoPosible(Posicion posicionNueva, Tablero tablero){
+           int x1 = getPosicionActual().getX();
+           int y1 = getPosicionActual().getY();
+           int x2 = posicionNueva.getX();
+           int y2 = posicionNueva.getY();
+         
+           
+       if(posicionesPosibles()[x2][y2]== false)
            return false;
-       }
+       
        else
-           if ((tableroActual.getCasillas()[x2][y2].getPieza().isEquipo() == this.isEquipo()) && (tableroActual.getCasillas()[x2][y2].getPieza() intanceof NoPieza == false) )
+           if (piezasDelMismoEquipo(tablero)[x2][y2])
                 return false;
+           else
+              if (casillasIntermediasVacias(posicionNueva, tablero) == false)
+                  return false;
+        return true;
+    }
+    
+    @Override
+    public boolean[][] movimientosPosibles(Tablero tablero) {
+        boolean [][] movimientosPosibles = new boolean [8][8];
+       
+        for(int i = 0; i <= 8; i++){
+            for(int j = 0; j <= 8; j++){
+                if (movimientoPosible(tablero.getCasillas()[i][j].getPieza().getPosicionActual(), tablero))
+                    movimientosPosibles[i][j] = true;                
+            }
+        } 
+        return movimientosPosibles;
+    }
+    
+}
+               
                 
        
           
@@ -53,13 +102,3 @@ public class Alfil extends Pieza {
            
            
            
-           posicionActual.setX(posicionNueva.getX());
-           posicionActual.setY(posicionNueva.getY());
-           return true;
-       }
-       
-   }
-
-   
-    
-}
