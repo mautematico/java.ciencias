@@ -73,4 +73,8 @@ public class Ajedrez {
             }
             tablero.getCasillas()[x][y].getPieza().getPosicionActual().setPosicion(x, y);
         }
+        private boolean juegoEnJaque(){
+            
+            return false;
+        }
 }
