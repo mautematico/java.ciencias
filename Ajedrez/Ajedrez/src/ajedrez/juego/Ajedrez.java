@@ -58,10 +58,11 @@ public class Ajedrez {
             int x = peon.getPosicionActual().getX();
             int y = peon.getPosicionActual().getY();
             if(equipo==false && y==0){
-                tablero.getCasillas()[x][y].setPieza(new Reina(equipo));
+                tablero.getCasillas()[x][y].setPieza(new Reina());
             }
             if(equipo==true && y==7){
-                tablero.getCasillas()[x][y].setPieza(new Reina(equipo));
+                tablero.getCasillas()[x][y].setPieza(new Reina());
+                tablero.getCasillas() [x][y].getPieza().setEquipo(true);
             }
                 
         }
