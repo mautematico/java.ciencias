@@ -5,6 +5,8 @@
  */
 package ajedrez.piezas;
 
+import ajedrez.juego.Tablero;
+
 /**
  *
  * @author mautematico
@@ -39,6 +41,22 @@ public class Caballo extends Pieza {
         posicionesPosibles[x][y] = false;
         return posicionesPosibles;
     }
-
     
+    @Override
+   boolean movimientoPosible(Posicion posicionNueva, Tablero tablero){
+           int x1 = getPosicionActual().getX();
+           int y1 = getPosicionActual().getY();
+           int x2 = posicionNueva.getX();
+           int y2 = posicionNueva.getY();
+         
+           
+       if(posicionesPosibles()[x2][y2]== false)
+           return false;
+       
+       else
+           if (piezasDelMismoEquipo(tablero)[x2][y2])
+                return false;
+        return true;
+    }
+     
 }

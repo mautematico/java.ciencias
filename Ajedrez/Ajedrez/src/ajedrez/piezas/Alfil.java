@@ -55,7 +55,8 @@ public class Alfil extends Pieza {
     
     
     
-    public boolean movimientoPosible(Posicion posicionNueva, Tablero tablero){
+    @Override
+    boolean movimientoPosible(Posicion posicionNueva, Tablero tablero){
            int x1 = getPosicionActual().getX();
            int y1 = getPosicionActual().getY();
            int x2 = posicionNueva.getX();
@@ -73,20 +74,7 @@ public class Alfil extends Pieza {
                   return false;
         return true;
     }
-    
-    @Override
-    public boolean[][] movimientosPosibles(Tablero tablero) {
-        boolean [][] movimientosPosibles = new boolean [8][8];
-       
-        for(int i = 0; i <= 8; i++){
-            for(int j = 0; j <= 8; j++){
-                if (movimientoPosible(tablero.getCasillas()[i][j].getPieza().getPosicionActual(), tablero))
-                    movimientosPosibles[i][j] = true;                
-            }
-        } 
-        return movimientosPosibles;
-    }
-    
+ 
 }
                
                 

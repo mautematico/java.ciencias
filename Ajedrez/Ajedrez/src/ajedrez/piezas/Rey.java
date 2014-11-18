@@ -5,6 +5,8 @@
  */
 package ajedrez.piezas;
 
+import ajedrez.juego.Tablero;
+
 /**
  *
  * @author mautematico
@@ -21,13 +23,28 @@ public class Rey extends Pieza {
                 if (i == x || i == x+1 || i == x-1){
                     if(j == y || j == y+1 || j == y-1)
                         posicionesPosibles[i][j] = true;
-                }
-                    
-                                
+                }                   
             }
         }
         posicionesPosibles[x][y] = false;
         return posicionesPosibles;
+    }
+    
+    @Override
+     boolean movimientoPosible(Posicion posicionNueva, Tablero tablero){
+           int x1 = getPosicionActual().getX();
+           int y1 = getPosicionActual().getY();
+           int x2 = posicionNueva.getX();
+           int y2 = posicionNueva.getY();
+         
+           
+       if(posicionesPosibles()[x2][y2]== false)
+           return false;
+       
+       else
+           if (piezasDelMismoEquipo(tablero)[x2][y2])
+                return false;
+        return true;
     }
     
 }

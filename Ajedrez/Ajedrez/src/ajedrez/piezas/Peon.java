@@ -5,6 +5,8 @@
  */
 package ajedrez.piezas;
 
+import ajedrez.juego.Tablero;
+
 /**
  *
  * @author mautematico
@@ -17,13 +19,14 @@ public class Peon extends Pieza {
         int x = this.getPosicionActual().getX();
         int y = this.getPosicionActual().getY();
         boolean equipo = this.isEquipo();
-        if (equipo == true) {
-            if (0 <= y + 1 && y + 1 <= 7) {
-                posicionesPosibles[x][y + 1] = true;
-            }
-        } else {
+        if (equipo) {
             if (0 <= y - 1 && y - 1 < -7) {
                 posicionesPosibles[x][y - 1] = true;
+            }
+        } else {
+            
+            if (0 <= y + 1 && y + 1 <= 7) {
+                posicionesPosibles[x][y + 1] = true;
             }
         }
 
@@ -36,16 +39,7 @@ public class Peon extends Pieza {
         int x = this.getPosicionActual().getX();
         int y = this.getPosicionActual().getY();
         boolean equipo = this.isEquipo();
-        if (equipo == true) {
-            if (0 <= y + 1 && y + 1 <= 7) {
-                if (0 <= x + 1 && x + 1 <= 7) {
-                    posicionesParaComer[x + 1][y + 1] = true;
-                }
-                if (0 <= x - 1 && x - 1 <= 7) {
-                    posicionesParaComer[x - 1][y + 1] = true;
-                }
-            }
-        } else {
+        if (equipo) {
             if (0 <= y - 1 && y - 1 <= 7) {
                 if (0 <= x + 1 && x + 1 <= 7) {
                     posicionesParaComer[x + 1][y - 1] = true;
@@ -54,9 +48,35 @@ public class Peon extends Pieza {
                     posicionesParaComer[x - 1][y - 1] = true;
                 }
             }
+        } else {
+           
+             if (0 <= y + 1 && y + 1 <= 7) {
+                if (0 <= x + 1 && x + 1 <= 7) {
+                    posicionesParaComer[x + 1][y + 1] = true;
+                }
+                if (0 <= x - 1 && x - 1 <= 7) {
+                    posicionesParaComer[x - 1][y + 1] = true;
+                }
+            }
         }
 
         return posicionesParaComer;
     }
-
+    
+     @Override
+     boolean movimientoPosible(Posicion posicionNueva, Tablero tablero){
+           int x1 = getPosicionActual().getX();
+           int y1 = getPosicionActual().getY();
+           int x2 = posicionNueva.getX();
+           int y2 = posicionNueva.getY();
+         
+           
+       if(posicionesPosibles()[x2][y2] && (tablero.getCasillas()[x2][y2].getPieza() instanceof NoPieza))
+           return true;
+       
+       else
+           if (posicionesParaComer()[x2][y2] && piezasDelEquipoContrario(tablero)[x2][y2])
+                return true;
+        return false;
+    }
 }
