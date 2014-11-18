@@ -8,8 +8,8 @@ package ajedrez.excepciones;
  *
  * @author actuaria
  */
-public class ExcepcionMovimientoInvalido extends RuntimeException {
-   public ExcepcionMovimientoInvalido(){
-       super("Movimiento invalido");
+public class ExcepcionMovimientoSuicida extends RuntimeException {
+   public ExcepcionMovimientoSuicida(){
+       super("Movimiento suicida");
    }
 }
