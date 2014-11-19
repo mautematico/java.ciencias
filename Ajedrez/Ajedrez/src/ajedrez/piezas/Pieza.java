@@ -15,11 +15,12 @@ public abstract class Pieza {
     private Posicion posicion;
     private boolean equipo;
 
+    public Pieza(){
+        this(false);        
+    }
     public Pieza(boolean equipo) {
         this.equipo = equipo;
-    }
-    public Pieza(){
-        
+        posicion = new Posicion();
     }
             
 
