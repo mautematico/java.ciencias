@@ -12,7 +12,7 @@ import ajedrez.juego.Tablero;
  * @author mautematico
  */
 public abstract class Pieza {
-    private Posicion posicionActual;
+    private Posicion posicion;
     private boolean equipo;
 
     public Pieza(boolean equipo) {
@@ -23,12 +23,12 @@ public abstract class Pieza {
     }
             
 
-    public Posicion getPosicionActual() {
-        return posicionActual;
+    public Posicion getPosicion() {
+        return posicion;
     }
 
-    public void setPosicionActual(Posicion posicionActual) {
-        this.posicionActual = posicionActual;
+    public void setPosicion(Posicion posicion) {
+        this.posicion = posicion;
     }
 
     public boolean isEquipo() {
@@ -71,7 +71,7 @@ public abstract class Pieza {
        
         for(int i = 0; i <= 8; i++){
             for(int j = 0; j <= 8; j++){
-                if (movimientoPosible(tablero.getCasillas()[i][j].getPieza().getPosicionActual(), tablero))
+                if (movimientoPosible(tablero.getCasillas()[i][j].getPieza().getPosicion(), tablero))
                     movimientosPosibles[i][j] = true;                
             }
         } 
@@ -81,8 +81,8 @@ public abstract class Pieza {
    
    public boolean mover(Posicion posicionNueva, Tablero tablero){
        if(movimientosPosibles(tablero)[posicionNueva.getX()][posicionNueva.getY()]){
-           posicionActual.setX(posicionNueva.getX());
-           posicionActual.setY(posicionNueva.getY());
+           posicion.setX(posicionNueva.getX());
+           posicion.setY(posicionNueva.getY());
            return true;
        }
        //Lanzar una excepcion de tipo "MovimientoInvalido"
