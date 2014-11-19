@@ -110,7 +110,7 @@ public class Ajedrez {
             tablero.getCasillas()[x][y].getPieza().getPosicion().setPosicion(x, y);
         }
         public boolean juegoEnJaque(boolean equipo){
-            Rey rey;
+            Rey rey = new Rey();
             
             for (int i=0; i<8; i++) {
                 for(int j = 0; j<8; j++){
@@ -161,5 +161,40 @@ public class Ajedrez {
                  
             }
         return movimientoAJaque;
+        }
+        
+        public boolean jaqueMate (boolean equipo){
+            Pieza piezaEquipo = new Peon();
+            piezaEquipo.setEquipo(equipo);
+            boolean jaqueMate = true;
+            
+            for (int i=0; i<8; i++) {
+                for(int j = 0; j<8; j++){
+                    Pieza pieza = tablero.getCasillas()[i][j].getPieza();
+                        if (pieza.isEquipo() == equipo )
+                             piezaEquipo = pieza;
+                }
+                
+            }
+            boolean[][] piezasDelEquipo = piezaEquipo.piezasDelMismoEquipo(tablero);
+            for(int i=0; i<8; i++){
+                for(int j=0; j<8; j++){
+                    if(piezasDelEquipo[i][j]){
+                        Escaque escaqueInicial = tablero.getCasillas()[i][j];
+                        boolean[][] movimientosPosibles = escaqueInicial.getPieza().movimientosPosibles(tablero);
+                        for(int n=0; n<8; n++){
+                            for(int m=0; m<8; m++){
+                                if(movimientosPosibles[n][m]){
+                                    Escaque escaqueFinal = tablero.getCasillas()[n][m];
+                                    if(!(movimientoAJaque(escaqueInicial,escaqueFinal))){
+                                        jaqueMate = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return jaqueMate;
         }
 }
