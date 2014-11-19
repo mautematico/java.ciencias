@@ -21,7 +21,7 @@ public class Ajedrez {
         colocarPiezasDeAjedrez();
     }
     
-    public Tablero getTalero(){
+    public Tablero getTablero(){
         return tablero;
     }
     
