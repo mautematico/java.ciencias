@@ -86,7 +86,10 @@ public class Ajedrez {
             else {
                 cambiarTurno();
             }
-            
+            if(juegoEnJaque(!equipoEnTurno)){
+                //avisar Jaque
+            }
+                
             if(piezaAMover instanceof Peon){
                 coronacion((Peon) piezaAMover);
             }
@@ -107,7 +110,7 @@ public class Ajedrez {
             }
             tablero.getCasillas()[x][y].getPieza().getPosicion().setPosicion(x, y);
         }
-        private boolean juegoEnJaque(boolean equipo){
+        public boolean juegoEnJaque(boolean equipo){
             Rey rey;
             
             for (int i=0; i<8; i++) {
@@ -136,5 +139,28 @@ public class Ajedrez {
             }
             
             return false;
+        }
+        
+        public boolean movimientoAJaque (Escaque escaqueActual, Escaque escaqueDestino){
+            Pieza piezaAMover = escaqueActual.getPieza();
+            Pieza piezaAReemplazar = escaqueDestino.getPieza();
+            Posicion posicionActual = piezaAMover.getPosicion();
+            Posicion posicionDestino = piezaAReemplazar.getPosicion();
+            boolean movimientoAJaque = false;
+           
+       
+            if(piezaAMover.mover(piezaAReemplazar.getPosicion(), tablero)){
+              
+                   
+                if (juegoEnJaque(piezaAMover.isEquipo()))
+                     movimientoAJaque = true;
+                
+                piezaAMover.setPosicion(posicionActual);
+                piezaAReemplazar.setPosicion(posicionDestino);
+                escaqueActual.setPieza(piezaAMover);
+                escaqueDestino.setPieza(piezaAReemplazar);
+                 
+            }
+        return movimientoAJaque;
         }
 }
