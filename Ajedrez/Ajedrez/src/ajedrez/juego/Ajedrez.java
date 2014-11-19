@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package ajedrez.juego;
+import ajedrez.excepciones.ExcepcionMovimientoInvalido;
+import ajedrez.excepciones.ExcepcionMovimientoSuicida;
+import ajedrez.excepciones.ExcepcionTurnoEquivocado;
 import ajedrez.piezas.*;
 
 /**
@@ -66,11 +69,11 @@ public class Ajedrez {
        
             
             if (piezaAMover.isEquipo() != equipoEnTurno ) {
-                //lanzar excepcion "EsTurno de equipoEnTurno"
+                throw new ExcepcionTurnoEquivocado();
             }
             
             if(!piezaAMover.mover(piezaAReemplazar.getPosicion(), tablero)){
-                //lanzar excepcion "Movimiento invalido"
+                throw new ExcepcionMovimientoInvalido();
             }
                    
             if (juegoEnJaque(equipoEnTurno)){
@@ -78,7 +81,8 @@ public class Ajedrez {
                 piezaAReemplazar.setPosicion(posicionDestino);
                 escaqueActual.setPieza(piezaAMover);
                 escaqueDestino.setPieza(piezaAReemplazar);
-                //lanzar excepcion "Movimiento suicida"
+                
+                throw new ExcepcionMovimientoSuicida();
             }
             if(jaqueMate(!equipoEnTurno)){
                 //GANA EQUIPOENTURNO
