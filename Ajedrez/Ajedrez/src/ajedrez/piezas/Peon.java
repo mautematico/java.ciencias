@@ -21,16 +21,16 @@ public class Peon extends Pieza {
         boolean equipo = this.isEquipo();
         if (equipo) {
             if (0 <= y - 1 && y - 1 < -7) {
-                posicionesPosibles[x][y - 1] = true;
+                posicionesPosibles[y - 1][x] = true;
             }
         } else {
             
             if (0 <= y + 1 && y + 1 <= 7) {
-                posicionesPosibles[x][y + 1] = true;
+                posicionesPosibles[y + 1][x] = true;
             }
         }
 
-        posicionesPosibles[x][y] = false;
+        posicionesPosibles[y][x] = false;
         return posicionesPosibles;
     }
 
@@ -71,10 +71,10 @@ public class Peon extends Pieza {
            int y2 = posicionNueva.getY();
          
            
-       if(posicionesPosibles()[x2][y2] && (tablero.getCasillas()[x2][y2].getPieza() instanceof NoPieza))
+       if(posicionesPosibles()[y2][x2] && (tablero.getCasillas()[y2][x2].getPieza() instanceof NoPieza))
            return true;
        
-      if (posicionesParaComer()[x2][y2] && piezasDelEquipoContrario(tablero)[x2][y2])
+      if (posicionesParaComer()[y2][x2] && piezasDelEquipoContrario(tablero)[y2][x2])
            return true;
       if(this.isEquipo()==false && y1==1 && x2 == x1 && y2 == 3)
           return true;

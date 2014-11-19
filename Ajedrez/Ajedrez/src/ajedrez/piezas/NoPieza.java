@@ -12,6 +12,13 @@ import ajedrez.juego.Tablero;
  * @author mautematico
  */
 public class NoPieza extends Pieza {
+    public NoPieza(){
+        this(-1,-1);
+    }
+    public NoPieza(int x, int y){
+        
+    }
+    
 
     @Override
     boolean[][] posicionesPosibles() {
