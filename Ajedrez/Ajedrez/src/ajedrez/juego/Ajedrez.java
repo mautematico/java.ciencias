@@ -111,9 +111,9 @@ public class Ajedrez {
                 tablero.getCasillas()[posicionActual.getX()][posicionActual.getY()].setPieza(new NoPieza());
                 tablero.getCasillas()[posicionActual.getY()][posicionActual.getX()].setPieza(new NoPieza());
                 
-                setPosicionesAPiezas();
 
                 tablero.getCasillas()[posicionDestino.getX()][posicionDestino.getY()].setPieza(piezaAMover);
+                setPosicionesAPiezas();
             }
                    
             if (movimientoAJaque(escaqueActual, escaqueDestino)){
