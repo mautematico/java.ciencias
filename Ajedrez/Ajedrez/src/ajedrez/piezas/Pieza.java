@@ -85,7 +85,6 @@ public abstract class Pieza {
            posicion.setY(posicionNueva.getY());
            return true;
        }
-       //Lanzar una excepcion de tipo "MovimientoInvalido"
        return false;
    }
 }
