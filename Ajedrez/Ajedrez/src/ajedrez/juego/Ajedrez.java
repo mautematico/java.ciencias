@@ -59,7 +59,7 @@ public class Ajedrez {
             equipoEnTurno = !equipoEnTurno;
         }
         
-        private void moverPieza(Escaque escaqueActual, Escaque escaqueDestino){
+        public void moverPieza(Escaque escaqueActual, Escaque escaqueDestino){
          
             Pieza piezaAMover = escaqueActual.getPieza();
             Pieza piezaAReemplazar = escaqueDestino.getPieza();
@@ -76,12 +76,7 @@ public class Ajedrez {
                 throw new ExcepcionMovimientoInvalido();
             }
                    
-            if (juegoEnJaque(equipoEnTurno)){
-                piezaAMover.setPosicion(posicionActual);
-                piezaAReemplazar.setPosicion(posicionDestino);
-                escaqueActual.setPieza(piezaAMover);
-                escaqueDestino.setPieza(piezaAReemplazar);
-                
+            if (movimientoAJaque(escaqueActual, escaqueDestino)){
                 throw new ExcepcionMovimientoSuicida();
             }
             if(jaqueMate(!equipoEnTurno)){
