@@ -12,6 +12,7 @@ import ajedrez.piezas.*;
 */
 public class Ajedrez {
     private Tablero tablero;
+    private boolean equipoEnTurno;
     public Ajedrez(){
         tablero = new Tablero();
         colocarPiezasDeAjedrez();
@@ -43,36 +44,64 @@ public class Ajedrez {
         for (int i = 6; i<8; i++){
             for (int j = 0; j<8; j++)
                 tablero.getCasillas() [i][j].getPieza().setEquipo(true);
-        
-        for ( i = 0; i<8; i++){
+        }
+        for ( int i = 0; i<8; i++){
             for (int j = 0; j<8; j++)
-               tablero.getCasillas() [i][j].getPieza().getPosicionActual().setPosicion(i, j);
+               tablero.getCasillas() [i][j].getPieza().getPosicion().setPosicion(i, j);
+        }
+       
     }
     
+        private void cambiarTurno() {
+            equipoEnTurno = !equipoEnTurno;
         }
-    }
-        private void moverPieza(int x1, int y1, int x2, int y2){
+        
+        private void moverPieza(Escaque escaqueActual, Escaque escaqueDestino){
          
+            Pieza piezaAMover = escaqueActual.getPieza();
+            Pieza piezaAReemplazar = escaqueDestino.getPieza();
+            Posicion posicionActual = piezaAMover.getPosicion();
+            Posicion posicionDestino = piezaAReemplazar.getPosicion();
+            boolean seMovio;
             
-            Pieza presuntoPeon = tablero.getCasillas()[x2][y2].getPieza();
-            if(presuntoPeon instanceof Peon){
-                coronacion((Peon) presuntoPeon);
+            if (piezaAMover.isEquipo() != equipoEnTurno ) {
+                //lanzar excepcion "EsTurno de equipoEnTurno"
+            }
+            
+            if(!piezaAMover.mover(piezaAReemplazar.getPosicion(), tablero)){
+                //lanzar excepcion "Movimiento invalido"
+            }
+                   
+            if (juegoEnJaque(equipoEnTurno)){
+                piezaAMover.setPosicion(posicionActual);
+                piezaAReemplazar.setPosicion(posicionDestino);
+                escaqueActual.setPieza(piezaAMover);
+                escaqueDestino.setPieza(piezaAReemplazar);
+                //lanzar excepcion "Movimiento suicida"
+            }
+                
+               
+            
+            
+            if(piezaAMover instanceof Peon){
+                coronacion((Peon) piezaAMover);
             }
         }
         
         private void coronacion(Peon peon){
             boolean equipo = peon.isEquipo();
-            int x = peon.getPosicionActual().getX();
-            int y = peon.getPosicionActual().getY();
-            if(equipo==false && y==0){
+            int x = peon.getPosicion().getX();
+            int y = peon.getPosicion().getY();
+            if(equipo==false && y==7){
                 tablero.getCasillas()[x][y].setPieza(new Reina());
             }
-            if(equipo==true && y==7){
+            if(equipo==true && y==0){
                 tablero.getCasillas()[x][y].setPieza(new Reina());
                 tablero.getCasillas() [x][y].getPieza().setEquipo(true);
             }
-            tablero.getCasillas()[x][y].getPieza().getPosicionActual().setPosicion(x, y);
+            tablero.getCasillas()[x][y].getPieza().getPosicion().setPosicion(x, y);
         }
+        
         private boolean juegoEnJaque(){
             Pieza[] reyes = new Pieza[2];
             
