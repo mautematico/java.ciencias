@@ -74,9 +74,13 @@ public class Peon extends Pieza {
        if(posicionesPosibles()[x2][y2] && (tablero.getCasillas()[x2][y2].getPieza() instanceof NoPieza))
            return true;
        
-       else
-           if (posicionesParaComer()[x2][y2] && piezasDelEquipoContrario(tablero)[x2][y2])
-                return true;
+      if (posicionesParaComer()[x2][y2] && piezasDelEquipoContrario(tablero)[x2][y2])
+           return true;
+      if(this.isEquipo()==false && y1==1 && x2 == x1 && y2 == 3)
+          return true;
+      if(this.isEquipo() && y1==6 && x2 == x1 && y2 == 4)
+          return true;
+      
         return false;
     }
 }
