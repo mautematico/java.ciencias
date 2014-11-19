@@ -21,6 +21,10 @@ public class Ajedrez {
         colocarPiezasDeAjedrez();
     }
     
+    public Tablero getTalero(){
+        return tablero;
+    }
+    
     private final void colocarPiezasDeAjedrez(){
         tablero.getCasillas() [0][0].setPieza(new Torre());
         tablero.getCasillas() [0][7].setPieza(new Torre());
