@@ -16,8 +16,8 @@ public class Rey extends Pieza {
     @Override
     boolean[][] posicionesPosibles() {
         boolean [][] posicionesPosibles = new boolean [8][8];
-        int x = this.getPosicionActual().getX();
-        int y = this.getPosicionActual().getY();
+        int x = this.getPosicion().getX();
+        int y = this.getPosicion().getY();
         for(int i = 0; i <= 8; i++){
             for(int j = 0; j <= 8; j++){
                 if (i == x || i == x+1 || i == x-1){
@@ -32,8 +32,8 @@ public class Rey extends Pieza {
     
     @Override
      boolean movimientoPosible(Posicion posicionNueva, Tablero tablero){
-           int x1 = getPosicionActual().getX();
-           int y1 = getPosicionActual().getY();
+           int x1 = getPosicion().getX();
+           int y1 = getPosicion().getY();
            int x2 = posicionNueva.getX();
            int y2 = posicionNueva.getY();
          

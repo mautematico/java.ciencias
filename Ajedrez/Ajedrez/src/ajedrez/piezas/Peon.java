@@ -16,8 +16,8 @@ public class Peon extends Pieza {
     @Override
     boolean[][] posicionesPosibles() {
         boolean[][] posicionesPosibles = new boolean[8][8];
-        int x = this.getPosicionActual().getX();
-        int y = this.getPosicionActual().getY();
+        int x = this.getPosicion().getX();
+        int y = this.getPosicion().getY();
         boolean equipo = this.isEquipo();
         if (equipo) {
             if (0 <= y - 1 && y - 1 < -7) {
@@ -36,8 +36,8 @@ public class Peon extends Pieza {
 
     boolean[][] posicionesParaComer() {
         boolean[][] posicionesParaComer = new boolean[8][8];
-        int x = this.getPosicionActual().getX();
-        int y = this.getPosicionActual().getY();
+        int x = this.getPosicion().getX();
+        int y = this.getPosicion().getY();
         boolean equipo = this.isEquipo();
         if (equipo) {
             if (0 <= y - 1 && y - 1 <= 7) {
@@ -65,8 +65,8 @@ public class Peon extends Pieza {
     
      @Override
      boolean movimientoPosible(Posicion posicionNueva, Tablero tablero){
-           int x1 = getPosicionActual().getX();
-           int y1 = getPosicionActual().getY();
+           int x1 = getPosicion().getX();
+           int y1 = getPosicion().getY();
            int x2 = posicionNueva.getX();
            int y2 = posicionNueva.getY();
          
