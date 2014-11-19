@@ -73,20 +73,34 @@ public class Ajedrez {
             }
             tablero.getCasillas()[x][y].getPieza().getPosicionActual().setPosicion(x, y);
         }
-        private boolean juegoEnJaque(){
-            Pieza[] reyes = new Pieza[2];
+        private boolean juegoEnJaque(boolean equipo){
+            Rey rey;
             
             for (int i=0; i<8; i++) {
                 for(int j = 0; j<8; j++){
-                    Pieza rey = tablero.getCasillas()[i][j].getPieza();
-                    if( rey instanceof Rey){
-                        if (rey.isEquipo() )
-                            int equipo = 0;
-                        
+                    Pieza pieza = tablero.getCasillas()[i][j].getPieza();
+                    if( pieza instanceof Rey){
+                        if (pieza.isEquipo() == equipo )
+                            rey = (Rey) pieza;
                     }
                 }
                 
             }
+            if (rey != null){
+              Posicion posicion = rey.getPosicionActual();
+              boolean[][] piezasContrarias = rey.piezasDelEquipoContrario(tablero);  
+              for(int i=0; i<8; i++){
+                  for(int j=0; j<8; j++){
+                      if(piezasContrarias[i][j]== true){
+                         boolean[][] movimientosPosibles = tablero.getCasillas()[i][j].getPieza().movimientosPosibles(tablero);
+                         if(movimientosPosibles[posicion.getX()][posicion.getY()])
+                             return true;
+                      }
+                  }
+              }
+              
+            }
+            
             return false;
         }
 }
