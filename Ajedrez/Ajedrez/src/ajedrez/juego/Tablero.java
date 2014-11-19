@@ -13,6 +13,11 @@ public class Tablero {
     
     public Tablero(){
         casillas = new Escaque[8][8];
+        for (int i=0; i<8; i++){
+            for(int j=0;j<8;j++){
+                casillas[i][j] = new Escaque();
+            }
+        }
         for (Escaque[] escaques : casillas) {
             for (Escaque escaque : escaques) {
                 escaque.setPieza( new NoPieza());

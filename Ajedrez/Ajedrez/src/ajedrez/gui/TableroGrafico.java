@@ -12,29 +12,86 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import ajedrez.juego.*;
+import ajedrez.piezas.*;
 
 /**
  *
  * @author Armand
  */
-public class Tablero extends JFrame {
+public class TableroGrafico extends JFrame {
     private JLabel escaques[][];
     private final byte TAMANIO = 8;
     private final ImageIcon imagenCaballo;
+    //private final ImageIcon imagenPeon;
+    private final ImageIcon imagenTorre;
+   // private final ImageIcon imagenAlfil;
+    //private final ImageIcon imagenReina;
+    //private final ImageIcon imagenRey;
     
     JMenuItem configuracion1;
     JMenuItem configuracion2;
     JMenuItem configuracion3;
+    Ajedrez miAjedrez;
     
-    public Tablero() {
+    
+    public TableroGrafico() {
         super("Mi ajedrez");
         //Crea una imagen a partir de la imagen "imagenes/caballo.png" escalándola
         //a un tamaño de 50x50 px
         Image img = (new ImageIcon(getClass().getResource("imagenes/caballo.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
         //Se crea un ImageIcon a partir de la imagen de arriba
         imagenCaballo = new ImageIcon(img);
+/*
+        img = (new ImageIcon(getClass().getResource("imagenes/peon.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        //Se crea un ImageIcon a partir de la imagen de arriba
+        imagenPeon = new ImageIcon(img);
+
+        img = (new ImageIcon(getClass().getResource("imagenes/reina.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        //Se crea un ImageIcon a partir de la imagen de arriba
+        imagenReina = new ImageIcon(img);
+
+        img = (new ImageIcon(getClass().getResource("imagenes/rey.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        //Se crea un ImageIcon a partir de la imagen de arriba
+        imagenRey = new ImageIcon(img);
+  */      
+        img = (new ImageIcon(getClass().getResource("imagenes/torre.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        //Se crea un ImageIcon a partir de la imagen de arriba
+        imagenTorre = new ImageIcon(img);
+
         inicializarComponentes();//Inicializa los componentes que contendrá el JFrame
+        pintarTablero();
         establecerConfiguracionDelFrame();
+        
+        
+        miAjedrez = new Ajedrez();
+        
+    }
+    
+    private void pintarTablero(){
+//        for (int i = 0; i<8; i++){
+  //          for (int j=0; j<8; j++){
+                
+                if(miAjedrez.getTablero().getCasillas()[0][0].getPieza() instanceof Torre )
+                    escaques[0][0].setIcon(imagenTorre);                    
+/*                if(miAjedrez.tablero.getCasillas()[i][j].getPieza() instanceof Peon )
+                    escaques[i][j].setIcon(imagenPeon);                    
+                if(miAjedrez.tablero.getCasillas()[i][j].getPieza() instanceof Alfil )
+                    escaques[i][j].setIcon(imagenAlfil);                    
+                if(miAjedrez.tablero.getCasillas()[i][j].getPieza() instanceof Torre )
+                    escaques[i][j].setIcon(imagenTorre);                    
+                if(miAjedrez.tablero.getCasillas()[i][j].getPieza() instanceof Reina )
+                    escaques[i][j].setIcon(imagenReina);                    
+                if(miAjedrez.tablero.getCasillas()[i][j].getPieza() instanceof Rey )
+                    escaques[i][j].setIcon(imagenRey);                    
+*/                
+//                if(miAjedrez.getTablero().getCasillas()[i][j].getPieza() instanceof Torre )
+  //                  escaques[i][j].setIcon(imagenTorre);                    
+    //        }
+            
+      //  }
+
+        
     }
     
     private void inicializarComponentes() {
@@ -96,7 +153,7 @@ public class Tablero extends JFrame {
         setVisible(true);
     }
     public static void main(String [] argv){
-        Tablero tablero = new Tablero();
+        TableroGrafico tablero = new TableroGrafico();
     }
     
     private class ManejadorConfiguraciones implements ActionListener {
@@ -135,4 +192,4 @@ public class Tablero extends JFrame {
         
     } //fin de la clase interna ManejadorConfiguraciones
     
-} //fin de la clase Tablero
+} //fin de la clase TableroGrafico
