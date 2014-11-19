@@ -28,7 +28,7 @@ public class Ajedrez {
     private final void colocarPiezasDeAjedrez(){
         tablero.getCasillas() [0][0].setPieza(new Torre());
         tablero.getCasillas() [0][7].setPieza(new Torre());
-        tablero.getCasillas() [0][1].setPieza(new Caballo());
+//        tablero.getCasillas() [0][1].setPieza(new Caballo());
         tablero.getCasillas() [0][6].setPieza(new Caballo());
         tablero.getCasillas() [0][2].setPieza(new Alfil());
         tablero.getCasillas() [0][5].setPieza(new Alfil());
@@ -102,6 +102,8 @@ public class Ajedrez {
             if(piezaAMover instanceof Peon){
                 coronacion((Peon) piezaAMover);
             }
+            
+            System.out.println("Pieza movida");
         
         }
         
