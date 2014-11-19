@@ -69,7 +69,7 @@ public class TableroGrafico extends JFrame {
         imagenReina[1] = new ImageIcon(img);
         img = (new ImageIcon(getClass().getResource("/reyotro.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
         imagenRey[1] = new ImageIcon(img);
-        img = (new ImageIcon(getClass().getResource("/peon.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        img = (new ImageIcon(getClass().getResource("/peonotro.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
         imagenPeon[1] = new ImageIcon(img);
         img = (new ImageIcon(getClass().getResource("/caballootro.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
         imagenCaballo[1] = new ImageIcon(img);
