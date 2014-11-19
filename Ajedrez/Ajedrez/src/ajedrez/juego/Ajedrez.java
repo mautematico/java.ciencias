@@ -66,7 +66,7 @@ public class Ajedrez {
        for (int i = 0; i<8; i++)
             tablero.getCasillas() [6][i].setPieza(new Peon());
         
-        for (int i = 7; i<8; i++){
+        for (int i = 6; i<8; i++){
             for (int j = 0; j<8; j++)
                 tablero.getCasillas() [i][j].getPieza().setEquipo(true);
         }
@@ -144,10 +144,11 @@ public class Ajedrez {
             int y = peon.getPosicion().getY();
             if(equipo==false && y==7){
                 tablero.getCasillas()[x][y].setPieza(new Reina());
+                tablero.getCasillas() [x][y].getPieza().setEquipo(peon.isEquipo());
             }
             if(equipo==true && y==0){
                 tablero.getCasillas()[x][y].setPieza(new Reina());
-                tablero.getCasillas() [x][y].getPieza().setEquipo(true);
+                tablero.getCasillas() [x][y].getPieza().setEquipo(peon.isEquipo());
             }
             tablero.getCasillas()[x][y].getPieza().getPosicion().setPosicion(x, y);
         }

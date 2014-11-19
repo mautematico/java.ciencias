@@ -109,11 +109,12 @@ public class TableroGrafico extends JFrame {
         
         for (int i = 0; i<8; i++){
             for (int j=0; j<8; j++){
-                int blancoOnegro = 0;
+                
                 Pieza pieza = miAjedrez.getTablero().getCasillas()[7-i][j].getPieza();
-                if (pieza.isEquipo()){
+                int blancoOnegro = 0;
+                if (pieza.isEquipo())
                     blancoOnegro = 1;
-                }
+                
                 if(pieza instanceof Torre )
                     escaques[i][j].setIcon(imagenTorre[blancoOnegro]);                    
                 if(pieza instanceof Peon )
