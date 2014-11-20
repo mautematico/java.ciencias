@@ -17,9 +17,7 @@ public class Ajedrez {
     private Tablero tablero;
     private boolean equipoEnTurno;
     public Ajedrez(){
-        tablero = new Tablero();
-        colocarPiezasDeAjedrez();
-        equipoEnTurno = false;
+        this("rey");
     }
 
     public Ajedrez(String escenario){
@@ -33,14 +31,15 @@ public class Ajedrez {
             case "torre":
                  tablero.getCasillas() [0][0].setPieza(new Torre());            
                 break;
-            case "alfil":
-                tablero.getCasillas() [4][5].setPieza(new Alfil());
+            case "rey":
+                tablero.getCasillas() [4][5].setPieza(new Rey());
                 break;  
 
             default:
                 colocarPiezasDeAjedrez();    
         }
         setPosicionesAPiezas();
+        equipoEnTurno = false;
     }
 
     public Tablero getTablero(){
