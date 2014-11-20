@@ -1,3 +1,5 @@
+package ajedrez.gui;
+
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,6 +16,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import ajedrez.juego.*;
 import ajedrez.piezas.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  *
@@ -22,76 +26,114 @@ import ajedrez.piezas.*;
 public class TableroGrafico extends JFrame {
     private JLabel escaques[][];
     private final byte TAMANIO = 8;
-    private final ImageIcon imagenCaballo;
-    //private final ImageIcon imagenPeon;
-    private final ImageIcon imagenTorre;
-   // private final ImageIcon imagenAlfil;
-    //private final ImageIcon imagenReina;
-    //private final ImageIcon imagenRey;
+
+    private final ImageIcon[] imagenPeon;
+    private final ImageIcon[] imagenTorre;
+    private final ImageIcon[] imagenAlfil;
+    private final ImageIcon[] imagenReina;
+    private final ImageIcon[] imagenRey;
+    private final ImageIcon[] imagenCaballo;
     
-    JMenuItem configuracion1;
-    JMenuItem configuracion2;
+    private Escaque[] escaquesDeMovimiento;
+    
+    JMenuItem coronar;
+    JMenuItem torre;
     JMenuItem configuracion3;
     Ajedrez miAjedrez;
+
+    private final void cargarImagenes(){
+        //Crea una imagen a partir de la imagen "imagenes/caballo.png" escalándola
+        //a un tamaño de 50x50 px
+
+        
+        Image img = (new ImageIcon(getClass().getResource("/peon.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        //Se crea un ImageIcon a partir de la imagen de arriba
+        imagenPeon[0] = new ImageIcon(img);
+
+        img = (new ImageIcon(getClass().getResource("/torre.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        imagenTorre[0] = new ImageIcon(img);
+        img = (new ImageIcon(getClass().getResource("/alfil.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        imagenAlfil[0] = new ImageIcon(img);
+        img = (new ImageIcon(getClass().getResource("/reina.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        imagenReina[0] = new ImageIcon(img);
+        img = (new ImageIcon(getClass().getResource("/rey.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        imagenRey[0] = new ImageIcon(img);
+        img = (new ImageIcon(getClass().getResource("/caballo.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        imagenCaballo[0] = new ImageIcon(img);
+
+        img = (new ImageIcon(getClass().getResource("/torreotra.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        imagenTorre[1] = new ImageIcon(img);
+        img = (new ImageIcon(getClass().getResource("/alfilotro.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        imagenAlfil[1] = new ImageIcon(img);
+        img = (new ImageIcon(getClass().getResource("/reinaotra.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        imagenReina[1] = new ImageIcon(img);
+        img = (new ImageIcon(getClass().getResource("/reyotro.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        imagenRey[1] = new ImageIcon(img);
+        img = (new ImageIcon(getClass().getResource("/peonotro.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        imagenPeon[1] = new ImageIcon(img);
+        img = (new ImageIcon(getClass().getResource("/caballootro.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        imagenCaballo[1] = new ImageIcon(img);
+
+    }
     
+        
     
     public TableroGrafico() {
         super("Mi ajedrez");
-        //Crea una imagen a partir de la imagen "imagenes/caballo.png" escalándola
-        //a un tamaño de 50x50 px
-        Image img = (new ImageIcon(getClass().getResource("imagenes/caballo.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-        //Se crea un ImageIcon a partir de la imagen de arriba
-        imagenCaballo = new ImageIcon(img);
-/*
-        img = (new ImageIcon(getClass().getResource("imagenes/peon.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-        //Se crea un ImageIcon a partir de la imagen de arriba
-        imagenPeon = new ImageIcon(img);
 
-        img = (new ImageIcon(getClass().getResource("imagenes/reina.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-        //Se crea un ImageIcon a partir de la imagen de arriba
-        imagenReina = new ImageIcon(img);
-
-        img = (new ImageIcon(getClass().getResource("imagenes/rey.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-        //Se crea un ImageIcon a partir de la imagen de arriba
-        imagenRey = new ImageIcon(img);
-  */      
-        img = (new ImageIcon(getClass().getResource("imagenes/torre.png"))).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-        //Se crea un ImageIcon a partir de la imagen de arriba
-        imagenTorre = new ImageIcon(img);
+        miAjedrez = new Ajedrez();
+        imagenPeon = new ImageIcon[2];
+        imagenCaballo = new ImageIcon[2];
+        imagenAlfil = new ImageIcon[2];
+        imagenRey = new ImageIcon[2];
+        imagenReina = new ImageIcon[2];
+        imagenTorre = new ImageIcon[2];
+        cargarImagenes();
 
         inicializarComponentes();//Inicializa los componentes que contendrá el JFrame
         pintarTablero();
-        establecerConfiguracionDelFrame();
-        
-        
-        miAjedrez = new Ajedrez();
-        
+        establecerConfiguracionDelFrame();        
     }
     
     private void pintarTablero(){
-//        for (int i = 0; i<8; i++){
-  //          for (int j=0; j<8; j++){
-                
-                if(miAjedrez.getTablero().getCasillas()[0][0].getPieza() instanceof Torre )
-                    escaques[0][0].setIcon(imagenTorre);                    
-/*                if(miAjedrez.tablero.getCasillas()[i][j].getPieza() instanceof Peon )
-                    escaques[i][j].setIcon(imagenPeon);                    
-                if(miAjedrez.tablero.getCasillas()[i][j].getPieza() instanceof Alfil )
-                    escaques[i][j].setIcon(imagenAlfil);                    
-                if(miAjedrez.tablero.getCasillas()[i][j].getPieza() instanceof Torre )
-                    escaques[i][j].setIcon(imagenTorre);                    
-                if(miAjedrez.tablero.getCasillas()[i][j].getPieza() instanceof Reina )
-                    escaques[i][j].setIcon(imagenReina);                    
-                if(miAjedrez.tablero.getCasillas()[i][j].getPieza() instanceof Rey )
-                    escaques[i][j].setIcon(imagenRey);                    
-*/                
-//                if(miAjedrez.getTablero().getCasillas()[i][j].getPieza() instanceof Torre )
-  //                  escaques[i][j].setIcon(imagenTorre);                    
-    //        }
-            
-      //  }
-
+        //inicializarComponentes();
+ 
+        for(int i = 0; i < escaques.length; i++){
+            for(int j = 0; j < escaques[i].length; j++){
+                escaques[i][j].setIcon(null);
+            }
+        }
+        super.revalidate();
+        super.repaint();
+//        System.out.println("todos a null");        
         
+        for (int i = 0; i<8; i++){
+            for (int j=0; j<8; j++){
+                
+                Pieza pieza = miAjedrez.getTablero().getCasillas()[7-i][j].getPieza();
+                int blancoOnegro = 0;
+                if (pieza.isEquipo())
+                    blancoOnegro = 1;
+                
+                if(pieza instanceof Torre )
+                    escaques[i][j].setIcon(imagenTorre[blancoOnegro]);                    
+                if(pieza instanceof Peon )
+                    escaques[i][j].setIcon(imagenPeon[blancoOnegro]);                    
+                if(pieza instanceof Alfil )
+                    escaques[i][j].setIcon(imagenAlfil[blancoOnegro]);                    
+                if(pieza instanceof Reina )
+                    escaques[i][j].setIcon(imagenReina[blancoOnegro]);                    
+                if(pieza instanceof Rey )
+                    escaques[i][j].setIcon(imagenRey[blancoOnegro]);                    
+                if(pieza instanceof Caballo )
+                    escaques[i][j].setIcon(imagenCaballo[blancoOnegro]);    
+
+            }
+            
+        }
+        
+        super.revalidate();
+        super.repaint();
     }
     
     private void inicializarComponentes() {
@@ -103,18 +145,18 @@ public class TableroGrafico extends JFrame {
         ManejadorConfiguraciones manejador = new ManejadorConfiguraciones();
         
         //Se crean 3 JMenuItem
-        configuracion1 = new JMenuItem("Configuracion 1");
-        configuracion2 = new JMenuItem("Configuracion 2");
+        coronar = new JMenuItem("Coronación");
+        torre = new JMenuItem("Torre");
         configuracion3 = new JMenuItem("Configuracion 3");
         
         //Se agrega un escucha de acciones a cada JMenuItem
-        configuracion1.addActionListener(manejador);
-        configuracion2.addActionListener(manejador);
+        coronar.addActionListener(manejador);
+        torre.addActionListener(manejador);
         configuracion3.addActionListener(manejador);
         
         //Se agregan los JMenuItem al JMenu
-        menuConfiguraiones.add(configuracion1);
-        menuConfiguraiones.add(configuracion2);
+        menuConfiguraiones.add(coronar);
+        menuConfiguraiones.add(torre);
         menuConfiguraiones.add(configuracion3);
         barraMenus.add(menuConfiguraiones);
         add(barraMenus, BorderLayout.NORTH);
@@ -135,8 +177,8 @@ public class TableroGrafico extends JFrame {
                 colorNegro = !colorNegro;
                 contenedorEscaques.add(escaques[i][j]);
                 
-//                escaques[i][j].a
-                        //addActionListener(manejador);
+                escaques[i][j].addMouseListener(
+                        new ManejadorDeClics(miAjedrez.getTablero().getCasillas()[7-i][j]));
 
             }
             colorNegro = !colorNegro;
@@ -154,42 +196,77 @@ public class TableroGrafico extends JFrame {
     }
     public static void main(String [] argv){
         TableroGrafico tablero = new TableroGrafico();
+        
     }
     
     private class ManejadorConfiguraciones implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
-            //Establece cada Icon de cada escaque en null (no hay imagenes)
-            for(int i = 0; i < escaques.length; i++){
-                for(int j = 0; j < escaques[i].length; j++){
-                    escaques[i][j].setIcon(null);
-                }
+            if(evento.getSource() == coronar){
+                miAjedrez = new Ajedrez("coronar");
+                pintarTablero();
             }
-            //Verifica dónde se dió el evento y dependiendo de ello se establece una
-            //configuración de tablero
-            if(evento.getSource() == configuracion1){
-                escaques[4][5].setIcon(imagenCaballo);
+            if(evento.getSource() == torre){
+                miAjedrez = new Ajedrez("torre");
+                pintarTablero();
             }
-            else if(evento.getSource() == configuracion2){
-                escaques[1][5].setIcon(imagenCaballo);
-                escaques[6][7].setIcon(imagenCaballo);
-            }
-            else if(evento.getSource() == configuracion3){
-                escaques[4][5].setIcon(imagenCaballo);
-                escaques[3][5].setIcon(imagenCaballo);
-                escaques[0][3].setIcon(imagenCaballo);
-            }
-            
-            else {
-                escaques[4][5].setIcon(imagenCaballo);
-                escaques[3][5].setIcon(imagenCaballo);
-                escaques[0][3].setIcon(imagenCaballo);
+        }
+        
+    } //fin de la clase interna ManejadorConfiguraciones
+
+    private class ManejadorDeClics implements MouseListener{
+        private Escaque escaque;
+
+        ManejadorDeClics(final Escaque escaque){
+            super();
+            this.escaque = escaque;
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {            
+//            System.out.println("Clic!!!");
+
+            if(escaquesDeMovimiento == null){
+                escaquesDeMovimiento = new Escaque[2];
+                escaquesDeMovimiento[0] = this.escaque;
+                escaquesDeMovimiento[1] = null;
+                System.out.println("Primer escaque "+ escaquesDeMovimiento[0].getPieza().getPosicion().getX() 
+                        +"," +  escaquesDeMovimiento[0].getPieza().getPosicion().getY() );
+                
+            } else if(escaquesDeMovimiento[1] == null){
+                escaquesDeMovimiento[1] = this.escaque;
+                System.out.println("Segundo escaque "+ escaquesDeMovimiento[1].getPieza().getPosicion().getX() 
+                        +"," +  escaquesDeMovimiento[1].getPieza().getPosicion().getY() );
+                
+//                try{
+                    miAjedrez.moverPieza(escaquesDeMovimiento[0], escaquesDeMovimiento[1]);
+                    escaquesDeMovimiento = null;
+                    pintarTablero();
+  //              } catch(RuntimeException ex){
+    //                System.out.println("¡Algo pasó!");
+      //          }
             }
 
             
         }
-        
-    } //fin de la clase interna ManejadorConfiguraciones
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
+    }
+
     
 } //fin de la clase TableroGrafico
