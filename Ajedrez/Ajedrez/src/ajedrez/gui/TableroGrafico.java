@@ -197,7 +197,13 @@ public class TableroGrafico extends JFrame {
     }
     public static void main(String [] argv){
         TableroGrafico tablero = new TableroGrafico();
+
+/*        Escaque origen = tablero.miAjedrez.getTablero().getCasillas()[0][1];
+        Escaque destino = tablero.miAjedrez.getTablero().getCasillas()[0][3];
         
+        tablero.miAjedrez.moverPieza(origen, destino);
+        tablero.pintarTablero();
+  */      
     }
     
     private class ManejadorConfiguraciones implements ActionListener {
@@ -213,7 +219,7 @@ public class TableroGrafico extends JFrame {
                 pintarTablero();
             }
             if(evento.getSource() == alfil){
-                miAjedrez = new Ajedrez("alfil");
+                miAjedrez = new Ajedrez("rey");
                 pintarTablero();
             }
         }
@@ -238,12 +244,45 @@ public class TableroGrafico extends JFrame {
                 escaquesDeMovimiento[1] = null;
                 System.out.println("Primer escaque "+ escaquesDeMovimiento[0].getPieza().getPosicion().getX() 
                         +"," +  escaquesDeMovimiento[0].getPieza().getPosicion().getY() );
+                System.out.println("Pieza: ");
+                
+                if(escaquesDeMovimiento[0].getPieza() instanceof Reina)
+                    System.out.println("Reina");
+                if(escaquesDeMovimiento[0].getPieza() instanceof NoPieza)
+                    System.out.println("NoPieza");
+                if(escaquesDeMovimiento[0].getPieza() instanceof Rey)
+                    System.out.println("Rey");
+                if(escaquesDeMovimiento[0].getPieza() instanceof Peon)
+                    System.out.println("Peon");
+                if(escaquesDeMovimiento[0].getPieza() instanceof Caballo)
+                    System.out.println("Caballo");
+                if(escaquesDeMovimiento[0].getPieza() instanceof Torre)
+                    System.out.println("Torre");
+                if(escaquesDeMovimiento[0].getPieza() instanceof Alfil)
+                    System.out.println("Alfil");
+                
                 
             } else if(escaquesDeMovimiento[1] == null){
                 escaquesDeMovimiento[1] = this.escaque;
                 System.out.println("Segundo escaque "+ escaquesDeMovimiento[1].getPieza().getPosicion().getX() 
                         +"," +  escaquesDeMovimiento[1].getPieza().getPosicion().getY() );
-                
+
+
+                if(escaquesDeMovimiento[1].getPieza() instanceof Reina)
+                    System.out.println("Reina");
+                if(escaquesDeMovimiento[1].getPieza() instanceof NoPieza)
+                    System.out.println("NoPieza");
+                if(escaquesDeMovimiento[1].getPieza() instanceof Rey)
+                    System.out.println("Rey");
+                if(escaquesDeMovimiento[1].getPieza() instanceof Peon)
+                    System.out.println("Peon");
+                if(escaquesDeMovimiento[1].getPieza() instanceof Caballo)
+                    System.out.println("Caballo");
+                if(escaquesDeMovimiento[1].getPieza() instanceof Torre)
+                    System.out.println("Torre");
+                if(escaquesDeMovimiento[1].getPieza() instanceof Alfil)
+                    System.out.println("Alfil");
+
 //                try{
                     miAjedrez.moverPieza(escaquesDeMovimiento[0], escaquesDeMovimiento[1]);
                     escaquesDeMovimiento = null;
