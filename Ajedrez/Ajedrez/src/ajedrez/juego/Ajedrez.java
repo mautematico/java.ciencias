@@ -19,6 +19,7 @@ public class Ajedrez {
     public Ajedrez(){
         tablero = new Tablero();
         colocarPiezasDeAjedrez();
+        equipoEnTurno = false;
     }
 
     public Ajedrez(String escenario){
@@ -48,40 +49,40 @@ public class Ajedrez {
     
     private final void colocarPiezasDeAjedrez(){
         tablero.getCasillas() [0][0].setPieza(new Torre());
-        tablero.getCasillas() [0][7].setPieza(new Torre());
-        tablero.getCasillas() [0][1].setPieza(new Caballo());
-        tablero.getCasillas() [0][6].setPieza(new Caballo());
-        tablero.getCasillas() [0][2].setPieza(new Alfil());
-        tablero.getCasillas() [0][5].setPieza(new Alfil());
-        tablero.getCasillas() [0][3].setPieza(new Reina());
-        tablero.getCasillas() [0][4].setPieza(new Rey());
-        for (int i = 0; i<8; i++)
-             tablero.getCasillas() [1][i].setPieza(new Peon());
-        
         tablero.getCasillas() [7][0].setPieza(new Torre());
-        tablero.getCasillas() [7][7].setPieza(new Torre());
-        tablero.getCasillas() [7][1].setPieza(new Caballo());
-        tablero.getCasillas() [7][6].setPieza(new Caballo());
-        tablero.getCasillas() [7][2].setPieza(new Alfil());
-        tablero.getCasillas() [7][5].setPieza(new Alfil());
-        tablero.getCasillas() [7][4].setPieza(new Reina());
-        tablero.getCasillas() [7][3].setPieza(new Rey());
-       for (int i = 0; i<8; i++)
-            tablero.getCasillas() [6][i].setPieza(new Peon());
+        tablero.getCasillas() [1][0].setPieza(new Caballo());
+        tablero.getCasillas() [6][0].setPieza(new Caballo());
+        tablero.getCasillas() [2][0].setPieza(new Alfil());
+        tablero.getCasillas() [5][0].setPieza(new Alfil());
+        tablero.getCasillas() [3][0].setPieza(new Reina());
+        tablero.getCasillas() [4][0].setPieza(new Rey());
+        for (int i = 0; i<8; i++)
+             tablero.getCasillas() [i][1].setPieza(new Peon());
         
-        for (int i = 6; i<8; i++){
-            for (int j = 0; j<8; j++)
+        tablero.getCasillas() [0][7].setPieza(new Torre());
+        tablero.getCasillas() [7][7].setPieza(new Torre());
+        tablero.getCasillas() [1][7].setPieza(new Caballo());
+        tablero.getCasillas() [6][7].setPieza(new Caballo());
+        tablero.getCasillas() [2][7].setPieza(new Alfil());
+        tablero.getCasillas() [5][7].setPieza(new Alfil());
+        tablero.getCasillas() [3][7].setPieza(new Reina());
+        tablero.getCasillas() [4][7].setPieza(new Rey());
+        for (int i = 0; i<8; i++)
+             tablero.getCasillas() [i][6].setPieza(new Peon());
+        
+        for (int i = 0; i<8; i++){
+            for (int j = 6; j<8; j++)
                 tablero.getCasillas() [i][j].getPieza().setEquipo(true);
         }
         
-        setPosicionesAPiezas();
+        setPosicionesAPiezas();//es necesario?
        
     }
     
     public void setPosicionesAPiezas(){
         for ( int i = 0; i<8; i++){
             for (int j = 0; j<8; j++){
-                System.out.println(tablero.getCasillas()[i][j].getPieza());
+                System.out.println(tablero.getCasillas()[i][j].getPieza());//esto que?
                tablero.getCasillas() [i][j]
                        .getPieza()
                        .getPosicion()
@@ -101,42 +102,42 @@ public class Ajedrez {
             Pieza piezaAReemplazar = escaqueDestino.getPieza();
             Posicion posicionActual = piezaAMover.getPosicion();
             Posicion posicionDestino = piezaAReemplazar.getPosicion();
+            boolean SeMueve;
            
        
             
             if (piezaAMover.isEquipo() != equipoEnTurno ) {
                 throw new ExcepcionTurnoEquivocado();
             }
-            
-            if(!piezaAMover.mover(piezaAReemplazar.getPosicion(), tablero)){
-                throw new ExcepcionMovimientoInvalido();
-            } else {
-                tablero.getCasillas()[posicionActual.getX()][posicionActual.getY()].setPieza(new NoPieza());
-                tablero.getCasillas()[posicionActual.getY()][posicionActual.getX()].setPieza(new NoPieza());
-                
-
-                tablero.getCasillas()[posicionDestino.getX()][posicionDestino.getY()].setPieza(piezaAMover);
-                setPosicionesAPiezas();
-            }
-                   
             if (movimientoAJaque(escaqueActual, escaqueDestino)){
                 throw new ExcepcionMovimientoSuicida();
             }
-            if(jaqueMate(!equipoEnTurno)){
-                //GANA EQUIPOENTURNO
+            if(!piezaAMover.mover(posicionDestino, tablero)){
+                throw new ExcepcionMovimientoInvalido();
+            } else {
+                tablero.getCasillas()[posicionActual.getX()][posicionActual.getY()].setPieza(new NoPieza());
+             
+                tablero.getCasillas()[posicionDestino.getX()][posicionDestino.getY()].setPieza(piezaAMover);
+                setPosicionesAPiezas();
             }
-            else {
-                cambiarTurno();
-            }
+                  
+           
             if(juegoEnJaque(!equipoEnTurno)){
-                //avisar Jaque
+                if(jaqueMate(!equipoEnTurno)){
+                //GANA EQUIPOENTURNO
+                }
+                else {
+
+                    //avisar Jaque (NuevoEquipo EN Turno)
+                }
+                
             }
                 
             if(piezaAMover instanceof Peon){
                 coronacion((Peon) piezaAMover);
             }
-            
-            System.out.println("Pieza movida");
+            cambiarTurno();
+            System.out.println("Pieza movida");//que pedo?
         
         }
         
@@ -147,11 +148,11 @@ public class Ajedrez {
             int y = peon.getPosicion().getY();
             if(equipo==false && y==7){
                 tablero.getCasillas()[x][y].setPieza(new Reina());
-                tablero.getCasillas() [x][y].getPieza().setEquipo(peon.isEquipo());
+                tablero.getCasillas() [x][y].getPieza().setEquipo(equipo);
             }
             if(equipo==true && y==0){
                 tablero.getCasillas()[x][y].setPieza(new Reina());
-                tablero.getCasillas() [x][y].getPieza().setEquipo(peon.isEquipo());
+                tablero.getCasillas() [x][y].getPieza().setEquipo(equipo);
             }
             tablero.getCasillas()[x][y].getPieza().getPosicion().setPosicion(x, y);
         }
@@ -168,7 +169,6 @@ public class Ajedrez {
                 }
                 
             }
-            if (rey != null){
               Posicion posicion = rey.getPosicion();
               boolean[][] piezasContrarias = rey.piezasDelEquipoContrario(tablero);  
               for(int i=0; i<8; i++){
@@ -181,7 +181,7 @@ public class Ajedrez {
                   }
               }
               
-            }
+            
             
             return false;
         }
@@ -194,7 +194,7 @@ public class Ajedrez {
             boolean movimientoAJaque = false;
            
        
-            if(piezaAMover.mover(piezaAReemplazar.getPosicion(), tablero)){
+            if(piezaAMover.mover(posicionDestino, tablero)){
               
                    
                 if (juegoEnJaque(piezaAMover.isEquipo()))
