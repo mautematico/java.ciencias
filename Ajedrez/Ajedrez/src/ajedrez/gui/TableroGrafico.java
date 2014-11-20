@@ -110,7 +110,7 @@ public class TableroGrafico extends JFrame {
         for (int i = 0; i<8; i++){
             for (int j=0; j<8; j++){
                 
-                Pieza pieza = miAjedrez.getTablero().getCasillas()[i][j].getPieza();
+                Pieza pieza = miAjedrez.getTablero().getCasillas()[j][7-i].getPieza();
                 int blancoOnegro = 0;
                 if (pieza.isEquipo())
                     blancoOnegro = 1;
@@ -172,13 +172,14 @@ public class TableroGrafico extends JFrame {
             for(int j = 0; j < escaques[i].length; j++){
                 escaques[i][j] = new JLabel();
                 escaques[i][j].setOpaque(true);
+//                escaques[i][j].setText(i+","+j);
                 if(colorNegro) escaques[i][j].setBackground(Color.black);
                 else escaques[i][j].setBackground(Color.white);
                 colorNegro = !colorNegro;
                 contenedorEscaques.add(escaques[i][j]);
                 
                 escaques[i][j].addMouseListener(
-                        new ManejadorDeClics(miAjedrez.getTablero().getCasillas()[i][j]));
+                        new ManejadorDeClics(miAjedrez.getTablero().getCasillas()[j][7-i]));
 
             }
             colorNegro = !colorNegro;
