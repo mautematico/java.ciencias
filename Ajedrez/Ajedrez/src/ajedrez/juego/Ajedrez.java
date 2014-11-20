@@ -32,6 +32,9 @@ public class Ajedrez {
             case "torre":
                  tablero.getCasillas() [0][0].setPieza(new Torre());            
                 break;
+            case "alfil":
+                tablero.getCasillas() [4][5].setPieza(new Alfil());
+                break;  
 
             default:
                 colocarPiezasDeAjedrez();    

@@ -38,7 +38,7 @@ public class TableroGrafico extends JFrame {
     
     JMenuItem coronar;
     JMenuItem torre;
-    JMenuItem configuracion3;
+    JMenuItem alfil;
     Ajedrez miAjedrez;
 
     private final void cargarImagenes(){
@@ -110,7 +110,7 @@ public class TableroGrafico extends JFrame {
         for (int i = 0; i<8; i++){
             for (int j=0; j<8; j++){
                 
-                Pieza pieza = miAjedrez.getTablero().getCasillas()[7-i][j].getPieza();
+                Pieza pieza = miAjedrez.getTablero().getCasillas()[i][j].getPieza();
                 int blancoOnegro = 0;
                 if (pieza.isEquipo())
                     blancoOnegro = 1;
@@ -147,17 +147,17 @@ public class TableroGrafico extends JFrame {
         //Se crean 3 JMenuItem
         coronar = new JMenuItem("Coronación");
         torre = new JMenuItem("Torre");
-        configuracion3 = new JMenuItem("Configuracion 3");
+        alfil = new JMenuItem("Alfil");
         
         //Se agrega un escucha de acciones a cada JMenuItem
         coronar.addActionListener(manejador);
         torre.addActionListener(manejador);
-        configuracion3.addActionListener(manejador);
+        alfil.addActionListener(manejador);
         
         //Se agregan los JMenuItem al JMenu
         menuConfiguraiones.add(coronar);
         menuConfiguraiones.add(torre);
-        menuConfiguraiones.add(configuracion3);
+        menuConfiguraiones.add(alfil);
         barraMenus.add(menuConfiguraiones);
         add(barraMenus, BorderLayout.NORTH);
         
@@ -178,7 +178,7 @@ public class TableroGrafico extends JFrame {
                 contenedorEscaques.add(escaques[i][j]);
                 
                 escaques[i][j].addMouseListener(
-                        new ManejadorDeClics(miAjedrez.getTablero().getCasillas()[7-i][j]));
+                        new ManejadorDeClics(miAjedrez.getTablero().getCasillas()[i][j]));
 
             }
             colorNegro = !colorNegro;
@@ -209,6 +209,10 @@ public class TableroGrafico extends JFrame {
             }
             if(evento.getSource() == torre){
                 miAjedrez = new Ajedrez("torre");
+                pintarTablero();
+            }
+            if(evento.getSource() == alfil){
+                miAjedrez = new Ajedrez("alfil");
                 pintarTablero();
             }
         }
