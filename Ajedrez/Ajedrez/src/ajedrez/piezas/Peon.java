@@ -20,17 +20,17 @@ public class Peon extends Pieza {
         int y = this.getPosicion().getY();
         boolean equipo = this.isEquipo();
         if (equipo) {
-            if (0 <= y - 1 && y - 1 < -7) {
-                posicionesPosibles[y - 1][x] = true;
+            if (0 < y && y  <= 7) {
+                posicionesPosibles[x][y - 1] = true;
             }
         } else {
             
-            if (0 <= y + 1 && y + 1 <= 7) {
-                posicionesPosibles[y + 1][x] = true;
+            if (0 <= y  && y  < 7) {
+                posicionesPosibles[x][y + 1] = true;
             }
         }
 
-        posicionesPosibles[y][x] = false;
+        posicionesPosibles[x][y] = false;
         return posicionesPosibles;
     }
 
@@ -40,21 +40,21 @@ public class Peon extends Pieza {
         int y = this.getPosicion().getY();
         boolean equipo = this.isEquipo();
         if (equipo) {
-            if (0 <= y - 1 && y - 1 <= 7) {
-                if (0 <= x + 1 && x + 1 <= 7) {
+            if (0 < y && y  <= 7) {
+                if (0 <= x && x < 7) {
                     posicionesParaComer[x + 1][y - 1] = true;
                 }
-                if (0 <= x - 1 && x - 1 <= 7) {
+                if (0 < x && x  <= 7) {
                     posicionesParaComer[x - 1][y - 1] = true;
                 }
             }
         } else {
            
-             if (0 <= y + 1 && y + 1 <= 7) {
-                if (0 <= x + 1 && x + 1 <= 7) {
+             if (0 <= y  && y  < 7) {
+                if (0 <= x && x < 7) {
                     posicionesParaComer[x + 1][y + 1] = true;
                 }
-                if (0 <= x - 1 && x - 1 <= 7) {
+                if (0 < x && x  <= 7) {
                     posicionesParaComer[x - 1][y + 1] = true;
                 }
             }
@@ -76,9 +76,9 @@ public class Peon extends Pieza {
        
       if (posicionesParaComer()[y2][x2] && piezasDelEquipoContrario(tablero)[y2][x2])
            return true;
-      if(this.isEquipo()==false && y1==1 && x2 == x1 && y2 == 3)
+      if(this.isEquipo()==false && y1==1 && y2 == 3 && x2 == x1 )
           return true;
-      if(this.isEquipo() && y1==6 && x2 == x1 && y2 == 4)
+      if(this.isEquipo() && y1==6 && y2 == 4 && x2 == x1 )
           return true;
       
         return false;
