@@ -75,14 +75,14 @@ public class Ajedrez {
                 tablero.getCasillas() [i][j].getPieza().setEquipo(true);
         }
         
-        setPosicionesAPiezas();//es necesario?
+        setPosicionesAPiezas();
        
     }
     
     public void setPosicionesAPiezas(){
         for ( int i = 0; i<8; i++){
             for (int j = 0; j<8; j++){
-                System.out.println(tablero.getCasillas()[i][j].getPieza());//esto que?
+                System.out.println(tablero.getCasillas()[i][j].getPieza());
                tablero.getCasillas() [i][j]
                        .getPieza()
                        .getPosicion()
@@ -102,7 +102,6 @@ public class Ajedrez {
             Pieza piezaAReemplazar = escaqueDestino.getPieza();
             Posicion posicionActual = piezaAMover.getPosicion();
             Posicion posicionDestino = piezaAReemplazar.getPosicion();
-            boolean SeMueve;
            
        
             
