@@ -16,7 +16,9 @@ public class NoPieza extends Pieza {
         this(-1,-1);
     }
     public NoPieza(int x, int y){
-        
+        Posicion pos = new Posicion();
+        pos.setPosicion(x, y);
+        setPosicion(pos);
     }
     
 
