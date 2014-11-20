@@ -38,12 +38,14 @@ public class Rey extends Pieza {
            int y2 = posicionNueva.getY();
          
            
-       if(posicionesPosibles()[x2][y2]== false)
+       if(posicionesPosibles()[x2][y2]== false){
            return false;
-       
-       else
-           if (piezasDelMismoEquipo(tablero)[x2][y2])
+       }
+       else{
+           if (piezasDelMismoEquipo(tablero)[x2][y2]){
                 return false;
+           }
+       }
         return true;
     }
     
