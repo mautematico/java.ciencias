@@ -260,7 +260,8 @@ public class TableroGrafico extends JFrame {
                     System.out.println("Torre");
                 if(escaquesDeMovimiento[0].getPieza() instanceof Alfil)
                     System.out.println("Alfil");
-                
+                escaquesDeMovimiento[0].getPieza().imprimirPosicionesPosibles();
+                        
                 
             } else if(escaquesDeMovimiento[1] == null){
                 escaquesDeMovimiento[1] = this.escaque;
@@ -283,13 +284,13 @@ public class TableroGrafico extends JFrame {
                 if(escaquesDeMovimiento[1].getPieza() instanceof Alfil)
                     System.out.println("Alfil");
 
-//                try{
+                try{
                     miAjedrez.moverPieza(escaquesDeMovimiento[0], escaquesDeMovimiento[1]);
                     escaquesDeMovimiento = null;
                     pintarTablero();
-  //              } catch(RuntimeException ex){
-    //                System.out.println("¡Algo pasó!");
-      //          }
+               } catch(RuntimeException ex){
+                    System.out.println("¡Algo pasó!");
+                }
             }
 
             

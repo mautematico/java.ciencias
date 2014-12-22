@@ -71,10 +71,10 @@ public class Peon extends Pieza {
            int y2 = posicionNueva.getY();
          
            
-       if(posicionesPosibles()[y2][x2] && (tablero.getCasillas()[y2][x2].getPieza() instanceof NoPieza))
+       if(posicionesPosibles()[x2][y2] && (tablero.getCasillas()[x2][y2].getPieza() instanceof NoPieza))
            return true;
        
-      if (posicionesParaComer()[y2][x2] && piezasDelEquipoContrario(tablero)[y2][x2])
+      if (posicionesParaComer()[x2][y2] && piezasDelEquipoContrario(tablero)[x2][y2])
            return true;
       if(this.isEquipo()==false && y1==1 && y2 == 3 && x2 == x1 )
           return true;

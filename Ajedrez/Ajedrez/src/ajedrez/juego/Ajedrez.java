@@ -17,7 +17,7 @@ public class Ajedrez {
     private Tablero tablero;
     private boolean equipoEnTurno;
     public Ajedrez(){
-        this("rey");
+        this("coronar");
     }
 
     public Ajedrez(String escenario){
@@ -32,7 +32,7 @@ public class Ajedrez {
                  tablero.getCasillas() [0][0].setPieza(new Torre());            
                 break;
             case "rey":
-                tablero.getCasillas() [4][5].setPieza(new Rey());
+                tablero.getCasillas() [7][7].setPieza(new Rey());
                 break;  
 
             default:

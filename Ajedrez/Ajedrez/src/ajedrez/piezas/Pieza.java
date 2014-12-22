@@ -76,6 +76,18 @@ public abstract class Pieza {
                     movimientosPosibles[i][j] = true;                
             }
         } 
+        
+        for (int j = 7; j>=0; j--) {
+            for (int i = 0; i<8; i++) {
+                if(movimientosPosibles[i][j]){
+                    System.out.print("|("+i+","+j+")|");
+                    continue;
+                }
+                System.out.print("| |");
+            }
+            System.out.println("");
+        }
+   
         return movimientosPosibles;
     }
     
@@ -87,5 +99,19 @@ public abstract class Pieza {
            return true;
        }
        return false;
+   }
+   public void imprimirPosicionesPosibles(){
+       boolean [][] posicionesPosibles = posicionesPosibles();
+                      
+       for (int j = 7; j>=0; j--) {
+           for (int i = 0; i<8; i++) {
+               if(posicionesPosibles[i][j]){
+                   System.out.print("|("+i+","+j+")|");
+                   continue;
+               }
+               System.out.print("| |");
+           }
+           System.out.println("");
+       }
    }
 }
